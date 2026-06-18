@@ -1,8 +1,6 @@
 import { auth } from "@/auth";
 import { getCustomerDiscordIdFromDb } from "@/lib/getCustomerDiscordIdFromDb";
 import Link from "next/link";
-import ServersMenu from "./components/ServersMenu";
-import { cookies } from "next/headers";
 import { Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,10 +12,6 @@ export default async function DashboardPage() {
   const customerEmail = session.user.email;
 
   const customerDiscordId = await getCustomerDiscordIdFromDb(customerEmail);
-
-  const cookieStore = await cookies();
-
-  const tempTokenCookie = cookieStore.get("tempToken");
 
   if (customerDiscordId?.error) {
     return (
@@ -69,21 +63,9 @@ export default async function DashboardPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-8">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-muted-foreground text-muted-foreground text-sm font-semibold shrink-0">
-                    1
-                  </div>
-                  <div className="flex-1 space-y-2 min-w-0">
-                    <div className="font-medium">
-                      Adicione seu(s) servidor(es) à lista
-                    </div>
-                    <ServersMenu tempTokenCookie={tempTokenCookie} />
-                  </div>
-                </div>
-
                 <div className="flex items-start gap-4">
                   <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-muted-foreground bg-background text-muted-foreground text-sm font-semibold shrink-0">
-                    2
+                    1
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="font-medium">
@@ -94,7 +76,7 @@ export default async function DashboardPage() {
 
                 <div className="flex items-start gap-4">
                   <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-muted-foreground bg-background text-muted-foreground text-sm font-semibold shrink-0">
-                    3
+                    2
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="font-medium">

@@ -5,7 +5,6 @@ export interface UserData {
   password: string;
   createdAt: Date;
   updatedAt: Date;
-  serversIds: string[];
   discordUserId: string | null;
   plan: UserPlan;
 }

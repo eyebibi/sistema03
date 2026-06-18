@@ -16,7 +16,7 @@ async function main() {
     create: {
       id: randomUUID(),
       email: 'seed@discly.dev',
-      password: '',
+      password: '$2b$12$G0fcWbCZeNS/lejVL94ZG.ib2eZSb8E74YMddMbFDfyNbHDCWLsNO', // 12345678
       plan: 'BASIC',
       credits: 100,
       discordUserId,

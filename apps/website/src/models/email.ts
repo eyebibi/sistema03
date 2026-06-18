@@ -1,4 +1,4 @@
-import { ServiceError, ValidationError } from "errors";
+import { ServiceError, ValidationError } from "@/errors";
 import { createTransport } from "nodemailer";
 
 type EmailOptions = {

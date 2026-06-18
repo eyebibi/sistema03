@@ -72,7 +72,6 @@ export type UserCountAggregateOutputType = {
   createdAt: number
   updatedAt: number
   discordUserId: number
-  serversIds: number
   plan: number
   credits: number
   _all: number
@@ -125,7 +124,6 @@ export type UserCountAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   discordUserId?: true
-  serversIds?: true
   plan?: true
   credits?: true
   _all?: true
@@ -227,7 +225,6 @@ export type UserGroupByOutputType = {
   createdAt: Date
   updatedAt: Date
   discordUserId: string | null
-  serversIds: string[]
   plan: $Enums.UserPlan
   credits: number
   _count: UserCountAggregateOutputType | null
@@ -265,7 +262,6 @@ export type UserWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   discordUserId?: Prisma.StringNullableFilter<"User"> | string | null
-  serversIds?: Prisma.StringNullableListFilter<"User">
   plan?: Prisma.EnumUserPlanFilter<"User"> | $Enums.UserPlan
   credits?: Prisma.IntFilter<"User"> | number
   Account?: Prisma.AccountListRelationFilter
@@ -282,7 +278,6 @@ export type UserOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   discordUserId?: Prisma.SortOrderInput | Prisma.SortOrder
-  serversIds?: Prisma.SortOrder
   plan?: Prisma.SortOrder
   credits?: Prisma.SortOrder
   Account?: Prisma.AccountOrderByRelationAggregateInput
@@ -302,7 +297,6 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   discordUserId?: Prisma.StringNullableFilter<"User"> | string | null
-  serversIds?: Prisma.StringNullableListFilter<"User">
   plan?: Prisma.EnumUserPlanFilter<"User"> | $Enums.UserPlan
   credits?: Prisma.IntFilter<"User"> | number
   Account?: Prisma.AccountListRelationFilter
@@ -319,7 +313,6 @@ export type UserOrderByWithAggregationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   discordUserId?: Prisma.SortOrderInput | Prisma.SortOrder
-  serversIds?: Prisma.SortOrder
   plan?: Prisma.SortOrder
   credits?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -342,7 +335,6 @@ export type UserScalarWhereWithAggregatesInput = {
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   discordUserId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  serversIds?: Prisma.StringNullableListFilter<"User">
   plan?: Prisma.EnumUserPlanWithAggregatesFilter<"User"> | $Enums.UserPlan
   credits?: Prisma.IntWithAggregatesFilter<"User"> | number
 }
@@ -357,7 +349,6 @@ export type UserCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   discordUserId?: string | null
-  serversIds?: Prisma.UserCreateserversIdsInput | string[]
   plan: $Enums.UserPlan
   credits?: number
   Account?: Prisma.AccountCreateNestedManyWithoutUserInput
@@ -374,7 +365,6 @@ export type UserUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   discordUserId?: string | null
-  serversIds?: Prisma.UserCreateserversIdsInput | string[]
   plan: $Enums.UserPlan
   credits?: number
   Account?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
@@ -391,7 +381,6 @@ export type UserUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   discordUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  serversIds?: Prisma.UserUpdateserversIdsInput | string[]
   plan?: Prisma.EnumUserPlanFieldUpdateOperationsInput | $Enums.UserPlan
   credits?: Prisma.IntFieldUpdateOperationsInput | number
   Account?: Prisma.AccountUpdateManyWithoutUserNestedInput
@@ -408,7 +397,6 @@ export type UserUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   discordUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  serversIds?: Prisma.UserUpdateserversIdsInput | string[]
   plan?: Prisma.EnumUserPlanFieldUpdateOperationsInput | $Enums.UserPlan
   credits?: Prisma.IntFieldUpdateOperationsInput | number
   Account?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -425,7 +413,6 @@ export type UserCreateManyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   discordUserId?: string | null
-  serversIds?: Prisma.UserCreateserversIdsInput | string[]
   plan: $Enums.UserPlan
   credits?: number
 }
@@ -440,7 +427,6 @@ export type UserUpdateManyMutationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   discordUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  serversIds?: Prisma.UserUpdateserversIdsInput | string[]
   plan?: Prisma.EnumUserPlanFieldUpdateOperationsInput | $Enums.UserPlan
   credits?: Prisma.IntFieldUpdateOperationsInput | number
 }
@@ -455,7 +441,6 @@ export type UserUncheckedUpdateManyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   discordUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  serversIds?: Prisma.UserUpdateserversIdsInput | string[]
   plan?: Prisma.EnumUserPlanFieldUpdateOperationsInput | $Enums.UserPlan
   credits?: Prisma.IntFieldUpdateOperationsInput | number
 }
@@ -463,14 +448,6 @@ export type UserUncheckedUpdateManyInput = {
 export type UserScalarRelationFilter = {
   is?: Prisma.UserWhereInput
   isNot?: Prisma.UserWhereInput
-}
-
-export type StringNullableListFilter<$PrismaModel = never> = {
-  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
-  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
-  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
-  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
-  isEmpty?: boolean
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -483,7 +460,6 @@ export type UserCountOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   discordUserId?: Prisma.SortOrder
-  serversIds?: Prisma.SortOrder
   plan?: Prisma.SortOrder
   credits?: Prisma.SortOrder
 }
@@ -552,17 +528,8 @@ export type UserUpdateOneRequiredWithoutSessionNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSessionInput, Prisma.UserUpdateWithoutSessionInput>, Prisma.UserUncheckedUpdateWithoutSessionInput>
 }
 
-export type UserCreateserversIdsInput = {
-  set: string[]
-}
-
 export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
-}
-
-export type UserUpdateserversIdsInput = {
-  set?: string[]
-  push?: string | string[]
 }
 
 export type EnumUserPlanFieldUpdateOperationsInput = {
@@ -587,7 +554,6 @@ export type UserCreateWithoutAccountInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   discordUserId?: string | null
-  serversIds?: Prisma.UserCreateserversIdsInput | string[]
   plan: $Enums.UserPlan
   credits?: number
   Session?: Prisma.SessionCreateNestedManyWithoutUserInput
@@ -603,7 +569,6 @@ export type UserUncheckedCreateWithoutAccountInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   discordUserId?: string | null
-  serversIds?: Prisma.UserCreateserversIdsInput | string[]
   plan: $Enums.UserPlan
   credits?: number
   Session?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
@@ -635,7 +600,6 @@ export type UserUpdateWithoutAccountInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   discordUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  serversIds?: Prisma.UserUpdateserversIdsInput | string[]
   plan?: Prisma.EnumUserPlanFieldUpdateOperationsInput | $Enums.UserPlan
   credits?: Prisma.IntFieldUpdateOperationsInput | number
   Session?: Prisma.SessionUpdateManyWithoutUserNestedInput
@@ -651,7 +615,6 @@ export type UserUncheckedUpdateWithoutAccountInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   discordUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  serversIds?: Prisma.UserUpdateserversIdsInput | string[]
   plan?: Prisma.EnumUserPlanFieldUpdateOperationsInput | $Enums.UserPlan
   credits?: Prisma.IntFieldUpdateOperationsInput | number
   Session?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
@@ -667,7 +630,6 @@ export type UserCreateWithoutSessionInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   discordUserId?: string | null
-  serversIds?: Prisma.UserCreateserversIdsInput | string[]
   plan: $Enums.UserPlan
   credits?: number
   Account?: Prisma.AccountCreateNestedManyWithoutUserInput
@@ -683,7 +645,6 @@ export type UserUncheckedCreateWithoutSessionInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   discordUserId?: string | null
-  serversIds?: Prisma.UserCreateserversIdsInput | string[]
   plan: $Enums.UserPlan
   credits?: number
   Account?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
@@ -715,7 +676,6 @@ export type UserUpdateWithoutSessionInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   discordUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  serversIds?: Prisma.UserUpdateserversIdsInput | string[]
   plan?: Prisma.EnumUserPlanFieldUpdateOperationsInput | $Enums.UserPlan
   credits?: Prisma.IntFieldUpdateOperationsInput | number
   Account?: Prisma.AccountUpdateManyWithoutUserNestedInput
@@ -731,7 +691,6 @@ export type UserUncheckedUpdateWithoutSessionInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   discordUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  serversIds?: Prisma.UserUpdateserversIdsInput | string[]
   plan?: Prisma.EnumUserPlanFieldUpdateOperationsInput | $Enums.UserPlan
   credits?: Prisma.IntFieldUpdateOperationsInput | number
   Account?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -787,7 +746,6 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   createdAt?: boolean
   updatedAt?: boolean
   discordUserId?: boolean
-  serversIds?: boolean
   plan?: boolean
   credits?: boolean
   Account?: boolean | Prisma.User$AccountArgs<ExtArgs>
@@ -805,7 +763,6 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   createdAt?: boolean
   updatedAt?: boolean
   discordUserId?: boolean
-  serversIds?: boolean
   plan?: boolean
   credits?: boolean
 }, ExtArgs["result"]["user"]>
@@ -820,7 +777,6 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   createdAt?: boolean
   updatedAt?: boolean
   discordUserId?: boolean
-  serversIds?: boolean
   plan?: boolean
   credits?: boolean
 }, ExtArgs["result"]["user"]>
@@ -835,12 +791,11 @@ export type UserSelectScalar = {
   createdAt?: boolean
   updatedAt?: boolean
   discordUserId?: boolean
-  serversIds?: boolean
   plan?: boolean
   credits?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "emailVerified" | "image" | "createdAt" | "updatedAt" | "discordUserId" | "serversIds" | "plan" | "credits", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "emailVerified" | "image" | "createdAt" | "updatedAt" | "discordUserId" | "plan" | "credits", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Account?: boolean | Prisma.User$AccountArgs<ExtArgs>
   Session?: boolean | Prisma.User$SessionArgs<ExtArgs>
@@ -865,7 +820,6 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     createdAt: Date
     updatedAt: Date
     discordUserId: string | null
-    serversIds: string[]
     plan: $Enums.UserPlan
     credits: number
   }, ExtArgs["result"]["user"]>
@@ -1302,7 +1256,6 @@ export interface UserFieldRefs {
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly discordUserId: Prisma.FieldRef<"User", 'String'>
-  readonly serversIds: Prisma.FieldRef<"User", 'String[]'>
   readonly plan: Prisma.FieldRef<"User", 'UserPlan'>
   readonly credits: Prisma.FieldRef<"User", 'Int'>
 }

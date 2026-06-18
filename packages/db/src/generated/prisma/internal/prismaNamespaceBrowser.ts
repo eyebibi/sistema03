@@ -130,7 +130,6 @@ export const UserScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   discordUserId: 'discordUserId',
-  serversIds: 'serversIds',
   plan: 'plan',
   credits: 'credits'
 } as const

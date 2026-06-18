@@ -22,7 +22,7 @@ Discly ("nós", "nosso") fornece um bot de Discord com IA para ajudar os usuári
 
 2. Contas de usuário e dados
 
-Para usar nossos serviços, podemos coletar certas informações, incluindo seu e-mail e uma lista de servidores do Discord que você possui. Para mais detalhes, por favor revise nossa Política de privacidade em https://discly.live/privacy.
+Para usar nossos serviços, podemos coletar certas informações, incluindo seu e-mail. Para mais detalhes, por favor revise nossa Política de privacidade em https://discly.live/privacy.
 
 3. Pagamentos e reembolsos
 

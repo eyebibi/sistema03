@@ -18,7 +18,7 @@ Bem-vindo ao Discly ("nós", "nosso"). Sua privacidade é importante para nós. 
 
 1. Informações que coletamos
 
-Dados pessoais: coletamos seu endereço de e-mail e informações sobre servidores do Discord que você possui.
+Dados pessoais: coletamos seu endereço de e-mail.
 
 Dados não pessoais: não coletamos nenhum dado não pessoal.
 

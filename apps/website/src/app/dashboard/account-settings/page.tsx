@@ -1,6 +1,5 @@
 import { auth } from "@/auth";
 import { getCustomerPlan } from "./actions/getCustomerPlan";
-import { getServersAmount } from "./actions/getServersAmount";
 import ResetPasswordCard from "./components/ResetPasswordCard";
 import { SessionProvider } from "next-auth/react";
 import AccountDetailsCard from "./components/AccountDetailsCard";
@@ -11,9 +10,7 @@ export default async function AccountSettings() {
 
   const customerPlan = await getCustomerPlan(customerEmail);
 
-  const connectedServers = await getServersAmount(customerEmail);
-
-  if (customerPlan.error || connectedServers.error) {
+  if (customerPlan.error) {
     return (
       <div className="flex flex-col w-full h-[calc(100vh-5em)] items-center justify-center">
         <h1 className="font-bold text-4xl">
@@ -31,7 +28,6 @@ export default async function AccountSettings() {
           <AccountDetailsCard
             customerPlan={customerPlan}
             customerEmail={customerEmail}
-            connectedServers={connectedServers}
           />
 
           <ResetPasswordCard />

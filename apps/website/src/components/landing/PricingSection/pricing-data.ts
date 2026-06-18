@@ -16,7 +16,6 @@ export const pricingData: PricingCardData[] = [
       { text: "Re-configurações ilimitadas", included: true },
       { text: "Suporte 24/7", included: true },
       { text: "Garantia de 7 dias", included: true },
-      { text: "Máximo de 2 servidores", included: false },
     ],
     buttonText: "Quero o plano básico",
   },
@@ -29,14 +28,7 @@ export const pricingData: PricingCardData[] = [
     isPopular: true,
     badge: "Melhor oferta!",
     features: [],
-    bundleItems: [
-      {
-        name: "🎉 Quantidade ilimitada de servidores",
-        value: "R$10",
-        description:
-          "Você pode adicionar o bot a quantos servidores quiser, sem custos extras.",
-      },
-    ],
+    bundleItems: [],
     buttonText: "Quero o plano ilimitado",
   },
 ];

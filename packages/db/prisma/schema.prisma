@@ -54,7 +54,6 @@ model User {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   discordUserId String?
-  serversIds    String[]  @default([])
   plan          UserPlan
   credits       Int       @default(100)
   Account       Account[]

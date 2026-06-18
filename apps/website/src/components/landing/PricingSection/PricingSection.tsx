@@ -97,7 +97,7 @@ export default function PricingSection() {
             </div>
 
             {/* Bundle Items (for Complete Bundle) */}
-            {card.isPopular && card.bundleItems && (
+            {card.isPopular && card.bundleItems && card.bundleItems.length > 0 && (
               <div className="mb-6">
                 <div className="flex items-center gap-2 mb-4 text-gray-300">
                   <ArrowLeft className="w-4 h-4" aria-hidden="true" />
@@ -129,20 +129,6 @@ export default function PricingSection() {
                             aria-hidden="true"
                           ></div>
                           <span>Re-configurações ilimitadas</span>
-                        </li>
-                        <li className="flex items-center gap-2 text-xs sm:text-sm text-gray-300">
-                          <div
-                            className="w-1.5 h-1.5 bg-white rounded-full"
-                            aria-hidden="true"
-                          ></div>
-                          <span>Quantidade ilimitada de servidores</span>
-                        </li>
-                        <li className="flex items-center gap-2 text-xs sm:text-sm text-gray-300">
-                          <div
-                            className="w-1.5 h-1.5 bg-white rounded-full"
-                            aria-hidden="true"
-                          ></div>
-                          <span>O plano básico só permite 2 servidores</span>
                         </li>
                       </ul>
                     </div>

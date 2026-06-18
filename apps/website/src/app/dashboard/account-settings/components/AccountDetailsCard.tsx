@@ -6,11 +6,9 @@ import { capitalize } from "@/helpers/capitalize";
 export default function AccountDetailsCard({
   customerPlan,
   customerEmail,
-  connectedServers,
 }: {
   customerPlan: { plan: string };
   customerEmail: string;
-  connectedServers: { amount: number };
 }) {
   return (
     <div className="w-full max-w-120">
@@ -31,11 +29,6 @@ export default function AccountDetailsCard({
 
             <div className="flex flex-col gap-3">
               {customerPlan.plan === "BASIC" && <UpgradePlanButton />}
-
-              <div className="flex gap-2 items-center">
-                <div className="rounded-full w-2 h-2 bg-green-500 animate-pulse"></div>
-                {connectedServers.amount} servidores
-              </div>
             </div>
           </div>
           <div className="my-4">
