@@ -1,0 +1,29 @@
+{
+  "name": "discly-bot",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch index.ts",
+    "build": "tsc",
+    "deploy-commands": "tsx deploy-commands.ts",
+    "start": "tsx index.ts",
+    "seed": "npm -w packages/db run seed",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@discly/db": "*",
+    "discord.js": "^14.26.4",
+    "dotenv": "^16.4.7",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  },
+  "type": "module"
+}
