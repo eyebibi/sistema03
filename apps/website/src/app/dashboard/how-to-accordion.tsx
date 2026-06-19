@@ -12,7 +12,7 @@ const jetbrainsMono = JetBrains_Mono({
 const steps = [
   {
     title: "Invite the bot to your server(s)",
-    text: "Just click the blue button on this page. Remember to give the bot administrator permission.",
+    text: "Just click the blue button on this page. Remember to give the bot administrator permission. After this, you can run the commands in the items below.",
   },
   {
     title: (
