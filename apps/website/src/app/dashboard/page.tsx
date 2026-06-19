@@ -1,7 +1,6 @@
 import { auth } from "@/auth";
 import { getCustomerDiscordIdFromDb } from "@/lib/getCustomerDiscordIdFromDb";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { IconCirclesRelation } from "@tabler/icons-react";
 import HowToAccordion from "./how-to-accordion";
 import HowToInviteCard from "./how-to-invite-card";
@@ -29,22 +28,20 @@ export default async function DashboardPage() {
       <div>
         <div className="ml-6 my-5">
           <h1 className="font-bold sm:text-4xl text-xl">
-            Conecte sua conta do Discord
+            Connect your Discord account
           </h1>
           <p className="ml-[2px] my-2 text-sm">
-            Você deve fazer isso para começar a usar o bot
+            You must do this to start using the bot
           </p>
         </div>
         <div className="flex w-full h-[calc(100vh-12em)] items-center justify-center px-6">
-          <Button className="w-full max-w-xs h-16">
+          <Link
+            href={process.env.NEXT_PUBLIC_DISCORD_OAUTH_URL}
+            className="btn btn-primary w-full max-w-xs h-16"
+          >
             <IconCirclesRelation size={20} />
-            <Link
-              href={process.env.NEXT_PUBLIC_DISCORD_OAUTH_URL}
-              className="whitespace-pre-wrap"
-            >
-              Conectar com Discord
-            </Link>
-          </Button>
+            Connect with Discord
+          </Link>
         </div>
       </div>
     );

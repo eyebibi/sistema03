@@ -15,10 +15,16 @@
   transition: transform 0.12s ease-out, background-color 0.2s ease-out;
 }
 
+.depthless {
+  --depth: 0;
+}
+
 .select:focus,
 .select:focus-within,
 .textarea:focus,
-.textarea:focus-within {
+.textarea:focus-within,
+.input:focus,
+.input:focus-within {
   --input-color: color-mix(in oklab, var(--color-base-content) 20%, #0000);
 }
 

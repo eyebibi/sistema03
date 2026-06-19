@@ -24,7 +24,7 @@ export default async function AccountSettings() {
   return (
     <SessionProvider>
       <div className="flex items-center min-h-[calc(100vh-5em)] px-5">
-        <div className="flex flex-col justify-between w-full items-center gap-5">
+        <div className="flex flex-row-reverse justify-between w-full items-start gap-5">
           <AccountDetailsCard
             customerPlan={customerPlan}
             customerEmail={customerEmail}

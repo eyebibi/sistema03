@@ -16,7 +16,7 @@ export default function BackButton() {
     <Link
       href={linkProps.href}
       style={{ transition: "transform 0.12s ease-out, background-color 0.15s ease" }}
-      className="btn btn-ghost bg-white/[0.01] border border-[#283242] hover:bg-transparent hover:!border-[#283242] outline-none focus-visible:outline-none"
+      className="btn btn-ghost bg-white/[0.01] depthless border border-[#283242] hover:bg-transparent hover:!border-[#283242] outline-none focus-visible:outline-none"
     >
       <ArrowLeft className="w-5 h-5" />
       <span className="hidden sm:inline">{linkProps.text}</span>

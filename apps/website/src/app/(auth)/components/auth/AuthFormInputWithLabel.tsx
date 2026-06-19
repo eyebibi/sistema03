@@ -1,7 +1,5 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { InputHTMLAttributes } from "react";
 
 type InputAndLabelProps = {
@@ -11,11 +9,11 @@ type InputAndLabelProps = {
 export default function AuthFormInputWithLabel(props: InputAndLabelProps) {
   return (
     <div className="space-y-2">
-      <Label htmlFor={props.name} className="text-white">
+      <label className="label" htmlFor={props.name}>
         {props.labelname}
-      </Label>
-      <Input
-        className="w-full text-white"
+      </label>
+      <input
+        className="input w-full depthless"
         autoCapitalize="none"
         autoComplete={props.autoComplete}
         autoCorrect="off"

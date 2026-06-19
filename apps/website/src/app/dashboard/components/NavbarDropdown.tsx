@@ -33,7 +33,7 @@ export default function NavbarDropdown() {
         tabIndex={0}
         role="button"
         style={{ transition: "transform 0.12s ease, background-color 0.15s ease" }}
-        className="btn btn-ghost bg-white/[0.01] border border-[#283242] hover:bg-transparent hover:!border-[#283242] outline-none focus-visible:outline-none"
+        className="btn btn-ghost depthless bg-white/[0.01] border border-[#283242] hover:bg-transparent hover:!border-[#283242] outline-none focus-visible:outline-none"
         onClick={toggle}
       >
         <User className="w-4 h-4" />

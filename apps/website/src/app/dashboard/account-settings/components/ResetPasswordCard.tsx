@@ -5,9 +5,6 @@ import {
   changePassword,
   ChangePasswordResponse,
 } from "@/app/actions/changePassword";
-import LoadingSpinner from "@/components/LoadingSpinner";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Lock } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useActionState, useEffect } from "react";
@@ -37,39 +34,39 @@ export default function ResetPasswordCard() {
 
     if (changePasswordResponse.success) {
       toast.success("Success", {
-        description: "Sua senha foi alterada.",
+        description: "Your password has been changed.",
       });
     }
   }, [changePasswordResponse]);
 
   return (
     <div className="w-full max-w-120">
-      <h1 className="font-bold text-2xl">Redefinir senha</h1>
-      <p>Redefina sua senha aqui</p>
-      <Card className="border-gray-700 w-full my-3">
-        <CardContent className="p-8">
+      <h1 className="font-bold text-2xl">Reset password</h1>
+      <p>Reset your password here</p>
+      <div className="card bg-base-200 w-full my-3">
+        <div className="card-body p-8">
           <form className="flex flex-col gap-5" action={changePasswordAction}>
             <AuthFormInputWithLabel
-              labelname="Senha atual"
+              labelname="Current password"
               placeholder="********"
               name="currentPassword"
               type="password"
             />
 
             <AuthFormInputWithLabel
-              labelname="Nova senha"
+              labelname="New password"
               placeholder="********"
               name="newPassword"
               type="password"
             />
 
-            <Button disabled={isPending}>
-              {isPending ? <LoadingSpinner /> : <Lock className="w-4 h-4" />}
-              Redefinir senha
-            </Button>
+            <button className="btn btn-primary w-full" disabled={isPending}>
+              {isPending ? <span className="loading loading-spinner"></span> : <Lock className="w-4 h-4" />}
+              Reset password
+            </button>
           </form>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }
