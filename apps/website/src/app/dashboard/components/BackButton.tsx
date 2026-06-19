@@ -3,28 +3,23 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
 
 export default function BackButton() {
   const pathname = usePathname();
 
   const linkProps = {
     href: pathname === "/dashboard" ? "/" : "/dashboard",
-    text: pathname === "/dashboard" ? "Página inicial" : "Dashboard",
+    text: pathname === "/dashboard" ? "Homepage" : "Dashboard",
   };
 
   return (
-    <Button variant="ghost">
-      <Link
-        href={linkProps.href}
-        className="!hidden sm:!inline-flex items-center justify-center"
-      >
-        <ArrowLeft className="w-4 h-4 mr-2" /> {linkProps.text}
-      </Link>
-
-      <Link href={linkProps.href} className="!inline-flex sm:!hidden">
-        <ArrowLeft className="w-6 h-6" />
-      </Link>
-    </Button>
+    <Link
+      href={linkProps.href}
+      style={{ transition: "transform 0.12s ease-out, background-color 0.15s ease" }}
+      className="btn btn-ghost bg-white/[0.01] border border-[#283242] hover:bg-transparent hover:!border-[#283242] outline-none focus-visible:outline-none"
+    >
+      <ArrowLeft className="w-5 h-5" />
+      <span className="hidden sm:inline">{linkProps.text}</span>
+    </Link>
   );
 }

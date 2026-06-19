@@ -4,12 +4,14 @@
 }
 
 :root {
+  --color-primary: #5865F2;
+  --color-primary-content: #fff;
   --radius-field: 0.5rem;
   --btn-focus-scale: 0.95;
 }
 
 .btn {
-  transition: transform 0.12s ease-out;
+  transition: transform 0.12s ease-out, background-color 0.2s ease-out;
 }
 
 .btn:active:focus {

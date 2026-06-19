@@ -101,7 +101,7 @@ export default function HowToAccordion() {
       {steps.map((step, i) => (
         <div
           key={i}
-          className={`collapse collapse-plus bg-base-300 rounded-2xl mb-3 w-full max-w-prose ${openIndex === i ? "collapse-open" : "collapse-close"
+          className={`collapse collapse-plus bg-base-200 rounded-2xl mb-3 w-full max-w-prose ${openIndex === i ? "collapse-open" : "collapse-close"
             }`}
         >
           <div

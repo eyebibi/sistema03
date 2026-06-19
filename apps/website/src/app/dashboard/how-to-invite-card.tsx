@@ -7,7 +7,7 @@ export default function HowToInviteCard() {
         How to invite the bot
       </h2>
 
-      <div className="bg-base-300 rounded-2xl p-6">
+      <div className="bg-base-200 rounded-2xl p-6">
         <p className="text-sm text-base-content/70 mb-7">
           You must grant the &quot;Administrator&quot; permission so the bot
           can configure your server. If you&apos;re not comfortable with this,
