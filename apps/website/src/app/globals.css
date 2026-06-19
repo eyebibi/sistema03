@@ -8,10 +8,18 @@
   --color-primary-content: #fff;
   --radius-field: 0.5rem;
   --btn-focus-scale: 0.95;
+  --color-neutral: color-mix(in oklab, var(--color-base-content) 15%, var(--color-base-200));
 }
 
 .btn {
   transition: transform 0.12s ease-out, background-color 0.2s ease-out;
+}
+
+.select:focus,
+.select:focus-within,
+.textarea:focus,
+.textarea:focus-within {
+  --input-color: color-mix(in oklab, var(--color-base-content) 20%, #0000);
 }
 
 .btn:active:focus {
