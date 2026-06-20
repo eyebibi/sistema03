@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "infra:up": "docker compose -f infra/docker-compose.yml up -d",
-    "infra:down": "docker compose -f infra/docker-compose.yml down"
+    "infra:down": "docker compose -f infra/docker-compose.yml down",
+    "dev:web": "npm run -w apps/website dev",
+    "dev:bot": "npm run -w apps/bot dev"
   },
   "workspaces": [
     "apps/*",
