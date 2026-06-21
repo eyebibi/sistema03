@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { toast } from "sonner";
 import CreditPackageCard from "./components/CreditPackageCard";
 
 const packages = [
@@ -12,12 +13,48 @@ const packages = [
 
 export default function BillingPage() {
   const [credits, setCredits] = useState<number | null>(null);
+  const [purchasing, setPurchasing] = useState<number | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("success") === "true") {
+      toast.success("Credits added to your account!");
+      window.history.replaceState({}, "", "/dashboard/billing");
+    } else if (params.get("canceled") === "true") {
+      toast.error("Purchase canceled");
+      window.history.replaceState({}, "", "/dashboard/billing");
+    }
+  }, []);
 
   useEffect(() => {
     fetch("/api/user/credits")
       .then((r) => r.json())
       .then((d) => setCredits(d.credits))
       .catch(() => {});
+  }, []);
+
+  const handlePurchase = useCallback(async (creditAmount: number) => {
+    setPurchasing(creditAmount);
+    try {
+      const res = await fetch("/api/stripe/create-credit-checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ credits: creditAmount }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        toast.error(data.error || "Something went wrong");
+        return;
+      }
+
+      window.location.href = data.url;
+    } catch {
+      toast.error("Something went wrong");
+    } finally {
+      setPurchasing(null);
+    }
   }, []);
 
   return (
@@ -46,6 +83,8 @@ export default function BillingPage() {
             credits={pkg.credits}
             price={pkg.price}
             iconSize={pkg.iconSize}
+            onSelect={handlePurchase}
+            loading={purchasing === pkg.credits}
           />
         ))}
       </div>

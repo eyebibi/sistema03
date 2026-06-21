@@ -1,15 +1,20 @@
 "use client";
 
 import { Coins } from "lucide-react";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function CreditPackageCard({
   credits,
   price,
   iconSize = 24,
+  onSelect,
+  loading = false,
 }: {
   credits: number;
   price: string;
   iconSize?: number;
+  onSelect: (credits: number) => void;
+  loading?: boolean;
 }) {
   return (
     <div className="flex flex-col justify-between h-full min-h-[240px] bg-[#1E2028] border border-white/5 rounded-lg p-6">
@@ -21,11 +26,10 @@ export default function CreditPackageCard({
 
       <button
         className="btn btn-primary btn-sm w-full mt-6"
-        onClick={() => {
-          console.log("Package selected:", { credits, price });
-          alert(`You selected the ${credits.toLocaleString()} credits package for ${price}.`);
-        }}
+        disabled={loading}
+        onClick={() => onSelect(credits)}
       >
+        {loading && <LoadingSpinner />}
         Select Package
       </button>
     </div>

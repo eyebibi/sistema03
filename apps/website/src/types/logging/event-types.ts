@@ -15,14 +15,14 @@ export type PasswordResetRequestEvent = {
 
 export type PurchaseEvent = {
   customerEmail: string;
-  plan: "BASIC" | "COMPLETE";
+  plan: "BASIC" | "COMPLETE" | "CREDIT";
   timestamp: string;
   paymentGateway: "STRIPE" | "MERCADOPAGO";
 };
 
 export type CheckoutSessionCreationEvent = {
   customerEmail: string;
-  plan: "BASIC" | "COMPLETE";
+  plan: "BASIC" | "COMPLETE" | "CREDIT";
   timestamp: string;
   paymentGateway: "STRIPE" | "MERCADOPAGO";
 };
