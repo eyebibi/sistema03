@@ -62,3 +62,18 @@
 @utility animate-char-reveal {
   animation: char-reveal 0.35s ease-out both;
 }
+
+/* prevent input autofill to have blue-ish background color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    /* Override the blue background with a shadow matching your desired background color */
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    
+    /* Override the yellow text color */
+    -webkit-text-fill-color: inherit !important;
+    
+    /* Prevent Chrome from re-applying the blue background */
+    transition: background-color 600000s 0s, color 600000s 0s;
+}   
