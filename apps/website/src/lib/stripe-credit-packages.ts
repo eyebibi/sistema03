@@ -1,8 +1,9 @@
-export const CREDIT_PACKAGES = {
-  100: { priceId: process.env.STRIPE_PRICE_CREDITS_100!, credits: 100, displayPrice: "$2.99" },
-  200: { priceId: process.env.STRIPE_PRICE_CREDITS_200!, credits: 200, displayPrice: "$4.99" },
-  500: { priceId: process.env.STRIPE_PRICE_CREDITS_500!, credits: 500, displayPrice: "$9.99" },
-  1000: { priceId: process.env.STRIPE_PRICE_CREDITS_1000!, credits: 1000, displayPrice: "$17.99" },
-} as const;
+import { env } from "@/lib/env";
 
-export type CreditPackageKey = keyof typeof CREDIT_PACKAGES;
+// Keep display data in billing page (page.tsx) in sync with keys here
+export const CREDIT_PACKAGES = {
+  100: { priceId: env.STRIPE_PRICE_CREDITS_100 },
+  200: { priceId: env.STRIPE_PRICE_CREDITS_200 },
+  500: { priceId: env.STRIPE_PRICE_CREDITS_500 },
+  1000: { priceId: env.STRIPE_PRICE_CREDITS_1000 },
+} as const;

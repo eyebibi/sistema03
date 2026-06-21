@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 import CreditPackageCard from "./components/CreditPackageCard";
 
+// Keep credits keys in sync with CREDIT_PACKAGES in src/lib/stripe-credit-packages.ts
 const packages = [
   { credits: 100, price: "$2.99", iconSize: 24 },
   { credits: 200, price: "$4.99", iconSize: 32 },

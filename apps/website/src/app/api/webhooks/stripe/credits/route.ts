@@ -1,4 +1,6 @@
-import { getStripe } from "@/lib/stripe";
+import { stripe } from "@/lib/stripe";
+import { CREDIT_PACKAGES } from "@/lib/stripe-credit-packages";
+import { env } from "@/lib/env";
 import { prisma } from "@discly/db";
 import { logger } from "@/lib/logger";
 import { NextRequest, NextResponse } from "next/server";
@@ -14,10 +16,10 @@ export async function POST(request: NextRequest) {
 
     let event;
     try {
-      event = getStripe().webhooks.constructEvent(
+      event = stripe.webhooks.constructEvent(
         rawBody,
         signature,
-        process.env.STRIPE_WEBHOOK_ENDPOINT_SECRET!,
+        env.STRIPE_WEBHOOK_ENDPOINT_SECRET,
       );
     } catch {
       return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
@@ -54,6 +56,10 @@ export async function POST(request: NextRequest) {
 
     if (isNaN(credits) || credits <= 0) {
       return NextResponse.json({ error: "Invalid credits value" }, { status: 400 });
+    }
+
+    if (!(credits in CREDIT_PACKAGES)) {
+      return NextResponse.json({ error: "Invalid credit package" }, { status: 400 });
     }
 
     const user = await prisma.user.findUnique({
