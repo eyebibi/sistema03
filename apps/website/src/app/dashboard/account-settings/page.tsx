@@ -23,15 +23,13 @@ export default async function AccountSettings() {
 
   return (
     <SessionProvider>
-      <div className="flex items-center min-h-[calc(100vh-5em)] px-5">
-        <div className="flex sm:flex-row-reverse flex-col justify-between w-full items-start gap-5">
-          <AccountDetailsCard
-            customerPlan={customerPlan}
-            customerEmail={customerEmail}
-          />
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-[900px] mx-auto items-start">
+        <ResetPasswordCard />
 
-          <ResetPasswordCard />
-        </div>
+        <AccountDetailsCard
+          customerPlan={customerPlan}
+          customerEmail={customerEmail}
+        />
       </div>
     </SessionProvider>
   );

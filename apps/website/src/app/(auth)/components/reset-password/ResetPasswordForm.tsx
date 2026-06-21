@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import AuthFormInputWithLabel from "../auth/AuthFormInputWithLabel";
 import { useRouter } from "next/navigation";
 import LoadingSpinner from "@/components/LoadingSpinner";
-import { Button } from "@/components/ui/button";
+
 
 type FormProps = {
   error: boolean | { message: string; action: string };
@@ -71,18 +71,18 @@ export default function ResetPasswordForm({
         name="newPassword"
         placeholder="********"
         type="password"
-        labelname="Nova senha"
+        labelname="New password"
         value={newPassword}
         onChange={(event) => setNewPassword(event.target.value)}
       />
 
-      <Button
+      <button
         disabled={isPending}
-        className="mx-auto min-w-full my-5 text-center"
+        className="btn btn-primary btn-block my-5"
       >
         {isPending && <LoadingSpinner />}
-        Redefinir senha
-      </Button>
+        Reset password
+      </button>
     </form>
   );
 }

@@ -13,10 +13,10 @@ export default function AuthFooter({
 }: AuthFooterProps) {
   return (
     <div className="text-center text-sm">
-      <span className="text-gray-500">{spanText}</span>
+      <span className="text-base-content/60">{spanText}</span>
       <Link
         href={linkHref}
-        className="font-semibold transition-colors text-gray-400 hover:underline"
+        className="link link-primary link-hover"
       >
         {linkText}
       </Link>

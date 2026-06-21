@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import Image from "next/image";
 import { Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
+
 
 type SendResetPasswordEmailResponse =
   | {
@@ -58,7 +58,7 @@ export default function ResetPasswordForm() {
           className="mx-auto"
         />
 
-        <h1 className="text-2xl font-bold mt-3">Redefinir senha</h1>
+        <h1 className="text-2xl font-bold mt-3">Reset password</h1>
       </div>
 
       <AuthFormInputWithLabel
@@ -67,14 +67,14 @@ export default function ResetPasswordForm() {
         name="email"
         placeholder="email@gmail.com"
         type="email"
-        labelname="E-mail"
+        labelname="Email"
         value={email}
         onChange={(event) => setEmail(event.target.value)}
       />
-      <Button className="w-full mt-10" type="submit" disabled={isPending}>
-        {isPending ? <LoadingSpinner /> : <Send className="w-4 h-4" />}
-        Send e-mail
-      </Button>
+      <button className="btn btn-primary btn-block mt-10" type="submit" disabled={isPending}>
+        {isPending ? <LoadingSpinner /> : <Send className="size-4" />}
+        Send email
+      </button>
     </form>
   );
 }

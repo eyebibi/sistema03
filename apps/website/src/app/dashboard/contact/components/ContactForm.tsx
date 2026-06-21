@@ -47,9 +47,9 @@ export default function ContactForm() {
   }, [sendEmailResponse]);
 
   return (
-    <form className="space-y-6" action={sendEmailAction}>
-      <div className="space-y-4">
-        <div className="flex flex-col items-center">
+    <div className="card bg-base-200 card-border">
+      <div className="card-body p-8">
+        <div className="flex flex-col items-center mb-6">
           <div className="w-[50px] h-[50px] relative">
             <Image
               src="/logo.png"
@@ -59,37 +59,39 @@ export default function ContactForm() {
             />
           </div>
 
-          <h1 className="text-center font-bold text-3xl my-4">Contact</h1>
+          <h1 className="text-center font-bold text-3xl mt-4">Contact</h1>
         </div>
 
-        <div className="space-y-2">
-          <label className="label" htmlFor="subject">Subject</label>
-          <select className="select select-lg w-full" name="subject" required defaultValue="">
-            <option value="" disabled>Select a subject</option>
-            <option value="feature_request">Feature request</option>
-            <option value="question">General question</option>
-            <option value="feedback">Feedback</option>
-            <option value="refund">Refund</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-      </div>
+        <form className="space-y-5 max-w-[500px] mx-auto w-full" action={sendEmailAction}>
+          <div className="space-y-2">
+            <label className="label" htmlFor="subject">Subject</label>
+            <select className="select select-lg w-full" name="subject" required defaultValue="">
+              <option value="" disabled>Select a subject</option>
+              <option value="feature_request">Feature request</option>
+              <option value="question">General question</option>
+              <option value="feedback">Feedback</option>
+              <option value="refund">Refund</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
 
-      <div className="space-y-2">
-        <label className="label" htmlFor="message">Message</label>
-        <textarea
-          name="message"
-          id="message"
-          className="textarea textarea-lg w-full min-h-[200px] resize-none"
-          placeholder="Your message here..."
-          required
-        />
-      </div>
+          <div className="space-y-2">
+            <label className="label" htmlFor="message">Message</label>
+            <textarea
+              name="message"
+              id="message"
+              className="textarea textarea-lg w-full min-h-[200px] resize-none"
+              placeholder="Your message here..."
+              required
+            />
+          </div>
 
-      <button className="btn btn-primary w-full" type="submit" disabled={isPending}>
-        {isPending ? <span className="loading loading-spinner"></span> : <Send className="ml-2 h-4 w-4" />}
-        Send message
-      </button>
-    </form>
+          <button className="btn btn-primary w-full" type="submit" disabled={isPending}>
+            {isPending ? <span className="loading loading-spinner"></span> : <Send className="ml-2 h-4 w-4" />}
+            Send message
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }

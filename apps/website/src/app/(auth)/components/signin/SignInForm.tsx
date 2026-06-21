@@ -8,7 +8,7 @@ import { useActionState, useEffect } from "react";
 import { toast } from "sonner";
 import AuthFormInputWithLabel from "../auth/AuthFormInputWithLabel";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+
 
 export default function SignInForm() {
   const router = useRouter();
@@ -22,9 +22,9 @@ export default function SignInForm() {
 
   useEffect(() => {
     if (signInState.error) {
-      toast.error(signInState.error.message || "Erro", {
+      toast.error(signInState.error.message || "Error", {
         description:
-          "Algo saiu errado. Se você acha que isso deveria funcionar, por favor, contate o suporte.",
+          "Something went wrong. If you think this should work, please contact support.",
       });
 
       return;
@@ -46,7 +46,7 @@ export default function SignInForm() {
           className="mx-auto"
         />
 
-        <h1 className="text-2xl font-bold mt-3">Entrar</h1>
+        <h1 className="text-2xl font-bold mt-3">Sign in</h1>
       </div>
       <div className="flex flex-col space-y-4">
         <AuthFormInputWithLabel
@@ -63,23 +63,22 @@ export default function SignInForm() {
           name="password"
           placeholder="********"
           type="password"
-          labelname="Senha"
+          labelname="Password"
         />
       </div>
       <input className="hidden" name="redirectTo" value="/dashboard" readOnly />
-      <Button
-        className="w-full mt-10"
-        variant="default"
+      <button
+        className="btn btn-primary btn-block mt-10"
         type="submit"
         disabled={isSigninPending}
       >
         {isSigninPending ? (
           <LoadingSpinner />
         ) : (
-          <LogIn className="mr-2 h-4 w-4" />
+          <LogIn className="size-4" />
         )}
-        Entrar na conta
-      </Button>
+        Sign in to your account
+      </button>
     </form>
   );
 }

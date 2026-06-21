@@ -40,10 +40,10 @@ export default function ResetPasswordCard() {
   }, [changePasswordResponse]);
 
   return (
-    <div className="w-full max-w-120">
-      <h1 className="font-bold text-2xl">Reset password</h1>
-      <p>Reset your password here</p>
-      <div className="card bg-base-200 w-full my-3">
+    <div className="max-w-[420px]">
+      <h1 className="font-bold text-2xl mb-1">Reset password</h1>
+      <p className="text-sm text-[#94A3B8] mb-4">Reset your password here</p>
+      <div className="card bg-base-200 card-border">
         <div className="card-body p-8">
           <form className="flex flex-col gap-5" action={changePasswordAction}>
             <AuthFormInputWithLabel
@@ -51,6 +51,7 @@ export default function ResetPasswordCard() {
               placeholder="********"
               name="currentPassword"
               type="password"
+              className="input w-full depthless"
             />
 
             <AuthFormInputWithLabel
@@ -58,6 +59,7 @@ export default function ResetPasswordCard() {
               placeholder="********"
               name="newPassword"
               type="password"
+              className="input w-full depthless"
             />
 
             <button className="btn btn-primary w-full" disabled={isPending}>

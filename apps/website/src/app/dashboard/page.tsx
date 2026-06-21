@@ -3,7 +3,8 @@ import { getCustomerDiscordIdFromDb } from "@/lib/getCustomerDiscordIdFromDb";
 import Link from "next/link";
 import { IconCirclesRelation } from "@tabler/icons-react";
 import HowToAccordion from "./how-to-accordion";
-import HowToInviteCard from "./how-to-invite-card";
+import BotStatusWidget from "./components/BotStatusWidget";
+import QuickBalanceView from "./components/QuickBalanceView";
 
 export default async function DashboardPage() {
   const session = await auth();
@@ -48,15 +49,15 @@ export default async function DashboardPage() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-5em)] px-4 py-6 flex flex-col items-center justify-center">
-      <div className="w-full flex sm:flex-row flex-col gap-5 items-start justify-center max-w-7xl mx-auto">
-        <div className="flex-1">
-          <HowToAccordion />
-        </div>
+    <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6 max-w-7xl mx-auto">
+      <div>
+        <HowToAccordion />
+      </div>
 
-        <div className="flex-1">
-          <HowToInviteCard />
-        </div>
+      <div className="flex flex-col gap-6">
+        <h2 className="text-2xl font-bold text-white">Status</h2>
+        <BotStatusWidget />
+        <QuickBalanceView />
       </div>
     </div>
   );

@@ -1,8 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { JetBrains_Mono } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { Bot } from "lucide-react";
+import StepCard from "./components/StepCard";
+import OnboardingHint from "./components/OnboardingHint";
+
+const STORAGE_KEY = "discly-checklist";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -11,17 +16,34 @@ const jetbrainsMono = JetBrains_Mono({
 
 const steps = [
   {
-    title: "Invite the bot to your server(s)",
+    id: "step-invite",
+    title: (
+      <>
+        Invite the bot to your server(s)
+      </>
+    ),
     text: "Just click the blue button on this page. Remember to give the bot administrator permission. After this, you can run the commands in the items below.",
+    actions: (
+      <a
+        href="https://discord.com/oauth2/authorize?client_id=1332423617761509398&permissions=8&integration_type=0&scope=bot"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="btn btn-primary btn-sm"
+      >
+        <Bot className="w-4 h-4" />
+        Invite Discly
+      </a>
+    ),
   },
   {
+    id: "step-configure",
     title: (
       <>
         Run{" "}
         <code
           className={cn(
             jetbrainsMono.className,
-            "bg-base-100 px-1.5 py-0.5 rounded-sm text-sm font-normal",
+            "bg-[#2A2D35] px-1.5 py-0.5 rounded-sm text-sm font-normal",
           )}
         >
           /configure-server
@@ -29,16 +51,17 @@ const steps = [
         to set up your server
       </>
     ),
-    text: 'Run this comand to start a server from scratch. Make sure to give a precise description to the bot.',
+    text: "Run this command to start a server from scratch. Make sure to give a precise description to the bot.",
   },
   {
+    id: "step-edit",
     title: (
       <>
         Run{" "}
         <code
           className={cn(
             jetbrainsMono.className,
-            "bg-base-100 px-1.5 py-0.5 rounded-sm text-sm font-normal",
+            "bg-[#2A2D35] px-1.5 py-0.5 rounded-sm text-sm font-normal",
           )}
         >
           /edit-server
@@ -46,83 +69,69 @@ const steps = [
         to customize (optional)
       </>
     ),
-    text: 'Run this command to only edit specific things in a server that is already created.',
+    text: "Run this command to only edit specific things in a server that is already created.",
   },
 ];
 
-function CharReveal({ text }: { text: string }) {
-  const words = text.split(/(\s+)/);
-  let charIndex = 0;
-
-  return (
-    <span>
-      {words.map((word, wi) => {
-        if (/^\s+$/.test(word)) {
-          // return the whitespace as a regular text node (break opportunity)
-          return <span key={wi}>{word}</span>;
-        }
-        // each word is an inline-block so it won't break mid-word
-        const chars = word.split("");
-        const result = (
-          <span key={wi} className="inline-block whitespace-nowrap">
-            {chars.map((char) => {
-              const idx = charIndex++;
-              return (
-                <span
-                  key={idx}
-                  className="inline-block animate-char-reveal"
-                  style={{ animationDelay: `${idx * 0.003}s` }}
-                >
-                  {char}
-                </span>
-              );
-            })}
-          </span>
-        );
-        return result;
-      })}
-    </span>
-  );
-}
-
 export default function HowToAccordion() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [completedSteps, setCompletedSteps] = useState<Record<string, boolean>>({});
+  const [hydrated, setHydrated] = useState(false);
 
-  function handleToggle(index: number) {
-    setOpenIndex((prev) => (prev === index ? null : index));
-  }
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        setCompletedSteps(JSON.parse(stored));
+      }
+    } catch {}
+    setHydrated(true);
+  }, []);
+
+  const toggleStep = useCallback((id: string) => {
+    setCompletedSteps((prev) => {
+      const next = { ...prev, [id]: !prev[id] };
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      } catch {}
+      return next;
+    });
+  }, []);
 
   return (
-    <div className="w-full lg:flex-1">
+    <div>
       <h2 className="text-2xl font-bold text-white mb-6">
         How to use the bot
       </h2>
 
-      {steps.map((step, i) => (
-        <div
-          key={i}
-          className={`collapse collapse-plus bg-base-200 rounded-2xl mb-3 w-full max-w-prose ${openIndex === i ? "collapse-open" : "collapse-close"
-            }`}
-        >
-          <div
-            className="collapse-title text-base font-medium text-base-content cursor-pointer select-none"
-            onClick={() => handleToggle(i)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                handleToggle(i);
-              }
-            }}
-            role="button"
-            tabIndex={0}
-          >
-            {step.title}
-          </div>
-          <div className="collapse-content text-sm text-base-content/70">
-            {openIndex === i && <CharReveal text={step.text} />}
-          </div>
-        </div>
-      ))}
+      <div className="flex flex-col gap-3">
+        {steps.map((step, i) => {
+          const card = (
+            <StepCard
+              key={step.id}
+              title={step.title}
+              text={step.text}
+              isComplete={!!completedSteps[step.id]}
+              onToggle={() => toggleStep(step.id)}
+              actions={"actions" in step ? step.actions : undefined}
+            />
+          );
+          if (i === 0) {
+            return (
+              <div key={step.id} className="relative">
+                <div
+                  className={`absolute max-[1199px]:hidden -left-[160px] -top-5 transition-opacity duration-300 pointer-events-none ${
+                    !completedSteps[step.id] ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  <OnboardingHint ready={hydrated && !completedSteps["step-invite"]} />
+                </div>
+                {card}
+              </div>
+            );
+          }
+          return card;
+        })}
+      </div>
     </div>
   );
 }

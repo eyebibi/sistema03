@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import Sidebar from "./components/Sidebar";
+import CreditsPill from "./components/CreditsPill";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const session = await auth();
@@ -12,25 +13,30 @@ export default async function Layout({ children }: { children: ReactNode }) {
     <div className="drawer lg:drawer-open">
       <input id="sidebar-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col h-screen">
-        <label
-          htmlFor="sidebar-drawer"
-          className="btn btn-ghost drawer-button lg:hidden fixed top-4 left-4 z-0 is-drawer-open:hidden"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-5 h-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        <div className="flex items-center justify-between px-8 pt-8 pb-0">
+          <label
+            htmlFor="sidebar-drawer"
+            className="btn btn-ghost drawer-button lg:hidden"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </label>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </label>
+          <div className="ml-auto">
+            <CreditsPill />
+          </div>
+        </div>
         <main className="flex-1 p-8 overflow-y-auto">{children}</main>
       </div>
       <div className="drawer-side">
