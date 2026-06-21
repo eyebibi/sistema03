@@ -1,9 +1,9 @@
 export type NoteType =
-  | "adicionado"
-  | "novo"
-  | "aprimorado"
-  | "melhoria"
-  | "corrigido"
+  | "added"
+  | "new"
+  | "improved"
+  | "improvement"
+  | "fixed"
   | "bug";
 
 interface Change {

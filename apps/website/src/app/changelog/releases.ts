@@ -5,28 +5,28 @@ export const RELEASES: Release[] = [
     version: "v2.0.1",
     changes: [
       {
-        type: "corrigido",
+        type: "fixed",
         items: [
-          "Bug em que às vezes os servidores do usuário não apareciam corrigido.",
+          "Fixed a bug where user servers sometimes wouldn't appear.",
         ],
       },
       {
-        type: "melhoria",
+        type: "improvement",
         items: [
-          "Uma animação de carregamento agora aparece enquanto os servidores do usuário são carregados",
+          "A loading animation now shows while user servers are loading",
         ],
       },
     ],
   },
   {
     version: "v2.0",
-    title: "'Editar Servidores' chegou! 🎉",
+    title: "'Edit Servers' is here! 🎉",
     changes: [
       {
-        type: "adicionado",
+        type: "added",
         items: [
-          "Comando /editar-servidor, para que o Discly faça pequenas alterações no seu servidor, sem recria-lo do zero.",
-          "Disponível para todos os planos, com uso ilimitado",
+          "Command /edit-server, so Discly can make small changes to your server without recreating it from scratch.",
+          "Available on all plans, with unlimited usage",
         ],
       },
     ],
@@ -35,9 +35,9 @@ export const RELEASES: Release[] = [
     version: "v1.9.0",
     changes: [
       {
-        type: "corrigido",
+        type: "fixed",
         items: [
-          "Corrigido bug de crash ao exibir a lista de servidores para colocar o bot",
+          "Fixed a crash bug when displaying the server list to add the bot",
         ],
       },
     ],

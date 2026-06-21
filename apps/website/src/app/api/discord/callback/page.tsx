@@ -59,7 +59,7 @@ export default async function DiscordCallbackPage({
     <main>
       <nav className="navbar">
         <Link
-          className="btn btn-ghost flex p-5 rounded-full transition-colors hover:bg-muted/20 max-w-fit"
+          className="btn btn-ghost flex p-5 rounded-full transition-colors hover:bg-base-300/20 max-w-fit"
           href="/dashboard"
         >
           <ArrowLeft />

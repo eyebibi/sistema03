@@ -1,14 +1,13 @@
 import Squares from "@/blocks/backgrounds/Squares/Squares";
 import ReleaseCard from "@/components/changelog/ReleaseCard";
-import { Button } from "@/components/ui/button";
 import { IconArrowLeft, IconReplace } from "@tabler/icons-react";
 import { Metadata } from "next";
 import Link from "next/link";
 import { RELEASES } from "./releases";
 
 export const metadata: Metadata = {
-  title: "Notas de atualização",
-  description: "Notas de atualização do Discly",
+  title: "Changelog",
+  description: "Discly Changelog",
 };
 
 export default function Changelog() {
@@ -27,11 +26,9 @@ export default function Changelog() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <nav className="mb-6">
-          <Link href="/">
-            <Button variant="ghost" className="text-gray-300 hover:text-white">
-              <IconArrowLeft className="w-4 h-4" />
-              <span className="ml-2">Voltar</span>
-            </Button>
+          <Link href="/" className="btn btn-ghost text-gray-300 hover:text-white">
+            <IconArrowLeft className="w-4 h-4" />
+            <span className="ml-2">Back</span>
           </Link>
         </nav>
 
@@ -40,11 +37,11 @@ export default function Changelog() {
             <IconReplace className="w-10 h-10 text-white" />
           </div>
           <h1 className="mt-4 text-3xl md:text-4xl font-bold text-gray-200">
-            Notas de atualização
+            Changelog
           </h1>
           <p className="mt-2 text-gray-400 max-w-2xl mx-auto">
-            Histórico público das mudanças, melhorias e correções do Discly. As
-            atualizações lançadas estão listadas abaixo.
+            Public history of changes, improvements, and fixes to Discly.
+            Released updates are listed below.
           </p>
         </header>
 
@@ -60,13 +57,12 @@ export default function Changelog() {
         </main>
 
         <footer className="mt-10 text-center text-sm text-gray-400">
-          Todas as atualizações têm o intuito de tornar o Discly cada vez melhor
-          :)
+          All updates are meant to make Discly better and better :)
         </footer>
       </div>
 
       {/* Background Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80 pointer-events-none z-5"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-base-100/80 pointer-events-none z-5"></div>
     </section>
   );
 }

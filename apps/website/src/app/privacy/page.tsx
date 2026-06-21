@@ -1,54 +1,53 @@
 import Squares from "@/blocks/backgrounds/Squares/Squares";
-import { Button } from "@/components/ui/button";
 import { IconArrowLeft, IconShield } from "@tabler/icons-react";
 import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidade",
-  description: "Política de Privacidade para usar o Discly",
+  title: "Privacy Policy",
+  description: "Privacy Policy for using Discly",
 };
 
 export default function PrivacyPolicy() {
   // Replace this with your actual Privacy Policy content
   const privacyContent = `
-**Data de efetivação: 30 de janeiro de 2025**
+**Effective date: January 30, 2025**
 
-Bem-vindo ao Discly ("nós", "nosso"). Sua privacidade é importante para nós. Esta Política de privacidade explica como coletamos, usamos e protegemos suas informações quando você usa nosso site e serviços.
+Welcome to Discly ("we", "our", "us"). Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information when you use our website and services.
 
-1. Informações que coletamos
+1. Information we collect
 
-Dados pessoais: coletamos seu endereço de e-mail.
+Personal data: we collect your email address.
 
-Dados não pessoais: não coletamos nenhum dado não pessoal.
+Non-personal data: we do not collect any non-personal data.
 
-2. Finalidade da coleta de dados
+2. Purpose of data collection
 
-Processamos seus dados para:
+We process your data to:
 
-Processar suas compras.
+Process your purchases.
 
-Entrar em contato com você em relação aos nossos serviços.
+Contact you regarding our services.
 
-Garantir o funcionamento adequado do nosso bot.
+Ensure the proper functioning of our bot.
 
-3. Compartilhamento de dados
+3. Data sharing
 
-Não compartilhamos seus dados com terceiros.
+We do not share your data with third parties.
 
-4. Privacidade de crianças
+4. Children's privacy
 
-Não coletamos dados de crianças.
+We do not collect data from children.
 
-5. Atualizações desta Política
+5. Updates to this Policy
 
-Podemos atualizar esta Política de privacidade de tempos em tempos. Se quaisquer alterações forem feitas, informaremos os usuários via e-mail.
+We may update this Privacy Policy from time to time. If any changes are made, we will notify users via email.
 
-6. Informações de contato
+6. Contact information
 
-Para resolver qualquer dúvida sobre esta Política de privacidade, por favor contate-nos em tim@mail.discly.live.
+To resolve any questions about this Privacy Policy, please contact us at tim@mail.discly.live.
 
-Ao usar o Discly, você concorda com os termos desta Política de privacidade.
+By using Discly, you agree to the terms of this Privacy Policy.
   `;
 
   return (
@@ -66,11 +65,9 @@ Ao usar o Discly, você concorda com os termos desta Política de privacidade.
 
       {/* Navigation */}
       <nav className="relative z-10 p-6">
-        <Link href="/">
-          <Button variant="ghost" className="text-gray-300 hover:text-white">
-            <IconArrowLeft className="w-4 h-4" />
-            Voltar para a página inicial
-          </Button>
+        <Link href="/" className="btn btn-ghost text-gray-300 hover:text-white">
+          <IconArrowLeft className="w-4 h-4" />
+          Back to home
         </Link>
       </nav>
 
@@ -83,10 +80,10 @@ Ao usar o Discly, você concorda com os termos desta Política de privacidade.
               <IconShield className="w-10 h-10 text-white" />
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-200 leading-tight mb-4">
-              Política de privacidade
+              Privacy Policy
             </h1>
             <p className="text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto">
-              Veja como o Discly trata seus dados.
+              See how Discly handles your data.
             </p>
           </div>
 
@@ -94,8 +91,7 @@ Ao usar o Discly, você concorda com os termos desta Política de privacidade.
           <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 sm:p-12 border border-white/10">
             <div className="prose prose-invert prose-lg max-w-none">
               <div
-                className="text-gray-300 leading-relaxed space-y-6"
-                style={{ whiteSpace: "pre-line" }}
+                className="text-gray-300 leading-relaxed space-y-6 whitespace-pre-line"
                 dangerouslySetInnerHTML={{
                   __html: privacyContent
                     .replace(
@@ -122,19 +118,17 @@ Ao usar o Discly, você concorda com os termos desta Política de privacidade.
           {/* Footer CTA */}
           <div className="text-center mt-12">
             <p className="text-gray-400 mb-6">
-              Tem dúvidas sobre como seus dados são tratados?
+              Have questions about how your data is handled?
             </p>
-            <Link href="mailto:tim@mail.discly.live">
-              <Button className="bg-gradient-to-r from-primary to-blue-700 hover:brightness-90 active:scale-95 h-12 px-8 text-base font-medium">
-                Entre em contato
-              </Button>
+            <Link href="mailto:tim@mail.discly.live" className="btn bg-gradient-to-r! from-primary to-blue-700 hover:brightness-90 active:scale-95 h-12 px-8 text-base font-medium text-white border-0">
+              Contact us
             </Link>
           </div>
         </div>
       </div>
 
       {/* Background Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80 pointer-events-none z-5"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-base-100/80 pointer-events-none z-5"></div>
     </section>
   );
 }
