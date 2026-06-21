@@ -57,12 +57,9 @@ export const command = {
     const userPrompt = USER_TEMPLATE
       .replace('{user_message}', enrichedMessage)
       .replace('{possible_actions}', formatSchemaInstructions());
-    const estimatedCost = estimatePromptCost(SYSTEM_MESSAGE + userPrompt);
-    console.log("estimated cost: ", estimatedCost)
-
     const user = await prisma.user.findFirst({
       where: { discordUserId: interaction.user.id },
-      select: { credits: true },
+      select: { credits: true, plan: true },
     });
 
     if (!user) {
@@ -72,6 +69,9 @@ export const command = {
       });
       return;
     }
+
+    const estimatedCost = estimatePromptCost(SYSTEM_MESSAGE + userPrompt, user.plan);
+    console.log("estimated cost: ", estimatedCost)
 
     if (user.credits < estimatedCost) {
       await submitted.reply({
@@ -87,7 +87,7 @@ export const command = {
       const agent = createEditServerAgent();
       const { output: llmActions, totalTokens } = await agent.execute(enrichedMessage);
 
-      await deductCost({ discordUserId: interaction.user.id, totalTokens });
+      await deductCost({ discordUserId: interaction.user.id, totalTokens, plan: user.plan });
 
       await performActions(llmActions, submitted as unknown as CommandInteraction);
 

@@ -84,12 +84,9 @@ export const command = {
 
     const userPrompt = `${promptMessage}\n${serverDescription}\n${shouldHaveEmojis ? 'Add emojis on channel names.' : 'No emojis on channel names.'
       }`;
-    const estimatedCost = estimatePromptCost(promptSystemMessage + userPrompt);
-    console.log("estimated cost: ", estimatedCost)
-
     const user = await prisma.user.findFirst({
       where: { discordUserId: interaction.user.id },
-      select: { credits: true },
+      select: { credits: true, plan: true },
     });
 
     if (!user) {
@@ -99,6 +96,9 @@ export const command = {
       });
       return;
     }
+
+    const estimatedCost = estimatePromptCost(promptSystemMessage + userPrompt, user.plan);
+    console.log("estimated cost: ", estimatedCost)
 
     if (user.credits < estimatedCost) {
       await submitted.reply({
@@ -153,7 +153,7 @@ export const command = {
           );
         }
 
-        await deductCost({ discordUserId: interaction.user.id, totalTokens });
+        await deductCost({ discordUserId: interaction.user.id, totalTokens, plan: user.plan });
 
         await submitted.editReply(
           "🤖 AI response received! Applying changes to the server!"

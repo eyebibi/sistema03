@@ -2,11 +2,13 @@ import { z } from "zod";
 
 const envSchema = z.object({
   STRIPE_SECRET_KEY: z.string().min(1),
-  STRIPE_WEBHOOK_ENDPOINT_SECRET: z.string().min(1),
+  STRIPE_WEBHOOK_SECRET_CREDITS: z.string().min(1),
+  STRIPE_WEBHOOK_SECRET_PLAN_UPGRADE: z.string().min(1),
   STRIPE_PRICE_CREDITS_100: z.string().min(1),
   STRIPE_PRICE_CREDITS_200: z.string().min(1),
   STRIPE_PRICE_CREDITS_500: z.string().min(1),
   STRIPE_PRICE_CREDITS_1000: z.string().min(1),
+  STRIPE_PRICE_PLAN_UPGRADE: z.string().min(1),
   NEXT_PUBLIC_BASE_URL: z.string().optional(),
   BASE_URL: z.string().optional(),
 }).refine(
