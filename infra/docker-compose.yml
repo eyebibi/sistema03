@@ -9,3 +9,10 @@ services:
       POSTGRES_DB: discly-db
     ports:
       - 5432:5432
+
+  mailcatcher:
+    container_name: Mailcatcher
+    image: sj26/mailcatcher
+    ports:
+      - 1080:1080
+      - 1025:1025
