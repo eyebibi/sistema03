@@ -1,3 +1,5 @@
+import type { LlmPermissionOverwrite } from "../helpers/types/PermissionOverwrites.js";
+
 export interface ConfigureServerInput {
   description: string;
   withEmojis: boolean;
@@ -19,8 +21,6 @@ export interface ServerConfig {
     name: string;
     type: string;
     category: string;
-    accessible_by: string[];
-    not_accessible_by: string[];
-    is_moderation_channel: boolean;
+    permission_overwrites: LlmPermissionOverwrite[];
   }>;
 }

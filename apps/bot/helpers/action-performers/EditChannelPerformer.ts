@@ -1,13 +1,14 @@
-import { PermissionFlagsBits } from "discord.js";
 import { ActionPerformer } from "./ActionPerformer.js";
 import { serverToJson } from "../serverToJson.js";
+import type { PermissionOverwrite } from "../types/PermissionOverwrites.js";
+import { buildDiscordOverwrites } from "../permissionToDiscordFlag.js";
 
 type EditChannelAction = {
   action: "edit_channel";
   channelName: string;
   newChannelName?: string;
   newChannelCategoryName?: string;
-  newAllowedRoles?: string[];
+  newRolePermissions?: PermissionOverwrite[];
 };
 
 export class EditChannelPerformer extends ActionPerformer<EditChannelAction> {
@@ -26,24 +27,12 @@ export class EditChannelPerformer extends ActionPerformer<EditChannelAction> {
   }
 
   get channelPermissions() {
-    if (!this.actionDetails.newAllowedRoles) return undefined;
+    const rolePerms = this.actionDetails.newRolePermissions;
+    if (!rolePerms || rolePerms.length === 0) return undefined;
 
-    return this.interaction.guild!.roles.cache.map((role) => {
-      const accessibleByRole = this.actionDetails.newAllowedRoles!.includes(
-        role.name
-      );
-
-      if (accessibleByRole) {
-        return {
-          id: role.id,
-          allow: [PermissionFlagsBits.ViewChannel],
-        };
-      }
-
-      return {
-        id: role.id,
-        deny: [PermissionFlagsBits.ViewChannel],
-      };
+    return buildDiscordOverwrites({
+      guild: this.interaction.guild!,
+      overrides: rolePerms,
     });
   }
 

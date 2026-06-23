@@ -1,5 +1,17 @@
 import z from "zod";
 
+const permissionOverrideSchema = z.object({
+  roleName: z.string().describe("Nome exato do cargo."),
+  permissions: z
+    .record(
+      z.string(),
+      z.boolean().nullable().describe("true = permitir, false = negar, null = herdar (não definir)")
+    )
+    .describe(
+      "Mapa de permissões para este cargo. Cada permissão pode ser true (permitir), false (negar) ou null/omitido (herdar). Ex: { \"ViewChannel\": true, \"SendMessages\": false }"
+    ),
+});
+
 export const editChannelSchema = z.object({
   action: z
     .literal("edit_channel")
@@ -17,10 +29,10 @@ export const editChannelSchema = z.object({
     .describe(
       "O nome da categoria para onde o canal será movido, se necessário."
     ),
-  newAllowedRoles: z
-    .array(z.string())
+  newRolePermissions: z
+    .array(permissionOverrideSchema)
     .optional()
     .describe(
-      "Lista com nomes de cargos que terão acesso ao canal. Para fazer o canal visível para todos os membros e cargos, apenas não forneça essa lista."
+      "Lista de configurações de permissão por cargo para substituir as atuais. Cada entrada define quais permissões um cargo específico terá no canal. Se não fornecido, as permissões atuais do canal não são alteradas."
     ),
 });

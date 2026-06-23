@@ -1,6 +1,18 @@
 import z from "zod";
 import { channelTypeMap } from "../../helpers/types/ChannelTypeMap.js";
 
+const permissionOverrideSchema = z.object({
+  roleName: z.string().describe("Nome exato do cargo."),
+  permissions: z
+    .record(
+      z.string(),
+      z.boolean().nullable().describe("true = permitir, false = negar, null = herdar (não definir)")
+    )
+    .describe(
+      "Mapa de permissões para este cargo. Cada permissão pode ser true (permitir), false (negar) ou null/omitido (herdar). Ex: { \"ViewChannel\": true, \"SendMessages\": false }"
+    ),
+});
+
 export const createChannelSchema = z.object({
   action: z
     .literal("create_channel")
@@ -15,10 +27,10 @@ export const createChannelSchema = z.object({
     .describe(
       "O nome exato da categoria onde o canal será criado, se aplicável. Se não, pode deixar vazio."
     ),
-  allowedRoles: z
-    .array(z.string())
+  rolePermissions: z
+    .array(permissionOverrideSchema)
     .optional()
     .describe(
-      "Lista com nomes dos cargos que terão acesso ao canal. Caso o canal possa ser acessível por qualquer um, não deve ser fornecida."
+      "Lista de configurações de permissão por cargo. Cada entrada define quais permissões um cargo específico tem no canal. Se não fornecido, o canal herda as permissões padrão da categoria."
     ),
 });

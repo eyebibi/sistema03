@@ -1,6 +1,7 @@
 import { PermissionsBitField } from "discord.js";
 import type { ColorResolvable } from "discord.js";
 import { ActionPerformer } from "./ActionPerformer.js";
+import { CustomPermissions } from "../CustomPermissions.js";
 
 type EditRoleAction = {
   action: "edit_role";
@@ -13,6 +14,12 @@ type EditRoleAction = {
   newPermissions?: string[];
 };
 
+function resolvePermissions(perms: string[]): string[] {
+  return perms[0] === "GeneralPermissions"
+    ? [...CustomPermissions.generalPermissions]
+    : perms;
+}
+
 export class EditRolePerformer extends ActionPerformer<EditRoleAction> {
   get role() {
     return this.interaction.guild!.roles.cache.find(
@@ -24,14 +31,14 @@ export class EditRolePerformer extends ActionPerformer<EditRoleAction> {
     if (!this.actionDetails.keepOldPermissions)
       return this.actionDetails.newPermissions
         ? new PermissionsBitField(
-            this.actionDetails.newPermissions as unknown as bigint[]
+            resolvePermissions(this.actionDetails.newPermissions) as unknown as bigint[]
           ).bitfield
         : undefined;
 
     const existingPerms = this.role!.permissions.toArray() as string[];
     const newPerms = this.actionDetails.newPermissions ?? [];
     return new PermissionsBitField(
-      [...existingPerms, ...newPerms] as unknown as bigint[]
+      [...existingPerms, ...resolvePermissions(newPerms)] as unknown as bigint[]
     ).bitfield;
   }
 

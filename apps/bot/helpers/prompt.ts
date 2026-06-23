@@ -6,26 +6,50 @@ In case the role is related to someone with a lot of administrative permissions,
 In case the role is related to general permissions, and nothing specific about it was requested, you can just give the role permission on "GeneralPermissions".
 If none of the 2 cases above are met, you'll have to specify each permission individually for the role inside an array of strings, each string being a specific permission.
 
-List of general permissions:
+List of all available permissions:
 CreateInstantInvite
+KickMembers
+BanMembers
+Administrator
+ManageChannels
+ManageGuild
 AddReactions
+ViewAuditLog
+PrioritySpeaker
 Stream
 ViewChannel
 SendMessages
+SendTTSMessages
+ManageMessages
 EmbedLinks
 AttachFiles
 ReadMessageHistory
+MentionEveryone
 UseExternalEmojis
+ViewGuildInsights
 Connect
 Speak
+MuteMembers
+DeafenMembers
+MoveMembers
+UseVAD
 ChangeNickname
+ManageNicknames
+ManageRoles
+ManageWebhooks
+ManageEmojisAndStickers
+ManageGuildExpressions
 UseApplicationCommands
 RequestToSpeak
+ManageEvents
+ManageThreads
 CreatePublicThreads
 CreatePrivateThreads
 UseExternalStickers
 SendMessagesInThreads
 UseEmbeddedActivities
+ModerateMembers
+ViewCreatorMonetizationAnalytics
 UseSoundboard
 CreateGuildExpressions
 CreateEvents
@@ -33,27 +57,8 @@ UseExternalSounds
 SendVoiceMessages
 SendPolls
 UseExternalApps
-
-List of moderation-related permissions:
-ModerateMembers
-ViewCreatorMonetizationAnalytics
-ManageEvents
-ManageThreads
-ManageNicknames
-ManageRoles
-ManageWebhooks
-ManageGuildExpressions
-MuteMembers
-DeafenMembers
-MoveMembers
-ViewGuildInsights
-MentionEveryone
-ManageMessages
-ViewAuditLog
-KickMembers
-BanMembers
-Administrator
-ManageGuild
+PinMessages
+BypassSlowmode
 
 The way you are going to create a server is by replying with a JSON response. This is the format that your response should have:
 
@@ -78,12 +83,34 @@ The way you are going to create a server is by replying with a JSON response. Th
       "name": "CHANNEL NAME HERE",
       "type": "CHANNEL TYPE HERE ('text' or 'voice')",
       "category": "CATEGORY NAME HERE",
-      "accessible_by": ["role_1", "role_2"], // array of role names, or empty array if accessible by everyone
-      "not_accessible_by": ["role_3"], // array of role names, or empty if every role can see this channel
-      "is_moderation_channel": true // true or false. Indicates whether messages on this channel can only be sent by people of the server's staff 
+      "permission_overwrites": [
+        {
+          "role_name": "Admin",
+          "permissions": {
+            "ViewChannel": true,
+            "SendMessages": true,
+            "ManageMessages": true
+          }
+        },
+        {
+          "role_name": "@everyone",
+          "permissions": {
+            "ViewChannel": true,
+            "SendMessages": false
+          }
+        }
+      ]
     }
   ]
 }
+
+For the "permission_overwrites" field, define per-role permissions on a channel. Each entry has:
+- "role_name": exact name of the role
+- "permissions": a map where each permission can be:
+  - true: explicitly allowed
+  - false: explicitly denied
+  - omitted or null: inherits the default (from category or @everyone)
+If "permission_overwrites" is an empty array, the channel uses default inherited permissions with no explicit overrides.
 
 Notice that, for each one of "channels", "categories" and "roles", we only have 1 item, but you have permission to create any number of them.
 
@@ -97,7 +124,7 @@ Example response:
       "color": "#ff0000",
       "hoist": true,
       "mentionable": true,
-      "permissions": 8,
+      "permissions": "Administrator",
       "position": 1
     },
     {
@@ -105,7 +132,7 @@ Example response:
       "color": "#00ff00",
       "hoist": true,
       "mentionable": true,
-      "permissions": 515466710593,
+      "permissions": "GeneralPermissions",
       "position": 1
     },
     {
@@ -113,7 +140,7 @@ Example response:
       "color": "#ff2121",
       "hoist": true,
       "mentionable": true,
-      "permissions": 515466710593,
+      "permissions": "GeneralPermissions",
       "position": 1
     }
   ],
@@ -130,41 +157,39 @@ Example response:
       "name": "💬-General",
       "type": "text",
       "category": "Hang out",
-      "accessible_by": [],
-      "not_accessible_by": [],
-      "is_moderation_channel": false
+      "permission_overwrites": []
     },
     {
       "name": "🎥-Videos",
       "type": "text",
       "category": "Hang out",
-      "accessible_by": [],
-      "not_accessible_by": [],
-      "is_moderation_channel": false
+      "permission_overwrites": []
     },
     {
       "name": "⭐-VIP",
       "type": "text",
       "category": "Hang out",
-      "accessible_by": ["VIP"],
-      "not_accessible_by": ["Subscriber"],
-      "is_moderation_channel": false
+      "permission_overwrites": [
+        {
+          "role_name": "VIP",
+          "permissions": {
+            "ViewChannel": true,
+            "SendMessages": true
+          }
+        }
+      ]
     },
     {
       "name": "🎙️-Gaming",
       "type": "voice",
       "category": "Voice",
-      "accessible_by": [],
-      "not_accessible_by": [],
-      "is_moderation_channel": false
+      "permission_overwrites": []
     },
     {
       "name": "🎙️-Talking",
       "type": "voice",
       "category": "Voice",
-      "accessible_by": [],
-      "not_accessible_by": [],
-      "is_moderation_channel": false
+      "permission_overwrites": []
     }
   ]
 }

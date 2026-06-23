@@ -31,7 +31,6 @@ export const command = {
 
     const descriptionInput = new TextInputBuilder()
       .setCustomId("description")
-      .setPlaceholder("Server description")
       .setStyle(TextInputStyle.Paragraph)
       .setPlaceholder("Describe how you want your new server...")
       .setRequired(true);

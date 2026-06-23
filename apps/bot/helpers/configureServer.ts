@@ -1,38 +1,12 @@
 import {
   ChannelType,
-  PermissionFlagsBits,
   PermissionsBitField,
 } from "discord.js";
 import type { CommandInteraction, ColorResolvable } from "discord.js";
 
-const generalPermissions = [
-  "CreateInstantInvite",
-  "AddReactions",
-  "Stream",
-  "ViewChannel",
-  "SendMessages",
-  "EmbedLinks",
-  "AttachFiles",
-  "ReadMessageHistory",
-  "UseExternalEmojis",
-  "Connect",
-  "Speak",
-  "ChangeNickname",
-  "UseApplicationCommands",
-  "RequestToSpeak",
-  "CreatePublicThreads",
-  "CreatePrivateThreads",
-  "UseExternalStickers",
-  "SendMessagesInThreads",
-  "UseEmbeddedActivities",
-  "UseSoundboard",
-  "CreateGuildExpressions",
-  "CreateEvents",
-  "UseExternalSounds",
-  "SendVoiceMessages",
-  "SendPolls",
-  "UseExternalApps",
-];
+import { CustomPermissions } from "./CustomPermissions.js";
+import type { DiscordOverwrite, LlmPermissionOverwrite } from "./types/PermissionOverwrites.js";
+import { buildDiscordOverwrites } from "./permissionToDiscordFlag.js";
 
 interface RoleData {
   name: string;
@@ -47,7 +21,7 @@ interface ChannelData {
   name: string;
   type: string;
   category: string;
-  accessible_by: string[];
+  permission_overwrites: LlmPermissionOverwrite[];
 }
 
 async function createRoles(
@@ -70,7 +44,7 @@ async function createRoles(
           roleData.permissions === "GeneralPermissions" ||
           (Array.isArray(roleData.permissions) &&
             roleData.permissions[0] === "GeneralPermissions")
-            ? new PermissionsBitField(generalPermissions as never)
+            ? new PermissionsBitField(CustomPermissions.generalPermissions as never)
             : new PermissionsBitField(roleData.permissions as never),
         position: roleData.position,
       });
@@ -156,37 +130,18 @@ async function createCategoriesAndChannels(
       continue;
     }
 
-    const accessibleBy = channelData.accessible_by || [];
-    let permissionOverwrites: Array<{
-      id: string;
-      allow?: bigint[];
-      deny?: bigint[];
-    }>;
+    const overwrites = channelData.permission_overwrites || [];
+    let permissionOverwrites: DiscordOverwrite[] = [];
 
-    if (accessibleBy.length === 0) {
-      permissionOverwrites = [];
-    } else {
+    if (overwrites.length > 0) {
       try {
-        const allRoles = interaction.guild!.roles.cache;
-
-        permissionOverwrites = allRoles
-          .map((role) => {
-            const isAccessible = accessibleBy.some((name) =>
-              role.name.includes(name)
-            );
-            if (isAccessible) {
-              return {
-                id: role.id,
-                allow: [PermissionFlagsBits.ViewChannel],
-              };
-            }
-
-            return {
-              id: role.id,
-              deny: [PermissionFlagsBits.ViewChannel],
-            };
-          })
-          .filter(Boolean);
+        permissionOverwrites = buildDiscordOverwrites({
+          guild: interaction.guild!,
+          overrides: overwrites.map((o) => ({
+            roleName: o.role_name,
+            permissions: o.permissions,
+          })),
+        });
       } catch (permError) {
         console.log(
           `Error setting permissions for channel ${channelData.name}:`,

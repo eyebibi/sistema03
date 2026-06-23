@@ -1,6 +1,7 @@
 import { PermissionsBitField } from "discord.js";
 import type { ColorResolvable } from "discord.js";
 import { ActionPerformer } from "./ActionPerformer.js";
+import { CustomPermissions } from "../CustomPermissions.js";
 
 type CreateRoleAction = {
   action: "create_role";
@@ -12,6 +13,12 @@ type CreateRoleAction = {
 };
 
 export class CreateRolePerformer extends ActionPerformer<CreateRoleAction> {
+  get resolvedPermissions() {
+    return this.actionDetails.permissions[0] === "GeneralPermissions"
+      ? [...CustomPermissions.generalPermissions]
+      : this.actionDetails.permissions;
+  }
+
   async perform() {
     await this.interaction.guild!.roles.create({
       name: this.actionDetails.roleName,
@@ -19,7 +26,7 @@ export class CreateRolePerformer extends ActionPerformer<CreateRoleAction> {
       mentionable: this.actionDetails.mentionable,
       position: this.actionDetails.position,
       permissions: new PermissionsBitField(
-        this.actionDetails.permissions as unknown as bigint[]
+        this.resolvedPermissions as unknown as bigint[]
       ).bitfield,
       hoist: true,
     });
