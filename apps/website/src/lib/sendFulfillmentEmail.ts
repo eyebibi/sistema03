@@ -6,7 +6,7 @@ function generateEmailHtml(customerEmail: string, customerRawPassword: string) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bem-vindo(a) ao Discly!</title>
+    <title>Welcome to Discly!</title>
   </head>
   <body
     style="
@@ -40,18 +40,18 @@ function generateEmailHtml(customerEmail: string, customerRawPassword: string) {
           "
         >
           <h1 style="margin: 0; font-size: 28px; font-weight: bold">
-            Bem-vindo(a) ao Discly!
+            Welcome to Discly!
           </h1>
         </td>
       </tr>
       <tr>
         <td style="padding: 30px 20px">
-          <p style="font-size: 16px; color: #ffffff">Olá!</p>
+          <p style="font-size: 16px; color: #ffffff">Hello!</p>
           <p style="font-size: 16px; color: #ffffff">
-            Bem-vindo(a) ao Discly. Obrigado por sua confiança!
+            Welcome to Discly. Thank you for your trust!
           </p>
           <p style="font-size: 16px; color: #ffffff">
-            Aqui estão suas credenciais de login:
+            Here are your login credentials:
           </p>
           <table
             cellpadding="10"
@@ -70,20 +70,20 @@ function generateEmailHtml(customerEmail: string, customerRawPassword: string) {
               </td>
             </tr>
             <tr>
-              <td style="font-weight: bold; color: #ffffff">Senha:</td>
+              <td style="font-weight: bold; color: #ffffff">Password:</td>
               <td style="font-family: monospace; color: #ffffff">
                 ${customerRawPassword}
               </td>
             </tr>
           </table>
           <p style="font-size: 16px; color: #e53e3e; font-weight: bold">
-            Importante: Por favor, altere sua senha ao fazer login pela primeira
-            vez!
+            Important: Please change your password when you log in for the first
+            time!
           </p>
           <p style="font-size: 16px; color: #ffffff">
-            Sua senha atual foi gerada aleatoriamente para fins de segurança.
-            Para manter sua conta segura, por favor, atualize-a para uma senha
-            forte e única de sua escolha.
+            Your current password was randomly generated for security purposes.
+            To keep your account secure, please update it to a strong
+            and unique password of your choice.
           </p>
           <a
             href="https://discly.live/signin"
@@ -97,12 +97,12 @@ function generateEmailHtml(customerEmail: string, customerRawPassword: string) {
               font-weight: bold;
               margin-top: 20px;
             "
-            >Fazer login</a
+            >Sign in</a
           >
           <p style="font-size: 16px; color: #ffffff; margin-top: 30px">
-            Agora você pode criar servidores, rápido!
+            Now you can create servers, fast!
           </p>
-          <p style="font-size: 16px; color: #ffffff">Equipe Discly</p>
+          <p style="font-size: 16px; color: #ffffff">Discly Team</p>
         </td>
       </tr>
     </table>
@@ -120,8 +120,8 @@ export async function sendFulfillmentEmail(
       from: process.env.EMAIL_FROM,
       to: customerEmail,
       html: generateEmailHtml(customerEmail, customerRawPassword),
-      subject: `Bem-vindo(a) ao Discly!`,
-      text: `Você agora tem acesso ao Discly.`,
+      subject: `Welcome to Discly!`,
+      text: `You now have access to Discly.`,
     });
   } catch (error) {
     console.log(error);

@@ -5,6 +5,7 @@ import { generatePasswordResetId } from "./generatePasswordResetId";
 import { getUserByEmail } from "./getUserByEmail";
 import email from "@/models/email";
 import { logger } from "@/lib/logger";
+import { env } from "@/lib/env";
 
 function getEmailHtml(resetPasswordLink: string) {
   return `<!DOCTYPE html>
@@ -46,18 +47,18 @@ function getEmailHtml(resetPasswordLink: string) {
           "
         >
           <h1 style="margin: 0; font-size: 28px; font-weight: bold">
-            Redefinir senha do Discly
+            Discly Password Reset
           </h1>
         </td>
       </tr>
       <tr>
         <td style="padding: 30px 20px">
-          <p style="font-size: 16px; color: #ffffff">Olá!</p>
+          <p style="font-size: 16px; color: #ffffff">Hello!</p>
           <p style="font-size: 16px; color: #ffffff">
-            Foi solicitada uma redefinição de senha para este endereço de e-mail
+            A password reset was requested for this email address
           </p>
           <p style="font-size: 16px; color: #ffffff">
-            Aqui está o link para redefinir sua senha:
+            Here is the link to reset your password:
           </p>
           <a
             href="${resetPasswordLink}"
@@ -71,12 +72,12 @@ function getEmailHtml(resetPasswordLink: string) {
               font-weight: bold;
               margin-top: 20px;
             "
-            >Redefinir senha</a
+            >Reset password</a
           >
           <p style="font-size: 16px; color: #ffffff; margin-top: 30px">
-            Obrigado por usar o Discly!
+            Thank you for using Discly!
           </p>
-          <p style="font-size: 16px; color: #ffffff">Equipe Discly</p>
+          <p style="font-size: 16px; color: #ffffff">Discly Team</p>
         </td>
       </tr>
     </table>
@@ -104,14 +105,14 @@ async function generatePasswordResetEmail(userEmail: string) {
     // generate password reset link
     const passwordResetLink =
       process.env.VERCEL_ENV === "production"
-        ? `${process.env.NEXT_PUBLIC_BASE_URL}/reset-password/${id}`
-        : `${process.env.VERCEL_URL || "localhost:3000"}/reset-password/${id}`;
+        ? `${env.NEXT_PUBLIC_BASE_URL}/reset-password/${id}`
+        : `${process.env.VERCEL_URL || env.NEXT_PUBLIC_BASE_URL}/reset-password/${id}`;
 
     const emailOptions = {
       from: process.env.EMAIL_FROM,
       html: getEmailHtml(passwordResetLink),
-      subject: `Redefinir senha - Discly`,
-      text: `Redefina sua senha`,
+      subject: `Reset Password - Discly`,
+      text: `Reset your password`,
       to: userEmail,
     };
 
