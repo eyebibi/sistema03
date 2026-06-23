@@ -16,8 +16,6 @@ export async function getDiscordTokenFromAuthCode(
 
     const responseBody = await response.json();
 
-    console.log(responseBody)
-
     return {
       data: responseBody.access_token,
       error: null,
