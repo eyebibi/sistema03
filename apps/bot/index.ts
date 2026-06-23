@@ -15,7 +15,7 @@ import type {
 } from "discord.js";
 import fs from "node:fs";
 import path from "node:path";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 interface CommandModule {
   command: {
@@ -35,14 +35,18 @@ class BotClient extends Client {
 
 const client = new BotClient();
 
-const foldersPath = path.join(path.resolve(), "commands");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const isSource = __filename.endsWith(".ts");
+
+const foldersPath = path.join(__dirname, "commands");
 const commandFolders = fs.readdirSync(foldersPath);
 
 for (const folder of commandFolders) {
   const commandsPath = path.join(foldersPath, folder);
   const commandFiles = fs
     .readdirSync(commandsPath)
-    .filter((file) => file.endsWith(".ts"));
+    .filter((file) => (isSource ? file.endsWith(".ts") : file.endsWith(".js")));
   for (const file of commandFiles) {
     const filePath = path.join(commandsPath, file);
     const fileUrl = pathToFileURL(filePath).href;

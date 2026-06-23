@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch index.ts",
-    "build": "tsc",
+    "build": "npm run -w @discly/db build && tsc",
     "deploy-commands": "tsx deploy-commands.ts",
     "start": "tsx index.ts",
     "seed": "npm -w packages/db run seed",
