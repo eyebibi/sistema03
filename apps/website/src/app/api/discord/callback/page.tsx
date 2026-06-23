@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import { env } from "@/lib/env";
 import { getCustomerDiscordId } from "@/lib/getCustomerDiscordId";
 import { getDiscordTokenFromAuthCode } from "@/lib/getDiscordTokenFromAuthCode";
 import { saveCustomerDiscordId } from "@/lib/saveCustomerDiscordId";
@@ -25,7 +26,7 @@ export default async function DiscordCallbackPage({
 
   const accessToken = await getDiscordTokenFromAuthCode(
     discordCode as string,
-    process.env.NEXT_PUBLIC_DISCORD_OAUTH_REDIRECT_URL,
+    env.NEXT_PUBLIC_DISCORD_OAUTH_REDIRECT_URL,
   );
 
   const discordId = await getCustomerDiscordId(accessToken.data);
@@ -59,18 +60,17 @@ export default async function DiscordCallbackPage({
     <main>
       <nav className="navbar">
         <Link
-          className="btn btn-ghost flex p-5 rounded-full transition-colors hover:bg-base-300/20 max-w-fit"
+          className="btn btn-primary flex p-5 transition-colors max-w-fit"
           href="/dashboard"
         >
           <ArrowLeft />
-          Voltar para o dashboard
+          Dashboard
         </Link>
       </nav>
       <div className="flex flex-col gap-5 items-center justify-center w-full h-[calc(100vh-4em)] sm:px-0 px-6 text-center">
-        <h1 className="font-bold text-4xl">Sucesso!</h1>
+        <h1 className="font-bold text-4xl">Success!</h1>
         <p>
-          Seu ID do Discord foi salvo. Agora você pode configurar seu servidor
-          no dashboard.
+          Your discord ID has been saved. Now, you can use the bot on your servers. Go back to the dashboard by clicking the top left button.
         </p>
       </div>
     </main>

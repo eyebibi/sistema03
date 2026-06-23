@@ -41,8 +41,8 @@ export async function POST(request: NextRequest) {
           quantity: 1,
         },
       ],
-      success_url: `${env.NEXT_PUBLIC_BASE_URL || env.BASE_URL}dashboard/billing?success=true`,
-      cancel_url: `${env.NEXT_PUBLIC_BASE_URL || env.BASE_URL}dashboard/billing?canceled=true`,
+      success_url: `${env.NEXT_PUBLIC_BASE_URL || env.BASE_URL}/dashboard/billing?success=true`,
+      cancel_url: `${env.NEXT_PUBLIC_BASE_URL || env.BASE_URL}/dashboard/billing?canceled=true`,
       customer_email: email,
       metadata: {
         userEmail: email,

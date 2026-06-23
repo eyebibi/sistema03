@@ -38,8 +38,8 @@ export async function POST(_request: NextRequest) {
           quantity: 1,
         },
       ],
-      success_url: `${env.NEXT_PUBLIC_BASE_URL || env.BASE_URL}dashboard/account-settings?upgrade=success`,
-      cancel_url: `${env.NEXT_PUBLIC_BASE_URL || env.BASE_URL}dashboard/account-settings?upgrade=canceled`,
+      success_url: `${env.NEXT_PUBLIC_BASE_URL || env.BASE_URL}/dashboard/account-settings?upgrade=success`,
+      cancel_url: `${env.NEXT_PUBLIC_BASE_URL || env.BASE_URL}/dashboard/account-settings?upgrade=canceled`,
       customer_email: email,
       metadata: {
         userEmail: email,

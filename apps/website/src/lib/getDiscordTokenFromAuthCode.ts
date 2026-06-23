@@ -1,4 +1,5 @@
 import { ServiceError } from "@/errors";
+import { env } from "./env";
 
 export async function getDiscordTokenFromAuthCode(
   authCode: string,
@@ -7,13 +8,15 @@ export async function getDiscordTokenFromAuthCode(
   try {
     const response = await fetch("https://discord.com/api/v10/oauth2/token", {
       method: "POST",
-      body: `client_id=${process.env.NEXT_PUBLIC_DISCORD_OAUTH_CLIENT_ID}&client_secret=${process.env.DISCORD_OAUTH_CLIENT_SECRET}&grant_type=authorization_code&code=${authCode}&redirect_uri=${redirectUri}`,
+      body: `client_id=${env.NEXT_PUBLIC_DISCORD_OAUTH_CLIENT_ID}&client_secret=${env.DISCORD_OAUTH_CLIENT_SECRET}&grant_type=authorization_code&code=${authCode}&redirect_uri=${redirectUri}`,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
     });
 
     const responseBody = await response.json();
+
+    console.log(responseBody)
 
     return {
       data: responseBody.access_token,

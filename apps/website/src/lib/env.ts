@@ -10,6 +10,10 @@ const envSchema = z.object({
   STRIPE_PRICE_CREDITS_1000: z.string().min(1),
   STRIPE_PRICE_PLAN_UPGRADE: z.string().min(1),
   NEXT_PUBLIC_BASE_URL: z.string().optional(),
+  NEXT_PUBLIC_DISCORD_OAUTH_URL: z.string().min(1),
+  NEXT_PUBLIC_DISCORD_OAUTH_REDIRECT_URL: z.string().min(1),
+  NEXT_PUBLIC_DISCORD_OAUTH_CLIENT_ID: z.string().min(1),
+  DISCORD_OAUTH_CLIENT_SECRET: z.string().min(1),
   BASE_URL: z.string().optional(),
 }).refine(
   (data) => data.NEXT_PUBLIC_BASE_URL || data.BASE_URL,
