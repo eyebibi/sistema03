@@ -1,11 +1,12 @@
 import { auth } from "@/auth";
 import { stripe } from "@/lib/stripe";
-import { env } from "@/lib/env";
+import { env as publicEnv } from "@/lib/public-env";
+import { env as privateEnv } from "@/lib/private-env";
 import { prisma } from "@discly/db";
 import { logger } from "@/lib/logger";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function POST(_request: NextRequest) {
+export async function POST() {
   try {
     const session = await auth();
 
@@ -34,12 +35,12 @@ export async function POST(_request: NextRequest) {
       mode: "payment",
       line_items: [
         {
-          price: env.STRIPE_PRICE_PLAN_UPGRADE,
+          price: privateEnv.STRIPE_PRICE_PLAN_UPGRADE,
           quantity: 1,
         },
       ],
-      success_url: `${env.NEXT_PUBLIC_BASE_URL || env.BASE_URL}/dashboard/account-settings?upgrade=success`,
-      cancel_url: `${env.NEXT_PUBLIC_BASE_URL || env.BASE_URL}/dashboard/account-settings?upgrade=canceled`,
+      success_url: `${publicEnv.NEXT_PUBLIC_BASE_URL || privateEnv.BASE_URL}/dashboard/account-settings?upgrade=success`,
+      cancel_url: `${publicEnv.NEXT_PUBLIC_BASE_URL || privateEnv.BASE_URL}/dashboard/account-settings?upgrade=canceled`,
       customer_email: email,
       metadata: {
         userEmail: email,

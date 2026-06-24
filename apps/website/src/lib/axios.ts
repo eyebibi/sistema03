@@ -1,5 +1,6 @@
+import { env } from "@/lib/public-env";
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_BASE_URL}/api`,
+  baseURL: `${env.NEXT_PUBLIC_BASE_URL}/api`,
 });

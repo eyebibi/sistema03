@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import { env } from "@/lib/public-env";
 import { getCustomerDiscordIdFromDb } from "@/lib/getCustomerDiscordIdFromDb";
 import Link from "next/link";
 import { IconCirclesRelation } from "@tabler/icons-react";
@@ -37,7 +38,7 @@ export default async function DashboardPage() {
         </div>
         <div className="flex w-full h-[calc(100vh-12em)] items-center justify-center px-6">
           <Link
-            href={process.env.NEXT_PUBLIC_DISCORD_OAUTH_URL}
+            href={env.NEXT_PUBLIC_DISCORD_OAUTH_URL}
             className="btn btn-primary w-full max-w-xs h-16"
           >
             <IconCirclesRelation size={20} />

@@ -1,5 +1,5 @@
 import { stripe } from "@/lib/stripe";
-import { env } from "@/lib/env";
+import { env } from "@/lib/private-env";
 import { prisma } from "@discly/db";
 import { logger } from "@/lib/logger";
 import { NextRequest, NextResponse } from "next/server";

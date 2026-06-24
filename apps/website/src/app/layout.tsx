@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { config } from "@/config/config";
+import { env } from "@/lib/public-env";
 import { Toaster } from "sonner";
 import Providers from "./providers";
 
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt-BR",
-    url: process.env.NEXT_PUBLIC_BASE_URL!,
+    url: env.NEXT_PUBLIC_BASE_URL,
     title: config.title,
     description: config.description,
     siteName: config.title,

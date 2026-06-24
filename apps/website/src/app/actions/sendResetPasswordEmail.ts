@@ -5,7 +5,8 @@ import { generatePasswordResetId } from "./generatePasswordResetId";
 import { getUserByEmail } from "./getUserByEmail";
 import email from "@/models/email";
 import { logger } from "@/lib/logger";
-import { env } from "@/lib/env";
+import { env as publicEnv } from "@/lib/public-env";
+import { env as privateEnv } from "@/lib/private-env";
 
 function getEmailHtml(resetPasswordLink: string) {
   return `<!DOCTYPE html>
@@ -104,12 +105,12 @@ async function generatePasswordResetEmail(userEmail: string) {
 
     // generate password reset link
     const passwordResetLink =
-      process.env.VERCEL_ENV === "production"
-        ? `${env.NEXT_PUBLIC_BASE_URL}/reset-password/${id}`
-        : `${process.env.VERCEL_URL || env.NEXT_PUBLIC_BASE_URL}/reset-password/${id}`;
+      privateEnv.VERCEL_ENV === "production"
+        ? `${publicEnv.NEXT_PUBLIC_BASE_URL}/reset-password/${id}`
+        : `${privateEnv.VERCEL_URL || publicEnv.NEXT_PUBLIC_BASE_URL}/reset-password/${id}`;
 
     const emailOptions = {
-      from: process.env.EMAIL_FROM,
+      from: privateEnv.EMAIL_FROM,
       html: getEmailHtml(passwordResetLink),
       subject: `Reset Password - Discly`,
       text: `Reset your password`,

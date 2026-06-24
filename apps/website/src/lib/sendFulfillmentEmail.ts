@@ -1,3 +1,4 @@
+import { env } from "@/lib/private-env";
 import email from "@/models/email";
 
 function generateEmailHtml(customerEmail: string, customerRawPassword: string) {
@@ -117,7 +118,7 @@ export async function sendFulfillmentEmail(
 ) {
   try {
     await email.sendMail({
-      from: process.env.EMAIL_FROM,
+      from: env.EMAIL_FROM,
       to: customerEmail,
       html: generateEmailHtml(customerEmail, customerRawPassword),
       subject: `Welcome to Discly!`,

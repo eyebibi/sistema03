@@ -1,3 +1,4 @@
+import { env } from "@/lib/private-env";
 import { Preference } from "mercadopago";
 import { mp } from "@/lib/mercadopago";
 import { CreateCheckoutBody } from "@/types/checkout/checkout-types";
@@ -28,8 +29,8 @@ export async function createMercadoPagoCheckout({
               : "Discly - Plano Ilimitado",
           unit_price:
             planId === "basic"
-              ? Number(process.env.DISCLY_BASIC_PLAN_PRICE)
-              : Number(process.env.DISCLY_UNLIMITED_PLAN_PRICE),
+              ? Number(env.DISCLY_BASIC_PLAN_PRICE)
+              : Number(env.DISCLY_UNLIMITED_PLAN_PRICE),
         },
       ],
       payer: {
@@ -39,7 +40,7 @@ export async function createMercadoPagoCheckout({
         payer_email: payerEmail,
         plan_id: planId,
       },
-      notification_url: `${process.env.BASE_URL}/api/webhooks/mercadopago`,
+      notification_url: `${env.BASE_URL}/api/webhooks/mercadopago`,
       payment_methods: {
         excluded_payment_types: [
           {

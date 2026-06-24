@@ -1,4 +1,4 @@
-import { env } from "@/lib/env";
+import { env } from "@/lib/private-env";
 
 // Keep display data in billing page (page.tsx) in sync with keys here
 export const CREDIT_PACKAGES = {

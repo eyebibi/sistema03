@@ -1,5 +1,6 @@
 "use server";
 
+import { env } from "@/lib/private-env";
 import { ServiceError, ValidationError } from "@/errors";
 import { z, ZodError } from "zod";
 import email from "@/models/email";
@@ -29,7 +30,7 @@ export async function sendContactEmail(
 
     await email.sendMail({
       from: customerEmail,
-      to: process.env.EMAIL_FROM, // so it goes to my e-mail address
+      to: env.EMAIL_FROM, // so it goes to my e-mail address
       html: message as string,
       subject: subject as string,
       text: message as string,

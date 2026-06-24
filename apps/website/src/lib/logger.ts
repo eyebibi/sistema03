@@ -1,5 +1,6 @@
 // Log events to Discord via webhook
 
+import { env } from "@/lib/private-env";
 import { DiscordEmbed, EmbedColors } from "@/types/logging/discord-types";
 import {
   CheckoutSessionCreationEvent,
@@ -20,7 +21,7 @@ class Logger {
   private passwordChangeWebhookUrl: string;
   private passwordResetWebhookUrl: string;
   private purchaseWebhookUrl: string;
-  private isLoggingEnabled: boolean = process.env.IS_LOGGING_ENABLED === "true";
+  private isLoggingEnabled: boolean = env.IS_LOGGING_ENABLED === "true";
   private checkoutSessionWebhookUrl: string;
 
   constructor(params: LoggerConstructor) {
@@ -137,8 +138,8 @@ class Logger {
 }
 
 export const logger = new Logger({
-  passwordChangeWebhookUrl: process.env.PASSWORD_CHANGE_WEBHOOK_URL,
-  passwordResetWebhookUrl: process.env.PASSWORD_RESET_WEBHOOK_URL,
-  purchaseWebhookUrl: process.env.PURCHASE_WEBHOOK_URL,
-  checkoutSessionWebhookUrl: process.env.CHECKOUT_SESSION_WEBHOOK_URL,
+  passwordChangeWebhookUrl: env.PASSWORD_CHANGE_WEBHOOK_URL,
+  passwordResetWebhookUrl: env.PASSWORD_RESET_WEBHOOK_URL,
+  purchaseWebhookUrl: env.PURCHASE_WEBHOOK_URL,
+  checkoutSessionWebhookUrl: env.CHECKOUT_SESSION_WEBHOOK_URL,
 });

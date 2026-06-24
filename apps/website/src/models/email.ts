@@ -1,3 +1,4 @@
+import { env } from "@/lib/private-env";
 import { ServiceError, ValidationError } from "@/errors";
 import { createTransport } from "nodemailer";
 
@@ -10,12 +11,12 @@ type EmailOptions = {
 };
 
 const emailTransporter = createTransport({
-  host: process.env.SMTP_SERVER_HOST,
-  port: Number(process.env.SMTP_SERVER_PORT),
-  secure: process.env.NODE_ENV === "development" ? false : true,
+  host: env.SMTP_SERVER_HOST,
+  port: Number(env.SMTP_SERVER_PORT),
+  secure: env.NODE_ENV === "development" ? false : true,
   auth: {
-    user: process.env.SMTP_SERVER_USER,
-    pass: process.env.SMTP_SERVER_PASSWORD,
+    user: env.SMTP_SERVER_USER,
+    pass: env.SMTP_SERVER_PASSWORD,
   },
 });
 

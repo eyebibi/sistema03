@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import { env } from "@/lib/env";
+import { env } from "@/lib/public-env";
 import { getCustomerDiscordId } from "@/lib/getCustomerDiscordId";
 import { getDiscordTokenFromAuthCode } from "@/lib/getDiscordTokenFromAuthCode";
 import { saveCustomerDiscordId } from "@/lib/saveCustomerDiscordId";
