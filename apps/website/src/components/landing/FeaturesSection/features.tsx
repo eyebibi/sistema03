@@ -1,4 +1,5 @@
 import { Feature } from "@/types/features/features-types";
+import { env } from "@/lib/public-env";
 
 export const features: Feature[] = [
   {
@@ -54,7 +55,7 @@ export const features: Feature[] = [
     name: "Suporte 24h/7d",
     title: "Aqui para te ajudar",
     description:
-      "Caso algo dê errado (o que é muito raro), você pode sempre entrar em contato com o suporte. Há um formulário de contato no seu painel. Ou você pode enviar uma mensagem para tim@mail.discly.live.",
+      `Caso algo dê errado (o que é muito raro), você pode sempre entrar em contato com o suporte. Há um formulário de contato no seu painel. Ou você pode enviar uma mensagem para ${env.NEXT_PUBLIC_EMAIL_FROM}.`,
     features: [
       "Formulário de contato no seu painel",
       "Suporte 24h/7d",

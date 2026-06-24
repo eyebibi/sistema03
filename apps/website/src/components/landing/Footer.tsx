@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { IconMail } from "@tabler/icons-react";
+import { env } from "@/lib/public-env";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -32,7 +33,7 @@ export default function Footer() {
             >
               <Button variant="outline" size="icon" asChild>
                 <Link
-                  href="mailto:tim@mail.discly.live"
+                  href={"mailto:" + env.NEXT_PUBLIC_EMAIL_FROM}
                   aria-label="Send us an email"
                 >
                   <IconMail size={18} />
@@ -85,7 +86,7 @@ export default function Footer() {
               <ul className="flex flex-col gap-2" role="list">
                 <li>
                   <Link
-                    href="mailto:tim@mail.discly.live"
+                    href={"mailto:" + env.NEXT_PUBLIC_EMAIL_FROM}
                     className="text-gray-300 hover:text-white transition-colors text-sm"
                   >
                     Entre em contato

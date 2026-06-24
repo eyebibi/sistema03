@@ -1,6 +1,7 @@
 import { FloatingGlowingEffect } from "@/components/ui/floating-glowing-effect";
 import Link from "next/link";
 import PurchaseModalTrigger from "./PurchaseModalTrigger";
+import { env } from "@/lib/public-env";
 
 export default function LastCtaSection() {
   return (
@@ -39,7 +40,7 @@ export default function LastCtaSection() {
         <footer>
           <small className="text-gray-500">
             Ou, se você ainda tem dúvidas,{" "}
-            <Link href="mailto:tim@mail.discly.live" className="text-primary">
+            <Link href={"mailto:" + env.NEXT_PUBLIC_EMAIL_FROM} className="text-primary">
               entre em contato comigo
             </Link>
           </small>

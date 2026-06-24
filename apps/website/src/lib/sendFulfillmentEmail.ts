@@ -87,7 +87,7 @@ function generateEmailHtml(customerEmail: string, customerRawPassword: string) {
             and unique password of your choice.
           </p>
           <a
-            href="https://discly.live/signin"
+            href="${env.BASE_URL}/signin"
             style="
               display: inline-block;
               background-color: #5865f2;

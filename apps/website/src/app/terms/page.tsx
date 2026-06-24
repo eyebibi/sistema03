@@ -2,6 +2,7 @@ import Squares from "@/blocks/backgrounds/Squares/Squares";
 import { IconArrowLeft, IconScale } from "@tabler/icons-react";
 import { Metadata } from "next";
 import Link from "next/link";
+import { env } from "@/lib/public-env";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -17,17 +18,17 @@ Welcome to Discly! By using our services, you agree to these Terms of Service. P
 
 1. Overview
 
-Discly ("we", "our", "us") provides an AI-powered Discord bot to help users configure their servers quickly. By accessing or using our website (https://discly.live) and services, you agree to comply with these Terms.
+Discly ("we", "our", "us") provides an AI-powered Discord bot to help users configure their servers quickly. By accessing or using our website (${env.NEXT_PUBLIC_BASE_URL}) and services, you agree to comply with these Terms.
 
 2. User accounts and data
 
-To use our services, we may collect certain information, including your email. For more details, please review our Privacy Policy at https://discly.live/privacy.
+To use our services, we may collect certain information, including your email. For more details, please review our Privacy Policy at ${env.NEXT_PUBLIC_BASE_URL}/privacy.
 
 3. Payments and refunds
 
 Purchases made on Discly are eligible for a refund within 7 days of purchase.
 
-Refund requests must be sent to tim@mail.discly.live directly or via the contact form on the website.
+Refund requests must be sent to ${env.NEXT_PUBLIC_EMAIL_FROM} directly or via the contact form on the website.
 
 After 7 days, all purchases are final. This means it will not be possible to request a refund.
 
@@ -55,7 +56,7 @@ We may update these Terms from time to time. Users will be notified of significa
 
 8. Contact information
 
-For any questions, please contact us at tim@mail.discly.live.
+For any questions, please contact us at ${env.NEXT_PUBLIC_EMAIL_FROM}.
 
 Thank you for using Discly!`;
 
@@ -125,7 +126,7 @@ Thank you for using Discly!`;
             <p className="text-gray-400 mb-6">
               Have questions about these terms?
             </p>
-            <Link href="mailto:tim@mail.discly.live" className="btn bg-gradient-to-r! from-primary to-blue-700 hover:brightness-90 active:scale-95 h-12 px-8 text-base font-medium text-white border-0">
+            <Link href={"mailto:" + env.NEXT_PUBLIC_EMAIL_FROM} className="btn bg-gradient-to-r! from-primary to-blue-700 hover:brightness-90 active:scale-95 h-12 px-8 text-base font-medium text-white border-0">
               Contact us
             </Link>
           </div>

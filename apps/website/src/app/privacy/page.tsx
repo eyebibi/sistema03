@@ -2,6 +2,7 @@ import Squares from "@/blocks/backgrounds/Squares/Squares";
 import { IconArrowLeft, IconShield } from "@tabler/icons-react";
 import { Metadata } from "next";
 import Link from "next/link";
+import { env } from "@/lib/public-env";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -45,7 +46,7 @@ We may update this Privacy Policy from time to time. If any changes are made, we
 
 6. Contact information
 
-To resolve any questions about this Privacy Policy, please contact us at tim@mail.discly.live.
+To resolve any questions about this Privacy Policy, please contact us at ${env.NEXT_PUBLIC_EMAIL_FROM}.
 
 By using Discly, you agree to the terms of this Privacy Policy.
   `;
@@ -120,7 +121,7 @@ By using Discly, you agree to the terms of this Privacy Policy.
             <p className="text-gray-400 mb-6">
               Have questions about how your data is handled?
             </p>
-            <Link href="mailto:tim@mail.discly.live" className="btn bg-gradient-to-r! from-primary to-blue-700 hover:brightness-90 active:scale-95 h-12 px-8 text-base font-medium text-white border-0">
+            <Link href={"mailto:" + env.NEXT_PUBLIC_EMAIL_FROM} className="btn bg-gradient-to-r! from-primary to-blue-700 hover:brightness-90 active:scale-95 h-12 px-8 text-base font-medium text-white border-0">
               Contact us
             </Link>
           </div>
