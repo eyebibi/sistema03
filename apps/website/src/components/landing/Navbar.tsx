@@ -4,27 +4,23 @@ import { Button } from "@/components/ui/button";
 import { IconSparkles } from "@tabler/icons-react";
 import MobileMenuWrapper from "./MobileMenuWrapper";
 import PurchaseModalTrigger from "./PurchaseModalTrigger";
+import type { Dictionary } from "@/i18n/request";
 
-export const navLinks = [
-  {
-    label: "Início",
-    href: "/",
-  },
-  {
-    label: "Recursos",
-    href: "/#features",
-  },
-  {
-    label: "Planos",
-    href: "/#pricing",
-  },
-  {
-    label: "Perguntas frequentes",
-    href: "/#faq",
-  },
+export const getNavLinks = (dict: Dictionary) => [
+  { label: dict.navbar.home, href: "/" },
+  { label: dict.navbar.features, href: "/#features" },
+  { label: dict.navbar.pricing, href: "/#pricing" },
+  { label: dict.navbar.faq, href: "/#faq" },
 ];
 
-export default function Navbar() {
+interface NavbarProps {
+  dict: Dictionary;
+  locale: string;
+}
+
+export default function Navbar({ dict, locale }: NavbarProps) {
+  const navLinks = getNavLinks(dict);
+
   return (
     <nav
       className="flex flex-row justify-between items-center w-full h-16 px-4 sm:px-6 lg:px-10 backdrop-blur-sm bg-white/10 rounded-full z-20 fixed top-4 sm:top-10 left-1/2 transform -translate-x-1/2 max-w-7xl"
@@ -32,7 +28,7 @@ export default function Navbar() {
         width: "95%",
       }}
       role="navigation"
-      aria-label="Navegação principal"
+      aria-label={dict.navbar.navigationLabel}
     >
       <div className="flex flex-row items-center gap-4" role="banner">
         <Image src="/logo.png" alt="Discly logo" width={32} height={32} />
@@ -61,14 +57,15 @@ export default function Navbar() {
       <div
         className="hidden md:flex flex-row items-center gap-4"
         role="group"
-        aria-label="Ações do usuário"
+        aria-label={dict.navbar.userActionsLabel}
       >
-        <Link href="/dashboard">
+        <Link href={`/${locale}/dashboard`}>
           <Button className="rounded-full" variant="outline" size="sm">
-            Entrar
+            {dict.navbar.signIn}
           </Button>
         </Link>
         <PurchaseModalTrigger
+          dict={dict}
           planId="complete"
           planName="Ilimitado"
           className="rounded-full"
@@ -76,13 +73,13 @@ export default function Navbar() {
         >
           <IconSparkles className="w-4 h-4" aria-hidden="true" />
           <span className="hidden lg:inline">
-            Configurar meu servidor agora
+            {dict.navbar.configureNow}
           </span>
-          <span className="lg:hidden">Criar</span>
+          <span className="lg:hidden">{dict.navbar.create}</span>
         </PurchaseModalTrigger>
       </div>
 
-      <MobileMenuWrapper />
+      <MobileMenuWrapper dict={dict} />
     </nav>
   );
 }

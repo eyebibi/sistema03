@@ -1,0 +1,239 @@
+{
+  "common": {
+    "siteTitle": "Discly - The AI to set up your Discord server",
+    "siteDescription": "Discly is a Discord bot that uses AI to set up your server from scratch to 100%, in just 30 seconds. Ideal for communities, streamers and businesses. Save hours and launch your ideal server effortlessly.",
+    "discly": "Discly"
+  },
+  "metadata": {
+    "keywords": [
+      "AI Discord server setup bot",
+      "Discord server configuration with AI",
+      "AI for Discord server",
+      "AI to set up Discord server",
+      "Create Discord server with AI"
+    ],
+    "ogLocale": "en-US"
+  },
+  "navbar": {
+    "home": "Home",
+    "features": "Features",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "signIn": "Sign in",
+    "configureNow": "Set up my server now",
+    "create": "Create",
+    "navigationLabel": "Main navigation",
+    "userActionsLabel": "User actions",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "heading": "The bot that sets up your server, in seconds",
+    "subheading": "Create from scratch or edit your Discord server with the power of AI, using this bot. Roles, channels, permissions, and more, automatically configured for you.",
+    "cta": "Set up my server now",
+    "socialProof": "20+ server owners liked it",
+    "videoTitle": "Discly Showcase"
+  },
+  "features": {
+    "heading": "What you get",
+    "cta": "Set up my server now",
+    "testimonial": "I don't know much about Discord. Discly helped me create my community's server from scratch. In minutes everything was ready. Thank you Tim for creating this tool!",
+    "testimonialPerson": "Yves Mariano",
+    "testimonialRole": "CEO at wysion.com",
+    "aiPowered": {
+      "name": "AI-powered bot",
+      "title": "Server configured with AI",
+      "description": "You don't need to worry about setting up roles, channels, permissions, or any other tedious stuff. AI will do it for you, based on what you ask, through a simple Discord bot,",
+      "highlight": "creating your server from scratch or updating things on your existing server",
+      "featuresList": [
+        "Roles, channels, permissions, and specific channel permissions created automatically",
+        "Server customized to your needs",
+        "No Discord experience needed"
+      ]
+    },
+    "usageGuide": {
+      "name": "Usage guide",
+      "title": "No Discord experience needed",
+      "description": "If you're not a Discord expert, don't worry. In your dashboard, you'll find a complete tutorial on how to add the bot to your server and how to use it.",
+      "featuresList": [
+        "How to add the bot to your server",
+        "How to use the bot",
+        "How to get the most out of the bot"
+      ]
+    },
+    "infiniteCustomization": {
+      "name": "Unlimited changes",
+      "title": "Your server, your rules",
+      "description": "Since the bot uses AI, it's not guaranteed to always work exactly as you'd like. Knowing this, you can ask the bot to make changes as many times as you want, with any plan.",
+      "featuresList": [
+        "Unlimited changes, as many times as you want",
+        "No extra costs"
+      ]
+    },
+    "support": {
+      "name": "24/7 Support",
+      "title": "Here to help you",
+      "descriptionPrefix": "If something goes wrong (which is very rare), you can always contact support. There's a contact form in your dashboard. Or you can send a message to",
+      "featuresList": [
+        "Contact form in your dashboard",
+        "24/7 Support",
+        "No extra costs",
+        "Fast response"
+      ]
+    }
+  },
+  "objections": {
+    "heading": "\"But what if...\"",
+    "items": [
+      {
+        "question": "...I don't know how to use Discord?",
+        "answer": "No problem, you don't need to know much about Discord. Discly understands it should set up servers — all you need to do is tell it what you want on your server. You'll see a complete tutorial in your dashboard."
+      },
+      {
+        "question": "...I haven't created a server yet?",
+        "answer": "No problem, you can create a server on Discord, then add the bot to your server. You'll see a complete tutorial on how to do this in your dashboard."
+      },
+      {
+        "question": "...the bot doesn't set up the server the way I asked?",
+        "answer": "Since the bot uses AI, the server might not turn out exactly as you want. But to avoid this, you can ask the bot to reconfigure your server as many times as you want, at no extra cost."
+      }
+    ]
+  },
+  "isItForYou": {
+    "heading": "Is it for you?",
+    "notForYouHeading": "It's NOT for you if:",
+    "forYouHeading": "It's for you if:",
+    "notForYouItems": [
+      "<strong>You prefer to set up your server yourself</strong>, without any personalized help.",
+      "<strong>You want to learn how to create a server</strong>, instead of AI creating one for you."
+    ],
+    "forYouItems": [
+      "<strong>You want a server for your community</strong> and don't know how to create one.",
+      "<strong>You don't have time to set up a server</strong>, but need one.",
+      "<strong>You need a place to gather your audience</strong>, and need it done fast."
+    ],
+    "cta": "Set up my server now"
+  },
+  "lastCta": {
+    "heading": "Are you ready?",
+    "cta": "If so, come with Discly",
+    "footer": "Or, if you still have questions, ",
+    "contactLink": "get in touch with me"
+  },
+  "pricing": {
+    "heading": "Current plans",
+    "oneTimePayment": "One-time payment, no subscriptions.",
+    "bestOffer": "Best deal!",
+    "everythingFromBasic": "Everything from Basic Plan, plus...",
+    "total": "Total:",
+    "unlimitedReconfigurations": "Unlimited re-configurations",
+    "basic": {
+      "title": "Basic Plan",
+      "description": "Everything you need to get started",
+      "features": [
+        "Access to everything",
+        "Create from scratch or edit your server",
+        "Updates included",
+        "Lifetime access",
+        "Unlimited re-configurations",
+        "24/7 Support",
+        "7-day guarantee"
+      ],
+      "buttonText": "I want the basic plan"
+    },
+    "unlimited": {
+      "title": "Unlimited Plan",
+      "description": "Unlimited access to everything",
+      "buttonText": "I want the unlimited plan"
+    }
+  },
+  "faq": {
+    "heading": "Frequently Asked Questions",
+    "subheading": "Have questions? We have answers. Find everything you need to know about the bot.",
+    "items": [
+      {
+        "question": "How does the bot work?",
+        "answer": "The bot uses AI to analyze what you asked for, then performs the necessary actions to achieve your goal. There are two commands: one specifically for editing your server (making changes to an existing server), and another for creating a server from scratch."
+      },
+      {
+        "question": "Will I have instant access to the bot?",
+        "answer": "Yes, you'll have instant access to the bot after purchase. You'll receive an email with the access link and will be able to set up your server in seconds."
+      },
+      {
+        "question": "Do I need Discord experience to use the bot?",
+        "answer": "No! The bot is designed for users of all experience levels. Whether you're a beginner or an experienced user, our AI handles the complex setup while you focus on your community. We also provide a complete tutorial in your dashboard."
+      },
+      {
+        "question": "Is the bot safe?",
+        "answer": "Yes, the bot is safe. It's developed with best security practices and tested to ensure there are no issues."
+      },
+      {
+        "question": "Can I modify the server after the bot sets it up?",
+        "answer": "Yes! You can modify the server manually or use the specific Discly command to edit your server and tell it what you want changed."
+      },
+      {
+        "question": "What if the AI doesn't set it up exactly as I want?",
+        "answer": "Since AI can interpret requests incorrectly, we offer unlimited re-configurations at no extra cost. Simply provide more specific instructions or adjustments, and the bot will adjust your server accordingly."
+      },
+      {
+        "question": "Is customer support available?",
+        "answer": "Yes! We offer 24/7 customer support through a contact form in your dashboard. Our team responds quickly to help resolve any issues or answer questions about using the bot or setting up your server."
+      },
+      {
+        "question": "How long does it take to set up a server?",
+        "answer": "Using Discly, it takes just a few seconds. Doing it manually might take a few hours."
+      },
+      {
+        "question": "Is there any limit on server size or number of features?",
+        "answer": "No! The bot works with servers of any size and can configure all standard Discord features including roles, channels, categories, permissions, and specific channel settings. The AI adapts to your specific needs, regardless of server complexity."
+      },
+      {
+        "question": "Can I request a refund?",
+        "answer": "Yes. Within a 7-day period after purchase, you can request a refund."
+      }
+    ]
+  },
+  "footer": {
+    "brandDescription": "The bot that sets up your Discord server in seconds. Roles, channels, specific permissions: everything done with smart AI.",
+    "productHeading": "Product",
+    "featuresLink": "Features",
+    "pricingLink": "Pricing",
+    "changelogLink": "Release notes",
+    "supportHeading": "Support",
+    "contactLink": "Get in touch",
+    "legalHeading": "Legal",
+    "privacyLink": "Privacy policy",
+    "termsLink": "Terms of service",
+    "copyright": "All rights reserved.",
+    "madeWith": "Made with ❤️ for Discord communities"
+  },
+  "purchaseDialog": {
+    "title": "Complete your purchase",
+    "description": "Enter your email to proceed with the purchase of the {planName} plan.",
+    "label": "Email to receive access",
+    "placeholder": "your.email@example.com",
+    "errorInvalid": "Please enter a valid email address"
+  },
+  "purchaseButton": {
+    "goToPayment": "Go to payment",
+    "processing": "Processing...",
+    "errorProcessing": "Error processing your payment"
+  },
+  "auth": {
+    "signInTitle": "Sign in"
+  },
+  "legal": {
+    "terms": {
+      "title": "Terms of Service",
+      "description": "Please read these terms carefully before using the service"
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "See how Discly handles your data."
+    }
+  },
+  "changelog": {
+    "title": "Changelog",
+    "description": "Public history of changes, improvements, and fixes to Discly. Released updates are listed below."
+  }
+}

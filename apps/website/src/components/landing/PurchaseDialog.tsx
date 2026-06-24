@@ -14,6 +14,7 @@ import {
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import PurchaseButton from "./PurchaseButton";
+import type { Dictionary } from "@/i18n/request";
 
 const emailSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -26,6 +27,7 @@ interface PurchaseDialogProps {
   onOpenChange: (open: boolean) => void;
   planId: "basic" | "complete";
   planName: string;
+  dict: Dictionary;
 }
 
 export default function PurchaseDialog({
@@ -33,6 +35,7 @@ export default function PurchaseDialog({
   onOpenChange,
   planId,
   planName,
+  dict,
 }: PurchaseDialogProps) {
   const {
     register,
@@ -49,19 +52,19 @@ export default function PurchaseDialog({
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md border-gray-600">
         <DialogHeader className="text-white">
-          <DialogTitle>Complete sua compra</DialogTitle>
+          <DialogTitle>{dict.purchaseDialog.title}</DialogTitle>
           <DialogDescription>
-            Digite seu email para prosseguir com a compra do plano {planName}.
+            {dict.purchaseDialog.description.replace("{planName}", planName)}
           </DialogDescription>
         </DialogHeader>
 
         <form className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="email">Email para receber acesso</Label>
+            <Label htmlFor="email">{dict.purchaseDialog.label}</Label>
             <Input
               id="email"
               type="email"
-              placeholder="seu.email@exemplo.com"
+              placeholder={dict.purchaseDialog.placeholder}
               {...register("email")}
               className={`${errors.email ? "border-red-500" : ""}`}
             />
@@ -73,6 +76,7 @@ export default function PurchaseDialog({
 
         <DialogFooter>
           <PurchaseButton
+            dict={dict}
             planId={planId}
             payerEmail={email}
             disabled={!isValid || !email}

@@ -4,10 +4,17 @@ import { redirect } from "next/navigation";
 import Sidebar from "./components/Sidebar";
 import CreditsPill from "./components/CreditsPill";
 
-export default async function Layout({ children }: { children: ReactNode }) {
+export default async function Layout({
+  children,
+  params,
+}: {
+  children: ReactNode;
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
   const session = await auth();
 
-  if (!session) redirect("/signin");
+  if (!session) redirect(`/${lang}/signin`);
 
   return (
     <div className="drawer lg:drawer-open">
@@ -45,7 +52,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <Sidebar userEmail={session.user.email!} />
+        <Sidebar userEmail={session.user.email!} locale={lang} />
       </div>
     </div>
   );

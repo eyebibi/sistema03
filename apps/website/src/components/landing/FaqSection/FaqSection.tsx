@@ -1,3 +1,4 @@
+import type { Dictionary } from "@/i18n/request";
 import {
   Accordion,
   AccordionContent,
@@ -5,9 +6,14 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
-import { faqs } from "./faqs";
+import { getFaqs } from "./faqs";
 
-export default function FaqSection() {
+interface FaqSectionProps {
+  dict: Dictionary;
+}
+
+export default function FaqSection({ dict }: FaqSectionProps) {
+  const faqs = getFaqs(dict);
   return (
     <section
       className="w-full justify-center flex flex-col gap-4 relative px-4 sm:px-6 lg:px-8"
@@ -20,11 +26,10 @@ export default function FaqSection() {
             id="faq-heading"
             className="text-gray-200 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
           >
-            Perguntas Frequentes
+            {dict.faq.heading}
           </h2>
           <p className="text-gray-300 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto px-4">
-            Tem perguntas? Temos respostas. Econtre tudo o que você precisa
-            saber sobre o bot.
+            {dict.faq.subheading}
           </p>
         </div>
 

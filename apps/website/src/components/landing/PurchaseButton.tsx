@@ -6,17 +6,20 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
 import { CreditCard, Loader2 } from "lucide-react";
+import type { Dictionary } from "@/i18n/request";
 
 interface PurchaseButtonProps {
   planId: "basic" | "complete";
   payerEmail: string;
   disabled?: boolean;
+  dict: Dictionary;
 }
 
 export default function PurchaseButton({
   planId,
   payerEmail,
   disabled = false,
+  dict,
 }: PurchaseButtonProps) {
   const { mutateAsync, isPending } = useCreateCheckoutMutation();
   const router = useRouter();
@@ -37,7 +40,7 @@ export default function PurchaseButton({
       const errorMessage =
         error instanceof AxiosError
           ? error.response?.data
-          : "Erro ao processar a compra";
+          : dict.purchaseButton.errorProcessing;
 
       toast.error(errorMessage);
     }
@@ -50,7 +53,7 @@ export default function PurchaseButton({
       disabled={disabled || isPending}
     >
       {isPending ? <Loader2 className="animate-spin" /> : <CreditCard />}
-      {isPending ? "Processando..." : "Ir para o pagamento"}
+      {isPending ? dict.purchaseButton.processing : dict.purchaseButton.goToPayment}
     </Button>
   );
 }

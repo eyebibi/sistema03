@@ -51,7 +51,7 @@ export default function ResetPasswordForm({
         description: resetPasswordState?.error?.action,
       });
     }
-  }, [resetPasswordState]);
+  }, [resetPasswordState, router]);
 
   useEffect(() => {
     if (typeof error === "object") {

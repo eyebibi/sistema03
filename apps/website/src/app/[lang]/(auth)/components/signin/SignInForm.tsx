@@ -10,7 +10,7 @@ import AuthFormInputWithLabel from "../auth/AuthFormInputWithLabel";
 import Image from "next/image";
 
 
-export default function SignInForm() {
+export default function SignInForm({ locale }: { locale: string }) {
   const router = useRouter();
 
   const [signInState, signInAction, isSigninPending] = useActionState(
@@ -31,9 +31,9 @@ export default function SignInForm() {
     }
 
     if (signInState.canRedirect) {
-      router.push("/dashboard");
+      router.push(`/${locale}/dashboard`);
     }
-  }, [signInState]);
+  }, [signInState, router, locale]);
 
   return (
     <form className="max-w-md mx-auto  text-white" action={signInAction}>
@@ -66,7 +66,7 @@ export default function SignInForm() {
           labelname="Password"
         />
       </div>
-      <input className="hidden" name="redirectTo" value="/dashboard" readOnly />
+      <input className="hidden" name="redirectTo" value={`/${locale}/dashboard`} readOnly />
       <button
         className="btn btn-primary btn-block mt-10"
         type="submit"

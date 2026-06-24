@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button } from "../ui/button";
 import PurchaseDialog from "./PurchaseDialog";
+import type { Dictionary } from "@/i18n/request";
 
 interface PurchaseModalTriggerProps {
   planId: "basic" | "complete";
@@ -17,6 +18,7 @@ interface PurchaseModalTriggerProps {
     | "ghost"
     | "link";
   size?: "default" | "sm" | "lg" | "icon";
+  dict: Dictionary;
 }
 
 export default function PurchaseModalTrigger({
@@ -26,6 +28,7 @@ export default function PurchaseModalTrigger({
   className,
   variant = "default",
   size = "default",
+  dict,
 }: PurchaseModalTriggerProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -45,6 +48,7 @@ export default function PurchaseModalTrigger({
         onOpenChange={setIsDialogOpen}
         planId={planId}
         planName={planName}
+        dict={dict}
       />
     </>
   );

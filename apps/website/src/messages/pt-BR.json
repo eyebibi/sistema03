@@ -1,0 +1,239 @@
+{
+  "common": {
+    "siteTitle": "Discly - A IA para configurar seu servidor do Discord",
+    "siteDescription": "Discly é um bot do Discord que usa IA para configurar seu servidor do zero ao 100%, em apenas 30 segundos. Ideal para comunidades, streamers e empresas. Economize horas e lance seu servidor ideal sem esforço.",
+    "discly": "Discly"
+  },
+  "metadata": {
+    "keywords": [
+      "Servidor Discord com IA Discly",
+      "Configurar server do Discord com IA Discly",
+      "IA para servidor do Discord",
+      "IA para configurar servidor do Discord",
+      "Criar servidor do Discord com IA Discly"
+    ],
+    "ogLocale": "pt-BR"
+  },
+  "navbar": {
+    "home": "Início",
+    "features": "Recursos",
+    "pricing": "Planos",
+    "faq": "Perguntas frequentes",
+    "signIn": "Entrar",
+    "configureNow": "Configurar meu servidor agora",
+    "create": "Criar",
+    "navigationLabel": "Navegação principal",
+    "userActionsLabel": "Ações do usuário",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu"
+  },
+  "hero": {
+    "heading": "O bot que configura seu servidor, em segundos",
+    "subheading": "Crie do zero ou edite seu servidor do Discord com o poder da IA, usando esse bot. Cargos, canais, permissões, e mais, configurados automaticamente para você.",
+    "cta": "Configurar meu servidor agora",
+    "socialProof": "20+ donos de servidores gostaram",
+    "videoTitle": "Showcase do Discly"
+  },
+  "features": {
+    "heading": "O que você vai ter",
+    "cta": "Configurar meu servidor agora",
+    "testimonial": "Não conheço muito de Discord. O Discly me ajudou a criar o servidor da minha comunidade do zero. Em questão de minutos já tava tudo pronto. Agradeço Tim, por ter criado essa ferramenta!",
+    "testimonialPerson": "Yves Mariano",
+    "testimonialRole": "CEO da wysion.com",
+    "aiPowered": {
+      "name": "Servidor configurado com IA",
+      "title": "Servidor configurado com IA",
+      "description": "Você não precisa se preocupar com a configuração de cargos, canais, permissões ou qualquer outra coisa chata. A IA vai fazer isso para você, baseado no que você pedir, através de um bot do Discord simples,",
+      "highlight": "criando seu servidor do zero ou atualizando coisas em seu servidor já existente",
+      "featuresList": [
+        "Cargos, canais, permissões e permissões específicas de canal criadas automaticamente",
+        "Servidor personalizado para suas necessidades",
+        "Nenhuma experiência com Discord necessária"
+      ]
+    },
+    "usageGuide": {
+      "name": "Tutorial de uso",
+      "title": "Nenhuma experiência com Discord necessária",
+      "description": "Se você não é um expert em Discord, não se preocupe. No seu painel, você vai encontrar um tutorial completo sobre como adicionar o bot ao seu servidor e como usá-lo.",
+      "featuresList": [
+        "Como adicionar o bot ao seu servidor",
+        "Como usar o bot",
+        "Como tirar o máximo de proveito do bot"
+      ]
+    },
+    "infiniteCustomization": {
+      "name": "Modificação ilimitada",
+      "title": "Seu servidor, suas regras",
+      "description": "Como o bot usa IA, não é garantido que ele sempre vai funcionar da forma exata que você gostaria. Sabendo disso, você pode solicitar ao bot para fazer alterações quantas vezes quiser, com qualquer um dos planos.",
+      "featuresList": [
+        "Alterações ilimitadas, quantas vezes quiser",
+        "Sem custos extras"
+      ]
+    },
+    "support": {
+      "name": "Suporte 24h/7d",
+      "title": "Aqui para te ajudar",
+      "descriptionPrefix": "Caso algo dê errado (o que é muito raro), você pode sempre entrar em contato com o suporte. Há um formulário de contato no seu painel. Ou você pode enviar uma mensagem para",
+      "featuresList": [
+        "Formulário de contato no seu painel",
+        "Suporte 24h/7d",
+        "Sem custos extras",
+        "Resposta rápida"
+      ]
+    }
+  },
+  "objections": {
+    "heading": "\"Mas e se...\"",
+    "items": [
+      {
+        "question": "...eu não sei usar o Discord?",
+        "answer": "Não há problema, você não precisa saber muito sobre o Discord. O Discly entende que deve configurar servidores, tudo que você precisa fazer é dizer o que você quer ter no seu. Você poderá ver um tutorial completo no seu painel."
+      },
+      {
+        "question": "...eu ainda não tiver criado um servidor?",
+        "answer": "Não há problema, você pode criar um servidor no Discord, e depois adicionar o bot ao seu servidor. Você poderá ver um tutorial completo sobre como fazer isso no seu painel."
+      },
+      {
+        "question": "...o bot não fizer o servidor do jeito que pedi?",
+        "answer": "Como o bot usa IA, o servidor pode não ficar exatamente como você quer. Mas, para evitar isso, você pode solicitar ao bot para reconfigurar seu servidor quantas vezes quiser, sem custos extras."
+      }
+    ]
+  },
+  "isItForYou": {
+    "heading": "É para você?",
+    "notForYouHeading": "NÃO é para você se:",
+    "forYouHeading": "É para você se:",
+    "notForYouItems": [
+      "<strong>Você prefere configurar seu servidor sozinho</strong>, sem nenhuma ajuda personalizada.",
+      "<strong>Você quer aprender como criar um servidor</strong>, ao invés de a IA criar um para você."
+    ],
+    "forYouItems": [
+      "<strong>Você quer ter um servidor para sua comunidade</strong> e não sabe como criar um.",
+      "<strong>Você não tem tempo para configurar um servidor</strong>, mas precisa de um.",
+      "<strong>Você precisa de um lugar para reunir sua audiência</strong>, e precisa que isso seja feito rápido."
+    ],
+    "cta": "Configurar meu servidor agora"
+  },
+  "lastCta": {
+    "heading": "Você está pronto?",
+    "cta": "Se sim, vem com o Discly",
+    "footer": "Ou, se você ainda tem dúvidas, ",
+    "contactLink": "entre em contato comigo"
+  },
+  "pricing": {
+    "heading": "Os planos atuais",
+    "oneTimePayment": "Pagamento único, sem mensalidades.",
+    "bestOffer": "Melhor oferta!",
+    "everythingFromBasic": "Tudo do Plano Básico, mais...",
+    "total": "Total:",
+    "unlimitedReconfigurations": "Re-configurações ilimitadas",
+    "basic": {
+      "title": "Plano Básico",
+      "description": "Tudo que você precisa para começar",
+      "features": [
+        "Acesso a tudo",
+        "Crie do zero ou edite seu server",
+        "Atualizações incluídas",
+        "Acesso vitalício",
+        "Re-configurações ilimitadas",
+        "Suporte 24/7",
+        "Garantia de 7 dias"
+      ],
+      "buttonText": "Quero o plano básico"
+    },
+    "unlimited": {
+      "title": "Plano Ilimitado",
+      "description": "Acesso ilimitado a tudo",
+      "buttonText": "Quero o plano ilimitado"
+    }
+  },
+  "faq": {
+    "heading": "Perguntas Frequentes",
+    "subheading": "Tem perguntas? Temos respostas. Encontre tudo o que você precisa saber sobre o bot.",
+    "items": [
+      {
+        "question": "Como o bot funciona?",
+        "answer": "O bot analisa, com IA, o que você pediu para ele, e depois realiza as ações necessárias para o seu objetivo. Existem dois comandos: um específico para editar seu servidor (fazer alterações em um servidor já criado), e outro para criar um servidor do zero."
+      },
+      {
+        "question": "Vou ter acesso instantâneo ao bot?",
+        "answer": "Sim, você vai ter acesso instantâneo ao bot após a compra. Você vai receber um e-mail com o link para acesso, e vai poder configurar seu servidor em questão de segundos."
+      },
+      {
+        "question": "Preciso ter experiência com o Discord para usar o bot?",
+        "answer": "Não! O bot é projetado para usuários de todos os níveis de experiência. Seja você um novato ou um usuário experiente, nossa IA cuida da configuração complexa enquanto você se concentra em sua comunidade. Também fornecemos um tutorial completo no seu painel."
+      },
+      {
+        "question": "O bot é seguro?",
+        "answer": "Sim, o bot é seguro. Ele é desenvolvido com as melhores práticas de segurança e é testado para garantir que não haja nenhum problema."
+      },
+      {
+        "question": "Posso modificar o servidor após a configuração do bot?",
+        "answer": "Sim! Você pode modificar o servidor manualmente ou usar o comando do Discly específico para editar seu servidor e dizer o que você quer que seja alterado."
+      },
+      {
+        "question": "O que acontece se a IA não configurar exatamente como eu quero?",
+        "answer": "Como a IA pode interpretar as solicitações de forma errada, oferecemos re-configurações ilimitadas sem custos extras. Basta fornecer instruções mais específicas ou ajustes, e o bot ajustará seu servidor de acordo."
+      },
+      {
+        "question": "Há suporte ao cliente disponível?",
+        "answer": "Sim! Oferecemos suporte ao cliente 24/7 através de um formulário de contato no seu painel. Nossa equipe responde rapidamente para ajudar a resolver quaisquer problemas ou responder perguntas que você possa ter sobre o uso do bot ou configurar seu servidor."
+      },
+      {
+        "question": "Quanto tempo leva para configurar um servidor?",
+        "answer": "Usando o Discly, leva apenas alguns segundos. Fazendo manualmente, talvez algumas horas."
+      },
+      {
+        "question": "Há algum limite no tamanho do servidor ou no número de recursos?",
+        "answer": "Não! O bot funciona com servidores de qualquer tamanho e pode configurar todos os recursos padrão do Discord, incluindo cargos, canais, categorias, permissões e configurações específicas de canal. A IA se adapta às suas necessidades específicas, independentemente da complexidade do servidor."
+      },
+      {
+        "question": "Posso pedir reembolso?",
+        "answer": "Sim. Dentro de um período de 7 dias após a compra, você pode pedir um reembolso."
+      }
+    ]
+  },
+  "footer": {
+    "brandDescription": "O bot que configura seu servidor do Discord em segundos. Cargos, canais, permissões específicas: tudo feito com uma IA inteligente.",
+    "productHeading": "Produto",
+    "featuresLink": "Recursos",
+    "pricingLink": "Preços",
+    "changelogLink": "Notas de atualização",
+    "supportHeading": "Suporte",
+    "contactLink": "Entre em contato",
+    "legalHeading": "Legal",
+    "privacyLink": "Política de privacidade",
+    "termsLink": "Termos de serviço",
+    "copyright": "Todos os direitos reservados.",
+    "madeWith": "Feito com ❤️ para comunidades do Discord"
+  },
+  "purchaseDialog": {
+    "title": "Complete sua compra",
+    "description": "Digite seu email para prosseguir com a compra do plano {planName}.",
+    "label": "Email para receber acesso",
+    "placeholder": "seu.email@exemplo.com",
+    "errorInvalid": "Por favor, insira um endereço de e-mail válido"
+  },
+  "purchaseButton": {
+    "goToPayment": "Ir para pagamento",
+    "processing": "Processando...",
+    "errorProcessing": "Erro ao processar seu pagamento"
+  },
+  "auth": {
+    "signInTitle": "Entrar"
+  },
+  "legal": {
+    "terms": {
+      "title": "Termos de Serviço",
+      "description": "Leia estes termos atentamente antes de usar o serviço"
+    },
+    "privacy": {
+      "title": "Política de Privacidade",
+      "description": "Veja como o Discly lida com seus dados."
+    }
+  },
+  "changelog": {
+    "title": "Novidades",
+    "description": "Histórico público de mudanças, melhorias e correções do Discly. As atualizações lançadas estão listadas abaixo."
+  }
+}

@@ -1,7 +1,12 @@
 import Testimonial from "../Testimonial";
 import NavigationAndCard from "./NavigationAndCard";
+import type { Dictionary } from "@/i18n/request";
 
-export default function FeaturesSection() {
+interface FeaturesSectionProps {
+  dict: Dictionary;
+}
+
+export default function FeaturesSection({ dict }: FeaturesSectionProps) {
   return (
     <section
       className="w-full justify-center flex flex-col gap-4 relative px-4 sm:px-6 lg:px-8"
@@ -9,10 +14,10 @@ export default function FeaturesSection() {
       aria-labelledby="features-heading"
     >
       <header className="flex flex-row items-center gap-4 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mt-32 justify-center text-center">
-        <h2 id="features-heading">O que você vai ter</h2>
+        <h2 id="features-heading">{dict.features.heading}</h2>
       </header>
 
-      <NavigationAndCard />
+      <NavigationAndCard dict={dict} />
 
       <aside
         className="mx-auto max-w-xl mt-8 sm:mt-10 lg:mt-12 px-4"
@@ -20,9 +25,9 @@ export default function FeaturesSection() {
       >
         <Testimonial
           personImagePath="/avatar1.webp"
-          personName="Yves Mariano"
-          personRole="CEO da wysion.com"
-          testimonial="Não conheço muito de Discord. O Discly me ajudou a criar o servidor da minha comunidade do zero. Em questão de minutos já tava tudo pronto. Agradeço Tim, por ter criado essa ferramenta!"
+          personName={dict.features.testimonialPerson}
+          personRole={dict.features.testimonialRole}
+          testimonial={dict.features.testimonial}
         />
       </aside>
     </section>

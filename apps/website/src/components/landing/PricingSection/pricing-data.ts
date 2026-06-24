@@ -1,34 +1,27 @@
-import { PricingCardData } from "@/types/pricing/pricing-types";
+import type { Dictionary } from "@/i18n/request";
+import type { PricingCardData } from "@/types/pricing/pricing-types";
 
-export const pricingData: PricingCardData[] = [
+export const getPricingData = (dict: Dictionary): PricingCardData[] => [
   {
     id: "basic-plan",
-    title: "Plano Básico",
-    description: "Tudo que você precisa para começar",
+    title: dict.pricing.basic.title,
+    description: dict.pricing.basic.description,
     price: 25,
     originalPrice: 30,
     currency: "BRL",
-    features: [
-      { text: "Acesso a tudo", included: true },
-      { text: "Crie do zero ou edite seu server", included: true },
-      { text: "Atualizações incluídas", included: true },
-      { text: "Acesso vitalício", included: true },
-      { text: "Re-configurações ilimitadas", included: true },
-      { text: "Suporte 24/7", included: true },
-      { text: "Garantia de 7 dias", included: true },
-    ],
-    buttonText: "Quero o plano básico",
+    features: dict.pricing.basic.features.map((text) => ({ text, included: true })),
+    buttonText: dict.pricing.basic.buttonText,
   },
   {
     id: "unlimited-plan",
-    title: "Plano Ilimitado",
-    description: "Acesso ilimitado a tudo",
+    title: dict.pricing.unlimited.title,
+    description: dict.pricing.unlimited.description,
     price: 35,
     currency: "BRL",
     isPopular: true,
-    badge: "Melhor oferta!",
+    badge: dict.pricing.bestOffer,
     features: [],
     bundleItems: [],
-    buttonText: "Quero o plano ilimitado",
+    buttonText: dict.pricing.unlimited.buttonText,
   },
 ];

@@ -1,16 +1,31 @@
 import Squares from "@/blocks/backgrounds/Squares/Squares";
 import ReleaseCard from "@/components/changelog/ReleaseCard";
 import { IconArrowLeft, IconReplace } from "@tabler/icons-react";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { RELEASES } from "./releases";
+import { getDictionary, hasLocale } from "@/i18n/request";
+import { type Locale } from "@/i18n/config";
+import { notFound } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Changelog",
-  description: "Discly Changelog",
-};
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  if (!hasLocale(lang)) notFound()
 
-export default function Changelog() {
+  const dict = await getDictionary(lang as Locale)
+
+  return {
+    title: dict.changelog.title,
+    description: dict.changelog.description,
+  }
+}
+
+export default async function Changelog({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
   return (
     <section className="w-full min-h-screen flex flex-col relative overflow-hidden pt-20 pb-20">
       {/* Subtle animated background */}
@@ -26,7 +41,7 @@ export default function Changelog() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <nav className="mb-6">
-          <Link href="/" className="btn btn-ghost text-gray-300 hover:text-white">
+          <Link href={`/${lang}`} className="btn btn-ghost text-gray-300 hover:text-white">
             <IconArrowLeft className="w-4 h-4" />
             <span className="ml-2">Back</span>
           </Link>

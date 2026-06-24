@@ -3,10 +3,17 @@
 import { useState } from "react";
 import Card from "./Card";
 import Navigation from "./Navigation";
-import { features } from "./features";
+import { getFeatures } from "./features";
+import type { Dictionary } from "@/i18n/request";
+import type { Feature } from "@/types/features/features-types";
 
-export default function NavigationAndCard() {
-  const [activeFeature, setActiveFeature] = useState(features[0]);
+interface NavigationAndCardProps {
+  dict: Dictionary;
+}
+
+export default function NavigationAndCard({ dict }: NavigationAndCardProps) {
+  const features = getFeatures(dict);
+  const [activeFeature, setActiveFeature] = useState<Feature>(features[0]);
 
   return (
     <div className="container mx-auto px-4 sm:px-6 relative z-10 mt-12 sm:mt-16 lg:mt-20">
@@ -16,7 +23,7 @@ export default function NavigationAndCard() {
         setActiveFeature={setActiveFeature}
       />
 
-      <Card activeFeature={activeFeature} />
+      <Card activeFeature={activeFeature} dict={dict} />
     </div>
   );
 }

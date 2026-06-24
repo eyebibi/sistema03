@@ -1,8 +1,14 @@
+import type { Dictionary } from "@/i18n/request";
 import { Check, ArrowLeft } from "lucide-react";
 import PurchaseModalTrigger from "../PurchaseModalTrigger";
-import { pricingData } from "./pricing-data";
+import { getPricingData } from "./pricing-data";
 
-export default function PricingSection() {
+interface PricingSectionProps {
+  dict: Dictionary;
+}
+
+export default function PricingSection({ dict }: PricingSectionProps) {
+  const pricingData = getPricingData(dict);
   return (
     <section
       className="w-full justify-center flex flex-col gap-4 relative px-4 sm:px-6 lg:px-8"
@@ -14,9 +20,9 @@ export default function PricingSection() {
           id="pricing-heading"
           className="text-gray-200 text-3xl sm:text-4xl lg:text-5xl font-bold text-center"
         >
-          Os planos atuais
+          {dict.pricing.heading}
         </h2>
-        <p className="text-gray-400 mt-4">Pagamento único, sem mensalidades.</p>
+        <p className="text-gray-400 mt-4">{dict.pricing.oneTimePayment}</p>
       </header>
 
       <div
@@ -45,7 +51,6 @@ export default function PricingSection() {
             role="listitem"
             aria-labelledby={`plan-title-${card.id}`}
           >
-            {/* Badge */}
             {card.badge && (
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                 <span
@@ -58,7 +63,6 @@ export default function PricingSection() {
               </div>
             )}
 
-            {/* Header */}
             <header className="mb-4 sm:mb-6">
               <h3
                 id={`plan-title-${card.id}`}
@@ -71,7 +75,6 @@ export default function PricingSection() {
               </p>
             </header>
 
-            {/* Pricing */}
             <div
               className="mb-6 sm:mb-8"
               role="group"
@@ -96,13 +99,12 @@ export default function PricingSection() {
               </div>
             </div>
 
-            {/* Bundle Items (for Complete Bundle) */}
             {card.isPopular && card.bundleItems && card.bundleItems.length > 0 && (
               <div className="mb-6">
                 <div className="flex items-center gap-2 mb-4 text-gray-300">
                   <ArrowLeft className="w-4 h-4" aria-hidden="true" />
                   <span className="text-xs sm:text-sm">
-                    Tudo do Plano Básico, mais...
+                    {dict.pricing.everythingFromBasic}
                   </span>
                 </div>
 
@@ -121,25 +123,23 @@ export default function PricingSection() {
                         {item.description}
                       </p>
 
-                      {/* Additional details */}
                       <ul className="mt-3 space-y-1" role="list">
                         <li className="flex items-center gap-2 text-xs sm:text-sm text-gray-300">
                           <div
                             className="w-1.5 h-1.5 bg-white rounded-full"
                             aria-hidden="true"
                           ></div>
-                          <span>Re-configurações ilimitadas</span>
+                          <span>{dict.pricing.unlimitedReconfigurations}</span>
                         </li>
                       </ul>
                     </div>
                   ))}
                 </div>
 
-                {/* Total */}
                 <div className="border-t border-gray-600 pt-4">
                   <div className="flex justify-between items-center">
                     <span className="text-white font-semibold text-sm sm:text-base">
-                      Total:
+                      {dict.pricing.total}
                     </span>
                     <div className="flex items-center gap-2">
                       <span className="text-white text-lg font-bold">
@@ -151,7 +151,6 @@ export default function PricingSection() {
               </div>
             )}
 
-            {/* Features (for regular card) */}
             {!card.isPopular && (
               <ul
                 className="mb-6 sm:mb-8 space-y-3 sm:space-y-4"
@@ -184,9 +183,9 @@ export default function PricingSection() {
               </ul>
             )}
 
-            {/* CTA Button */}
             <footer className="mt-auto">
               <PurchaseModalTrigger
+                dict={dict}
                 planId={card.id === "basic-plan" ? "basic" : "complete"}
                 planName={card.title}
                 className="w-full bg-gradient-to-r from-primary to-primary-light hover:from-primary-light hover:to-primary text-white font-semibold h-10 sm:h-12 rounded-full transition-all duration-200 hover:scale-105 text-xs sm:text-sm"
