@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { IconSparkles } from "@tabler/icons-react";
 import MobileMenuWrapper from "./MobileMenuWrapper";
-import PurchaseModalTrigger from "./PurchaseModalTrigger";
+import PurchaseButton from "./PurchaseButton";
 
 export const navLinks = [
   {
@@ -68,9 +68,8 @@ export default function Navbar() {
             Entrar
           </Button>
         </Link>
-        <PurchaseModalTrigger
+        <PurchaseButton
           planId="complete"
-          planName="Ilimitado"
           className="rounded-full"
           size="sm"
         >
@@ -79,7 +78,7 @@ export default function Navbar() {
             Configurar meu servidor agora
           </span>
           <span className="lg:hidden">Criar</span>
-        </PurchaseModalTrigger>
+        </PurchaseButton>
       </div>
 
       <MobileMenuWrapper />

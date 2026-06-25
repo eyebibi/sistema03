@@ -1,6 +1,6 @@
 import { FloatingGlowingEffect } from "@/components/ui/floating-glowing-effect";
 import Link from "next/link";
-import PurchaseModalTrigger from "./PurchaseModalTrigger";
+import PurchaseButton from "./PurchaseButton";
 import { env } from "@/lib/public-env";
 
 export default function LastCtaSection() {
@@ -28,13 +28,12 @@ export default function LastCtaSection() {
             Você está pronto?
           </h2>
 
-          <PurchaseModalTrigger
+          <PurchaseButton
             planId="complete"
-            planName="Ilimitado"
             className="w-full sm:w-auto max-w-sm mx-auto mt-6 sm:mt-8 lg:mt-10"
           >
             Se sim, vem com o Discly
-          </PurchaseModalTrigger>
+          </PurchaseButton>
         </header>
 
         <footer>

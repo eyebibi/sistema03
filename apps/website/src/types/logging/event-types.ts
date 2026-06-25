@@ -17,12 +17,12 @@ export type PurchaseEvent = {
   customerEmail: string;
   plan: "BASIC" | "COMPLETE" | "CREDIT";
   timestamp: string;
-  paymentGateway: "STRIPE" | "MERCADOPAGO";
+  paymentGateway: "STRIPE";
 };
 
 export type CheckoutSessionCreationEvent = {
   customerEmail: string;
   plan: "BASIC" | "COMPLETE" | "CREDIT";
   timestamp: string;
-  paymentGateway: "STRIPE" | "MERCADOPAGO";
+  paymentGateway: "STRIPE";
 };

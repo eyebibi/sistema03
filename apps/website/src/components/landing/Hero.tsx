@@ -2,7 +2,7 @@ import Navbar from "./Navbar";
 import Squares from "@/blocks/backgrounds/Squares/Squares";
 import { IconSparkles } from "@tabler/icons-react";
 import Image from "next/image";
-import PurchaseModalTrigger from "./PurchaseModalTrigger";
+import PurchaseButton from "./PurchaseButton";
 
 export default function Hero() {
   return (
@@ -38,9 +38,8 @@ export default function Hero() {
             </p>
 
             <div className="mt-6 sm:mt-8 lg:mt-10">
-              <PurchaseModalTrigger
+              <PurchaseButton
                 planId="complete"
-                planName="Ilimitado"
                 className="bg-gradient-to-r from-primary to-blue-700 hover:brightness-90 active:scale-95 h-12 sm:h-14 w-auto sm:min-w-md px-4 sm:px-6 text-sm sm:text-base lg:text-lg flex items-center gap-2 justify-center"
               >
                 <IconSparkles
@@ -48,7 +47,7 @@ export default function Hero() {
                   aria-hidden="true"
                 />
                 Configurar meu servidor agora
-              </PurchaseModalTrigger>
+              </PurchaseButton>
             </div>
 
             <aside className="flex flex-col sm:flex-row mx-auto mt-3 items-center justify-center gap-2 sm:gap-0">

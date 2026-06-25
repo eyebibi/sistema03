@@ -10,7 +10,6 @@ export interface PricingCardData {
   price: number;
   originalPrice?: number;
   currency: string;
-  savings?: string;
   isPopular?: boolean;
   features: PricingFeature[];
   buttonText: string;

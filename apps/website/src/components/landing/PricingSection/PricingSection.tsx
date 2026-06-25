@@ -1,6 +1,15 @@
-import { Check, ArrowLeft } from "lucide-react";
-import PurchaseModalTrigger from "../PurchaseModalTrigger";
+import { Check } from "lucide-react";
+import PurchaseButton from "../PurchaseButton";
 import { pricingData } from "./pricing-data";
+
+const CURRENCY_SYMBOLS: Record<string, string> = {
+  USD: "$",
+};
+
+function formatPrice(price: number, currency: string): string {
+  const symbol = CURRENCY_SYMBOLS[currency] || "$";
+  return `${symbol}${price}`;
+}
 
 export default function PricingSection() {
   return (
@@ -80,76 +89,21 @@ export default function PricingSection() {
               <div className="flex items-baseline gap-2 mb-2">
                 <span
                   className="text-3xl sm:text-4xl font-bold text-white"
-                  aria-label={`Price: ${card.price} ${card.currency}`}
+                  aria-label={`Price: ${formatPrice(card.price, card.currency)} ${card.currency}`}
                 >
-                  R${card.price}
+                  {formatPrice(card.price, card.currency)}
                 </span>
                 <span className="text-gray-400 text-sm">{card.currency}</span>
                 {card.originalPrice && (
                   <span
                     className="text-red-400 sm:text-lg line-through ml-2"
-                    aria-label={`Original price: ${card.originalPrice} ${card.currency}`}
+                    aria-label={`Original price: ${formatPrice(card.originalPrice, card.currency)} ${card.currency}`}
                   >
-                    ${card.originalPrice}
+                    {formatPrice(card.originalPrice, card.currency)}
                   </span>
                 )}
               </div>
             </div>
-
-            {/* Bundle Items (for Complete Bundle) */}
-            {card.isPopular && card.bundleItems && card.bundleItems.length > 0 && (
-              <div className="mb-6">
-                <div className="flex items-center gap-2 mb-4 text-gray-300">
-                  <ArrowLeft className="w-4 h-4" aria-hidden="true" />
-                  <span className="text-xs sm:text-sm">
-                    Tudo do Plano Básico, mais...
-                  </span>
-                </div>
-
-                <div className="bg-background/50 rounded-lg p-3 sm:p-4 mb-4">
-                  {card.bundleItems.map((item, idx) => (
-                    <div key={idx} className="mb-4 last:mb-0">
-                      <div className="flex justify-between items-center mb-2">
-                        <h4 className="text-white font-semibold text-sm sm:text-base">
-                          {item.name}
-                        </h4>
-                        <span className="text-green-400 font-bold decoration-green-400 text-sm">
-                          {item.value}
-                        </span>
-                      </div>
-                      <p className="text-gray-400 text-xs sm:text-sm italic">
-                        {item.description}
-                      </p>
-
-                      {/* Additional details */}
-                      <ul className="mt-3 space-y-1" role="list">
-                        <li className="flex items-center gap-2 text-xs sm:text-sm text-gray-300">
-                          <div
-                            className="w-1.5 h-1.5 bg-white rounded-full"
-                            aria-hidden="true"
-                          ></div>
-                          <span>Re-configurações ilimitadas</span>
-                        </li>
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Total */}
-                <div className="border-t border-gray-600 pt-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-white font-semibold text-sm sm:text-base">
-                      Total:
-                    </span>
-                    <div className="flex items-center gap-2">
-                      <span className="text-white text-lg font-bold">
-                        ${card.price}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
 
             {/* Features (for regular card) */}
             {!card.isPopular && (
@@ -186,14 +140,13 @@ export default function PricingSection() {
 
             {/* CTA Button */}
             <footer className="mt-auto">
-              <PurchaseModalTrigger
+              <PurchaseButton
                 planId={card.id === "basic-plan" ? "basic" : "complete"}
-                planName={card.title}
                 className="w-full bg-gradient-to-r from-primary to-primary-light hover:from-primary-light hover:to-primary text-white font-semibold h-10 sm:h-12 rounded-full transition-all duration-200 hover:scale-105 text-xs sm:text-sm"
                 size="lg"
               >
                 ➜ {card.buttonText}
-              </PurchaseModalTrigger>
+              </PurchaseButton>
             </footer>
           </article>
         ))}

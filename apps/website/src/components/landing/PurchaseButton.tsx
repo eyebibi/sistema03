@@ -5,30 +5,39 @@ import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
-import { CreditCard, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 interface PurchaseButtonProps {
   planId: "basic" | "complete";
-  payerEmail: string;
-  disabled?: boolean;
+  children: React.ReactNode;
+  className?: string;
+  variant?:
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link";
+  size?: "default" | "sm" | "lg" | "icon";
 }
 
 export default function PurchaseButton({
   planId,
-  payerEmail,
-  disabled = false,
+  children,
+  className,
+  variant = "default",
+  size = "default",
 }: PurchaseButtonProps) {
   const { mutateAsync, isPending } = useCreateCheckoutMutation();
   const router = useRouter();
 
   async function onClick() {
-    (window as unknown as { fbq: (track: string, event: string) => void }).fbq(
-      "track",
-      "InitiateCheckout",
-    );
+    (
+      window as unknown as { fbq: (track: string, event: string) => void }
+    ).fbq("track", "InitiateCheckout");
 
     try {
-      const { checkoutUrl } = await mutateAsync({ planId, payerEmail });
+      const { checkoutUrl } = await mutateAsync({ planId });
 
       router.push(checkoutUrl);
     } catch (error) {
@@ -46,11 +55,12 @@ export default function PurchaseButton({
   return (
     <Button
       onClick={onClick}
-      className="w-full"
-      disabled={disabled || isPending}
+      className={className}
+      variant={variant}
+      size={size}
+      disabled={isPending}
     >
-      {isPending ? <Loader2 className="animate-spin" /> : <CreditCard />}
-      {isPending ? "Processando..." : "Ir para o pagamento"}
+      {isPending ? <Loader2 className="animate-spin" /> : children}
     </Button>
   );
 }

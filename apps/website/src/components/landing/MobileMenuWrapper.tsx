@@ -6,7 +6,7 @@ import { createPortal } from "react-dom";
 import { navLinks } from "./Navbar";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import PurchaseModalTrigger from "./PurchaseModalTrigger";
+import PurchaseButton from "./PurchaseButton";
 
 export default function MobileMenuWrapper() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,15 +51,14 @@ export default function MobileMenuWrapper() {
                       Entrar
                     </Button>
                   </Link>
-                  <PurchaseModalTrigger
+                  <PurchaseButton
                     planId="complete"
-                    planName="Ilimitado"
                     className="rounded-full"
                     size="sm"
                   >
                     <IconSparkles className="w-4 h-4" />
                     Configurar meu servidor agora
-                  </PurchaseModalTrigger>
+                  </PurchaseButton>
                 </div>
               </div>
             </div>

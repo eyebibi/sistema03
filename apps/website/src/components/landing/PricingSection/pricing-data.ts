@@ -7,7 +7,7 @@ export const pricingData: PricingCardData[] = [
     description: "Tudo que você precisa para começar",
     price: 25,
     originalPrice: 30,
-    currency: "BRL",
+    currency: "USD",
     features: [
       { text: "Acesso a tudo", included: true },
       { text: "Crie do zero ou edite seu server", included: true },
@@ -24,11 +24,10 @@ export const pricingData: PricingCardData[] = [
     title: "Plano Ilimitado",
     description: "Acesso ilimitado a tudo",
     price: 35,
-    currency: "BRL",
+    currency: "USD",
     isPopular: true,
     badge: "Melhor oferta!",
     features: [],
-    bundleItems: [],
     buttonText: "Quero o plano ilimitado",
   },
 ];

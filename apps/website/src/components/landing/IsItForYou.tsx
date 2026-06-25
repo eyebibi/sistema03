@@ -1,5 +1,5 @@
 import { IconCheck, IconX } from "@tabler/icons-react";
-import PurchaseModalTrigger from "./PurchaseModalTrigger";
+import PurchaseButton from "./PurchaseButton";
 
 const notForYou = [
   {
@@ -110,13 +110,12 @@ export default function IsItForYouSection() {
         </div>
       </header>
 
-      <PurchaseModalTrigger
+      <PurchaseButton
         planId="complete"
-        planName="Ilimitado"
         className="w-full sm:w-auto max-w-sm mx-auto mt-6 sm:mt-8 lg:mt-10"
       >
         Configurar meu servidor agora
-      </PurchaseModalTrigger>
+      </PurchaseButton>
     </section>
   );
 }

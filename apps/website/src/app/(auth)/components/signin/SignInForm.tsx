@@ -3,7 +3,7 @@
 import { handleSignIn } from "@/app/actions/handleSignIn";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { LogIn } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useActionState, useEffect } from "react";
 import { toast } from "sonner";
 import AuthFormInputWithLabel from "../auth/AuthFormInputWithLabel";
@@ -12,6 +12,8 @@ import Image from "next/image";
 
 export default function SignInForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
 
   const [signInState, signInAction, isSigninPending] = useActionState(
     handleSignIn,
@@ -19,6 +21,17 @@ export default function SignInForm() {
       canRedirect: false,
     },
   );
+
+  useEffect(() => {
+    if (searchParams.get("purchase") === "success") {
+      toast.success("Purchase completed!", {
+        description:
+          "Please check your email to get your access credentials.",
+        duration: 10000,
+      });
+      router.replace(pathname);
+    }
+  }, [searchParams, router, pathname]);
 
   useEffect(() => {
     if (signInState.error) {
