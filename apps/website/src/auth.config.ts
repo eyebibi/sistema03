@@ -1,7 +1,7 @@
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import { NextAuthConfig } from "next-auth";
-import { signInFormSchema } from "./app/[lang]/(auth)/signin/helpers";
+import { signInFormSchema } from "./app/(auth)/signin/helpers";
 import { getUserByEmail } from "./app/actions/getUserByEmail";
 
 // Notice this is only an object, not a full Auth.js instance

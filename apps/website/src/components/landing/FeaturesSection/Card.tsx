@@ -2,14 +2,12 @@ import { IconSparkles } from "@tabler/icons-react";
 import CardImage from "./CardImage";
 import PurchaseModalTrigger from "../PurchaseModalTrigger";
 import { Feature } from "@/types/features/features-types";
-import type { Dictionary } from "@/i18n/request";
 
 interface CardProps {
   activeFeature: Feature;
-  dict: Dictionary;
 }
 
-export default function Card({ activeFeature, dict }: CardProps) {
+export default function Card({ activeFeature }: CardProps) {
   return (
     <div className="max-w-6xl mx-auto">
       <div
@@ -45,13 +43,12 @@ export default function Card({ activeFeature, dict }: CardProps) {
 
             <div className="mt-6 sm:mt-8">
               <PurchaseModalTrigger
-                dict={dict}
                 planId="complete"
                 planName="Ilimitado"
                 className="bg-gradient-to-r from-primary to-blue-700 hover:brightness-90 active:scale-95 w-full sm:w-auto"
               >
                 <IconSparkles className="w-4 h-4" />
-                {dict.features.cta}
+                Configurar meu servidor agora
               </PurchaseModalTrigger>
             </div>
           </div>

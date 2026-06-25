@@ -2,7 +2,6 @@ import { MetadataRoute } from "next";
 import fs from "fs";
 import path from "path";
 import { config } from "@/config/config";
-import { locales } from "@/i18n/config";
 
 async function getLastModifiedDate(filePath: string): Promise<Date> {
   filePath = path.join(process.cwd(), filePath);
@@ -10,42 +9,32 @@ async function getLastModifiedDate(filePath: string): Promise<Date> {
   return stats.mtime;
 }
 
-const pagePaths = ["", "privacy", "terms", "changelog"];
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const entries: MetadataRoute.Sitemap = [];
+  const pageRoutes = [
+    "",
+    "privacy",
+    "terms",
+    "changelog",
+    "(auth)/signin",
+    "(auth)/reset-password",
+  ];
 
-  for (const locale of locales) {
-    const pageEntries = await Promise.all(
-      pagePaths.map(async (pagePath) => {
-        const sourcePath = pagePath
-          ? `src/app/[lang]/${pagePath}/page.tsx`
-          : `src/app/[lang]/page.tsx`;
-        const lastModified = await getLastModifiedDate(sourcePath);
-        const url = pagePath
-          ? `${config.baseUrl}/${locale}/${pagePath}`
-          : `${config.baseUrl}/${locale}`;
+  const staticRoutes = await Promise.all(
+    pageRoutes.map(async (pageRoute) => {
+      const lastModified = await getLastModifiedDate(
+        `src/app/${pageRoute}/page.tsx`,
+      );
 
-        const languages: Record<string, string> = Object.fromEntries(
-          locales.map((l) => [
-            l,
-            pagePath
-              ? `${config.baseUrl}/${l}/${pagePath}`
-              : `${config.baseUrl}/${l}`,
-          ]),
-        )
-        languages['x-default'] = `${config.baseUrl}/en-US${pagePath ? `/${pagePath}` : ''}`
+      const page = pageRoute.replace(/\/?\(.*?\)/g, "").replace(/^\/+/, "");
 
-        return {
-          url,
-          lastModified,
-          alternates: { languages },
-        };
-      }),
-    );
+      return {
+        url: `${config.baseUrl}/${page}`,
+        lastModified,
+      };
+    }),
+  );
 
-    entries.push(...pageEntries);
-  }
+  const sitemap = [...staticRoutes];
 
-  return entries;
+  return sitemap;
 }

@@ -1,18 +1,12 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import type { ReactNode } from "react";
 
-type Props = {
-  children: React.ReactNode;
-  params: Promise<{ lang: string }>;
-};
-
-export default async function Layout({ children, params }: Props) {
-  const { lang } = await params;
-
+export default async function Layout({ children }: { children: ReactNode }) {
   return (
     <div>
       <header className="flex justify-start items-center p-4">
-        <Link href={`/${lang}`} className="btn btn-ghost">
+        <Link href="/" className="btn btn-ghost">
           <ArrowLeft />
           Back
         </Link>

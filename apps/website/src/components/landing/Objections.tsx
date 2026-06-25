@@ -1,12 +1,22 @@
-import type { Dictionary } from "@/i18n/request";
+const objections = [
+  {
+    question: "...eu não sei usar o Discord?",
+    answer:
+      "Não há problema, você não precisa saber muito sobre o Discord. O Discly entende que deve configurar servidores, tudo que você precisa fazer é dizer o que você quer ter no seu. Você poderá ver um tutorial completo no seu painel.",
+  },
+  {
+    question: "...eu ainda não tiver criado um servidor?",
+    answer:
+      "Não há problema, você pode criar um servidor no Discord, e depois adicionar o bot ao seu servidor. Você poderá ver um tutorial completo sobre como fazer isso no seu painel.",
+  },
+  {
+    question: "...o bot não fizer o servidor do jeito que pedi?",
+    answer:
+      "Como o bot usa IA, o servidor pode não ficar exatamente como você quer. Mas, para evitar isso, você pode solicitar ao bot para reconfigurar seu servidor quantas vezes quiser, sem custos extras.",
+  },
+];
 
-interface ObjectionsSectionProps {
-  dict: Dictionary;
-}
-
-export default function ObjectionsSection({ dict }: ObjectionsSectionProps) {
-  const objections = dict.objections.items;
-
+export default function ObjectionsSection() {
   return (
     <section
       className="w-full justify-center flex flex-col gap-4 relative px-4 sm:px-6 lg:px-8"
@@ -17,7 +27,7 @@ export default function ObjectionsSection({ dict }: ObjectionsSectionProps) {
           id="objections-heading"
           className="text-gray-200 text-2xl sm:text-3xl lg:text-4xl font-bold text-center"
         >
-          {dict.objections.heading}
+          &quot;Mas e se...&quot;
         </h2>
 
         <div

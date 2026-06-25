@@ -1,6 +1,6 @@
 "use client";
 
-import AuthFormInputWithLabel from "@/app/[lang]/(auth)/components/auth/AuthFormInputWithLabel";
+import AuthFormInputWithLabel from "@/app/(auth)/components/auth/AuthFormInputWithLabel";
 import {
   changePassword,
   ChangePasswordResponse,

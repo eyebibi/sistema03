@@ -3,14 +3,8 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { IconMail } from "@tabler/icons-react";
 import { env } from "@/lib/public-env";
-import type { Dictionary } from "@/i18n/request";
 
-interface FooterProps {
-  dict: Dictionary;
-  locale: string;
-}
-
-export default function Footer({ dict, locale }: FooterProps) {
+export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -29,7 +23,8 @@ export default function Footer({ dict, locale }: FooterProps) {
               </h3>
             </header>
             <p className="text-gray-300 text-sm leading-relaxed">
-              {dict.footer.brandDescription}
+              O bot que configura seu servidor do Discord em segundos. Cargos,
+              canais, permissões específicas: tudo feito com uma IA inteligente.
             </p>
             <div
               className="flex gap-3"
@@ -50,7 +45,7 @@ export default function Footer({ dict, locale }: FooterProps) {
           {/* Product Links */}
           <section className="space-y-4" aria-labelledby="product-nav-heading">
             <h4 id="product-nav-heading" className="text-white font-semibold">
-              {dict.footer.productHeading}
+              Produto
             </h4>
             <nav aria-labelledby="product-nav-heading">
               <ul className="flex flex-col gap-2" role="list">
@@ -59,7 +54,7 @@ export default function Footer({ dict, locale }: FooterProps) {
                     href="/#features"
                     className="text-gray-300 hover:text-white transition-colors text-sm"
                   >
-                    {dict.footer.featuresLink}
+                    Recursos
                   </Link>
                 </li>
                 <li>
@@ -67,15 +62,15 @@ export default function Footer({ dict, locale }: FooterProps) {
                     href="/#pricing"
                     className="text-gray-300 hover:text-white transition-colors text-sm"
                   >
-                    {dict.footer.pricingLink}
+                    Preços
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href={`/${locale}/changelog`}
+                    href="/changelog"
                     className="text-gray-300 hover:text-white transition-colors text-sm"
                   >
-                    {dict.footer.changelogLink}
+                    Notas de atualização
                   </Link>
                 </li>
               </ul>
@@ -85,7 +80,7 @@ export default function Footer({ dict, locale }: FooterProps) {
           {/* Support Links */}
           <section className="space-y-4" aria-labelledby="support-nav-heading">
             <h4 id="support-nav-heading" className="text-white font-semibold">
-              {dict.footer.supportHeading}
+              Suporte
             </h4>
             <nav aria-labelledby="support-nav-heading">
               <ul className="flex flex-col gap-2" role="list">
@@ -94,7 +89,7 @@ export default function Footer({ dict, locale }: FooterProps) {
                     href={"mailto:" + env.NEXT_PUBLIC_EMAIL_FROM}
                     className="text-gray-300 hover:text-white transition-colors text-sm"
                   >
-                    {dict.footer.contactLink}
+                    Entre em contato
                   </Link>
                 </li>
               </ul>
@@ -104,24 +99,24 @@ export default function Footer({ dict, locale }: FooterProps) {
           {/* Legal Links */}
           <section className="space-y-4" aria-labelledby="legal-nav-heading">
             <h4 id="legal-nav-heading" className="text-white font-semibold">
-              {dict.footer.legalHeading}
+              Legal
             </h4>
             <nav aria-labelledby="legal-nav-heading">
               <ul className="flex flex-col gap-2" role="list">
                 <li>
                   <Link
-                    href={`/${locale}/privacy`}
+                    href="/privacy"
                     className="text-gray-300 hover:text-white transition-colors text-sm"
                   >
-                    {dict.footer.privacyLink}
+                    Política de privacidade
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href={`/${locale}/terms`}
+                    href="/terms"
                     className="text-gray-300 hover:text-white transition-colors text-sm"
                   >
-                    {dict.footer.termsLink}
+                    Termos de serviço
                   </Link>
                 </li>
               </ul>
@@ -133,10 +128,10 @@ export default function Footer({ dict, locale }: FooterProps) {
         <div className="border-t border-white/10 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
-              &copy; {currentYear} Discly. {dict.footer.copyright}
+              © {currentYear} Discly. Todos os direitos reservados.
             </p>
             <div className="flex items-center gap-6 text-sm text-gray-400">
-              <span>{dict.footer.madeWith}</span>
+              <span>Feito com ❤️ para comunidades do Discord</span>
             </div>
           </div>
         </div>

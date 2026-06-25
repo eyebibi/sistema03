@@ -1,43 +1,67 @@
-import type { Dictionary } from "@/i18n/request";
-import type { Feature } from "@/types/features/features-types";
+import { Feature } from "@/types/features/features-types";
 import { env } from "@/lib/public-env";
 
-export const getFeatures = (dict: Dictionary): Feature[] => [
+export const features: Feature[] = [
   {
     id: "ai-powered-discord-bot",
-    name: dict.features.aiPowered.name,
-    title: dict.features.aiPowered.title,
+    name: "Servidor configurado com IA",
+    title: "Servidor configurado com IA",
     description: (
       <p className="text-white/80 mb-8 leading-relaxed">
-        {dict.features.aiPowered.description}{" "}
-        <b>{dict.features.aiPowered.highlight}</b>.
+        Você não precisa se preocupar com a configuração de cargos, canais,
+        permissões ou qualquer outra coisa chata. A IA vai fazer isso para você,
+        baseado no que você pedir, através de um bot do Discord simples,{" "}
+        <b>
+          criando seu servidor do zero ou atualizando coisas em seu servidor já
+          existente
+        </b>
+        .
       </p>
     ),
-    features: dict.features.aiPowered.featuresList,
+    features: [
+      "Cargos, canais, permissões e permissões específicas de canal criadas automaticamente",
+      "Servidor personalizado para suas necessidades",
+      "Nenhuma experiência com Discord necessária",
+    ],
     imagePath: "/feature1.png",
   },
   {
     id: "usage-guide",
-    name: dict.features.usageGuide.name,
-    title: dict.features.usageGuide.title,
-    description: dict.features.usageGuide.description,
-    features: dict.features.usageGuide.featuresList,
+    name: "Tutorial de uso",
+    title: "Nenhuma experiência com Discord necessária",
+    description:
+      "Se você não é um expert em Discord, não se preocupe. No seu painel, você vai encontrar um tutorial completo sobre como adicionar o bot ao seu servidor e como usá-lo.",
+    features: [
+      "Como adicionar o bot ao seu servidor",
+      "Como usar o bot",
+      "Como tirar o máximo de proveito do bot",
+    ],
     imagePath: "/feature2.png",
   },
   {
     id: "infinite-customization",
-    name: dict.features.infiniteCustomization.name,
-    title: dict.features.infiniteCustomization.title,
-    description: dict.features.infiniteCustomization.description,
-    features: dict.features.infiniteCustomization.featuresList,
+    name: "Modificação ilimitada",
+    title: "Seu servidor, suas regras",
+    description:
+      "Como o bot usa IA, não é garantido que ele sempre vai funcionar da forma exata que você gostaria. Sabendo disso, você pode solicitar ao bot para fazer alterações quantas vezes quiser, com qualquer um dos planos.",
+    features: [
+      "Alterações ilimitadas, quantas vezes quiser",
+      "Sem custos extras",
+    ],
     imagePath: "/feature3.png",
   },
   {
     id: "support",
-    name: dict.features.support.name,
-    title: dict.features.support.title,
-    description: `${dict.features.support.descriptionPrefix} ${env.NEXT_PUBLIC_EMAIL_FROM}.`,
-    features: dict.features.support.featuresList,
+    name: "Suporte 24h/7d",
+    title: "Aqui para te ajudar",
+    description:
+      `Caso algo dê errado (o que é muito raro), você pode sempre entrar em contato com o suporte. Há um formulário de contato no seu painel. Ou você pode enviar uma mensagem para ${env.NEXT_PUBLIC_EMAIL_FROM}.`,
+    features: [
+      "Formulário de contato no seu painel",
+      "Suporte 24h/7d",
+      "Sem custos extras",
+      "Resposta rápida",
+    ],
     imagePath: "/feature4.png",
   },
 ];

@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { config } from "@/config/config";
+import { env } from "@/lib/public-env";
 import { Toaster } from "sonner";
-import { cookies } from "next/headers";
 import Providers from "./providers";
-import { defaultLocale } from "@/i18n/config";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -13,22 +12,54 @@ const font = Poppins({
 });
 
 export const metadata: Metadata = {
+  title: {
+    default: config.title,
+    template: `%s | ${config.title}`,
+  },
+  description: config.description,
+  keywords: [
+    "Servidor Discord com IA Discly",
+    "Configurar server do Discord com IA Discly",
+    "IA para servidor do Discord",
+    "IA para configurar servidor do Discord",
+    "Criar servidor do Discord com IA Discly",
+  ],
   metadataBase: new URL(config.baseUrl!),
+  openGraph: {
+    type: "website",
+    locale: "pt-BR",
+    url: env.NEXT_PUBLIC_BASE_URL,
+    title: config.title,
+    description: config.description,
+    siteName: config.title,
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: config.title,
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: config.title,
+    description: config.description,
+    images: ["/opengraph-image.png"],
+  },
   icons: {
     icon: "/favicon.ico",
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const locale = cookieStore.get("locale")?.value || defaultLocale;
-
   return (
-    <html lang={locale}>
+    <html lang="pt-BR">
       <head>
         <script
           async
@@ -41,7 +72,7 @@ export default async function RootLayout({
             __html: ` !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n=n.push=n;n.loaded=!0;n.version='2.0';
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
 n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',

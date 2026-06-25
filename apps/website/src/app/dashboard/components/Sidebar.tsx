@@ -12,20 +12,19 @@ import {
 } from "lucide-react";
 import { signOutAction } from "./actions";
 
-const navLinks = (locale: string) => [
-  { href: `/${locale}/dashboard`, label: "Dashboard", icon: LayoutDashboard },
-  { href: `/${locale}/dashboard/billing`, label: "Billing & Credits", icon: CreditCard },
+const navLinks = [
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/dashboard/billing", label: "Billing & Credits", icon: CreditCard },
   {
-    href: `/${locale}/dashboard/account-settings`,
+    href: "/dashboard/account-settings",
     label: "Account Settings",
     icon: Settings,
   },
-  { href: `/${locale}/dashboard/contact`, label: "Support", icon: LifeBuoy },
+  { href: "/dashboard/contact", label: "Support", icon: LifeBuoy },
 ];
 
-export default function Sidebar({ userEmail, locale }: { userEmail: string; locale: string }) {
+export default function Sidebar({ userEmail }: { userEmail: string }) {
   const pathname = usePathname();
-  const links = navLinks(locale);
 
   const closeDrawer = () => {
     const checkbox = document.getElementById(
@@ -37,7 +36,7 @@ export default function Sidebar({ userEmail, locale }: { userEmail: string; loca
   return (
     <div className="flex flex-col min-h-screen w-[260px] bg-base-300">
       <Link
-        href={`/${locale}/dashboard`}
+        href="/dashboard"
         onClick={closeDrawer}
         className="flex items-center gap-3 px-6 pt-8 pb-6"
       >
@@ -46,7 +45,7 @@ export default function Sidebar({ userEmail, locale }: { userEmail: string; loca
       </Link>
 
       <nav className="flex-1 px-3 space-y-1">
-        {links.map(({ href, label, icon: Icon }) => {
+        {navLinks.map(({ href, label, icon: Icon }) => {
           const isActive = pathname === href;
           return (
             <Link

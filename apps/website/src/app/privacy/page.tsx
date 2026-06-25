@@ -1,79 +1,55 @@
 import Squares from "@/blocks/backgrounds/Squares/Squares";
-import { IconArrowLeft, IconScale } from "@tabler/icons-react";
-import type { Metadata } from "next";
+import { IconArrowLeft, IconShield } from "@tabler/icons-react";
+import { Metadata } from "next";
 import Link from "next/link";
 import { env } from "@/lib/public-env";
-import { getDictionary, hasLocale } from "@/i18n/request";
-import { type Locale } from "@/i18n/config";
-import { notFound } from "next/navigation";
 
-export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
-  const { lang } = await params
-  if (!hasLocale(lang)) notFound()
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description: "Privacy Policy for using Discly",
+};
 
-  const dict = await getDictionary(lang as Locale)
-
-  return {
-    title: dict.legal.terms.title,
-    description: dict.legal.terms.description,
-  }
-}
-
-export default async function TermsOfService({
-  params,
-}: {
-  params: Promise<{ lang: string }>;
-}) {
-  const { lang } = await params;
-  // Replace this with your actual Terms of Service content
-  const termsContent = `
+export default function PrivacyPolicy() {
+  // Replace this with your actual Privacy Policy content
+  const privacyContent = `
 **Effective date: January 30, 2025**
 
-Welcome to Discly! By using our services, you agree to these Terms of Service. Please read them carefully.
+Welcome to Discly ("we", "our", "us"). Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information when you use our website and services.
 
-1. Overview
+1. Information we collect
 
-Discly ("we", "our", "us") provides an AI-powered Discord bot to help users configure their servers quickly. By accessing or using our website (${env.NEXT_PUBLIC_BASE_URL}) and services, you agree to comply with these Terms.
+Personal data: we collect your email address.
 
-2. User accounts and data
+Non-personal data: we do not collect any non-personal data.
 
-To use our services, we may collect certain information, including your email. For more details, please review our Privacy Policy at ${env.NEXT_PUBLIC_BASE_URL}/privacy.
+2. Purpose of data collection
 
-3. Payments and refunds
+We process your data to:
 
-Purchases made on Discly are eligible for a refund within 7 days of purchase.
+Process your purchases.
 
-Refund requests must be sent to ${env.NEXT_PUBLIC_EMAIL_FROM} directly or via the contact form on the website.
+Contact you regarding our services.
 
-After 7 days, all purchases are final. This means it will not be possible to request a refund.
+Ensure the proper functioning of our bot.
 
-However, we reserve the right to deny refund requests if we suspect abuse of our refund policy.
+3. Data sharing
 
-4. User responsibilities
+We do not share your data with third parties.
 
-You must comply with all applicable Discord laws.
+4. Children's privacy
 
-You are responsible for the content and actions within your Discord servers.
+We do not collect data from children.
 
-5. Limitations of liability
+5. Updates to this Policy
 
-Discly is provided "as is" without warranties of any kind.
+We may update this Privacy Policy from time to time. If any changes are made, we will notify users via email.
 
-We are not liable for any losses or damages resulting from the use of our services.
+6. Contact information
 
-6. Governing law
+To resolve any questions about this Privacy Policy, please contact us at ${env.NEXT_PUBLIC_EMAIL_FROM}.
 
-These Terms are governed by the laws of Brazil. Any dispute will be resolved in accordance with Brazilian law.
-
-7. Changes to these Terms
-
-We may update these Terms from time to time. Users will be notified of significant changes via email.
-
-8. Contact information
-
-For any questions, please contact us at ${env.NEXT_PUBLIC_EMAIL_FROM}.
-
-Thank you for using Discly!`;
+By using Discly, you agree to the terms of this Privacy Policy.
+  `;
 
   return (
     <section className="w-full min-h-screen flex flex-col relative overflow-hidden">
@@ -90,7 +66,7 @@ Thank you for using Discly!`;
 
       {/* Navigation */}
       <nav className="relative z-10 p-6">
-        <Link href={`/${lang}`} className="btn btn-ghost text-gray-300 hover:text-white">
+        <Link href="/" className="btn btn-ghost text-gray-300 hover:text-white">
           <IconArrowLeft className="w-4 h-4" />
           Back to home
         </Link>
@@ -102,13 +78,13 @@ Thank you for using Discly!`;
           {/* Header */}
           <div className="text-center mb-12">
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary to-blue-700 shadow-lg shadow-primary/25 mb-6">
-              <IconScale className="w-10 h-10 text-white" />
+              <IconShield className="w-10 h-10 text-white" />
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-200 leading-tight mb-4">
-              Terms of Service
+              Privacy Policy
             </h1>
             <p className="text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto">
-              Please read these terms carefully before using the service
+              See how Discly handles your data.
             </p>
           </div>
 
@@ -118,10 +94,14 @@ Thank you for using Discly!`;
               <div
                 className="text-gray-300 leading-relaxed space-y-6 whitespace-pre-line"
                 dangerouslySetInnerHTML={{
-                  __html: termsContent
+                  __html: privacyContent
                     .replace(
                       /\*\*(.*?)\*\*/g,
                       '<strong class="text-white font-semibold">$1</strong>'
+                    )
+                    .replace(
+                      /### (.*)/g,
+                      '<h3 class="text-xl font-bold text-white mt-6 mb-3">$1</h3>'
                     )
                     .replace(
                       /## (.*)/g,
@@ -139,7 +119,7 @@ Thank you for using Discly!`;
           {/* Footer CTA */}
           <div className="text-center mt-12">
             <p className="text-gray-400 mb-6">
-              Have questions about these terms?
+              Have questions about how your data is handled?
             </p>
             <Link href={"mailto:" + env.NEXT_PUBLIC_EMAIL_FROM} className="btn bg-gradient-to-r! from-primary to-blue-700 hover:brightness-90 active:scale-95 h-12 px-8 text-base font-medium text-white border-0">
               Contact us
