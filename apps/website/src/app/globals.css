@@ -28,6 +28,12 @@
   --input-color: color-mix(in oklab, var(--color-base-content) 20%, #0000);
 }
 
+.btn-outline:hover {
+  background-color: #E0E3FF !important;
+  color: #000 !important;
+  border-color: #E0E3FF !important;
+}
+
 .btn:active:focus {
   animation: button-pop 0s ease-out;
   transform: scale(var(--btn-focus-scale, .97));
