@@ -143,7 +143,6 @@ export default function PricingSection() {
               <PurchaseButton
                 planId={card.id === "basic-plan" ? "basic" : "complete"}
                 className="w-full bg-gradient-to-r from-primary to-primary-light hover:from-primary-light hover:to-primary text-white font-semibold h-10 sm:h-12 rounded-full transition-all duration-200 hover:scale-105 text-xs sm:text-sm"
-                size="lg"
               >
                 ➜ {card.buttonText}
               </PurchaseButton>

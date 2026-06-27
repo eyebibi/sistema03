@@ -4,29 +4,19 @@ import { useCreateCheckoutMutation } from "@/hooks/landing-page/useCreateCheckou
 import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { Button } from "../ui/button";
-import { Loader2 } from "lucide-react";
 
 interface PurchaseButtonProps {
   planId: "basic" | "complete";
   children: React.ReactNode;
   className?: string;
-  variant?:
-    | "default"
-    | "destructive"
-    | "outline"
-    | "secondary"
-    | "ghost"
-    | "link";
-  size?: "default" | "sm" | "lg" | "icon";
+  disabled?: boolean;
 }
 
 export default function PurchaseButton({
   planId,
   children,
   className,
-  variant = "default",
-  size = "default",
+  disabled,
 }: PurchaseButtonProps) {
   const { mutateAsync, isPending } = useCreateCheckoutMutation();
   const router = useRouter();
@@ -53,14 +43,12 @@ export default function PurchaseButton({
   }
 
   return (
-    <Button
+    <button
       onClick={onClick}
       className={className}
-      variant={variant}
-      size={size}
-      disabled={isPending}
+      disabled={isPending || disabled}
     >
-      {isPending ? <Loader2 className="animate-spin" /> : children}
-    </Button>
+      {isPending ? <span className="loading loading-spinner"></span> : children}
+    </button>
   );
 }

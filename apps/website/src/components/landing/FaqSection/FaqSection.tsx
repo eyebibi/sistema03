@@ -1,10 +1,3 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { cn } from "@/lib/utils";
 import { faqs } from "./faqs";
 
 export default function FaqSection() {
@@ -28,40 +21,23 @@ export default function FaqSection() {
           </p>
         </div>
 
-        <div className="w-full max-w-4xl mx-auto mt-12 sm:mt-14 lg:mt-16">
-          <Accordion
-            type="single"
-            collapsible
-            className="w-full space-y-3 sm:space-y-4"
-            role="group"
-            aria-label="Frequently asked questions"
-          >
-            {faqs.map((faq, index) => (
-              <div key={index}>
-                <AccordionItem
-                  value={`item-${index}`}
-                  className={cn(
-                    "border border-white/10 rounded-lg px-4 sm:px-6 py-2",
-                    "bg-white/5 backdrop-blur-sm",
-                    "hover:bg-white/10 transition-colors duration-200",
-                  )}
-                >
-                  <AccordionTrigger
-                    className="text-left text-gray-300 font-semibold text-sm sm:text-base lg:text-lg hover:text-gray-200 transition-colors [&[data-state=open]]:text-primary"
-                    aria-describedby={`faq-answer-${index}`}
-                  >
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent
-                    id={`faq-answer-${index}`}
-                    className="text-zinc-400 text-xs sm:text-sm lg:text-base leading-relaxed pt-2 pb-4"
-                  >
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
+        <div className="w-full max-w-4xl mx-auto mt-12 sm:mt-14 lg:mt-16 space-y-3 sm:space-y-4">
+          {faqs.map((faq, index) => (
+            <div
+              key={index}
+              className="collapse collapse-arrow border border-white/10 rounded-lg bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors duration-200 px-4 sm:px-6"
+              role="group"
+              aria-label="Frequently asked questions"
+            >
+              <input type="radio" name="faq-accordion" />
+              <div className="collapse-title text-left text-gray-300 font-semibold text-sm sm:text-base lg:text-lg hover:text-gray-200 transition-colors">
+                {faq.question}
               </div>
-            ))}
-          </Accordion>
+              <div className="collapse-content text-zinc-400 text-xs sm:text-sm lg:text-base leading-relaxed">
+                {faq.answer}
+              </div>
+            </div>
+          ))}
         </div>
       </header>
     </section>

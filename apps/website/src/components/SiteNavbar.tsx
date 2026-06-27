@@ -10,7 +10,7 @@ export default function SiteNavbar() {
           <span className="text-xl font-bold tracking-tight">Discly</span>
         </Link>
         <div className="flex items-center gap-2">
-          <Link href="/dashboard" className="btn btn-ghost btn-sm hidden sm:inline-flex">
+          <Link href="/dashboard" className="btn btn-ghost btn-sm">
             Sign In
           </Link>
           <CheckoutButton planId="complete" className="btn btn-primary btn-sm">

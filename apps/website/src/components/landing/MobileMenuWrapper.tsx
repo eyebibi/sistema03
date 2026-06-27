@@ -5,7 +5,6 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import { navLinks } from "./Navbar";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import PurchaseButton from "./PurchaseButton";
 
 export default function MobileMenuWrapper() {
@@ -27,7 +26,7 @@ export default function MobileMenuWrapper() {
         typeof window !== "undefined" &&
         createPortal(
           <div className="fixed left-0 right-0 top-24 bottom-0 bg-black/40 z-[9999] md:hidden flex flex-col items-stretch pointer-events-auto">
-            <div className="absolute top-0 left-0 right-0 mt-2 bg-background backdrop-blur-sm rounded-b-lg p-4 z-[10000]">
+            <div className="absolute top-0 left-0 right-0 mt-2 bg-base-200 backdrop-blur-sm rounded-b-lg p-4 z-[10000]">
               <div className="flex flex-col gap-4">
                 {navLinks
                   .filter((navLink) => navLink.label !== "Home")
@@ -43,18 +42,13 @@ export default function MobileMenuWrapper() {
                   ))}
                 <div className="border-t border-white/20 pt-4 flex flex-col gap-2">
                   <Link href="/signin">
-                    <Button
-                      className="rounded-full w-full"
-                      variant="outline"
-                      size="sm"
-                    >
+                    <button className="btn btn-outline btn-sm rounded-full w-full">
                       Entrar
-                    </Button>
+                    </button>
                   </Link>
                   <PurchaseButton
                     planId="complete"
-                    className="rounded-full"
-                    size="sm"
+                    className="btn btn-primary btn-sm rounded-full w-full"
                   >
                     <IconSparkles className="w-4 h-4" />
                     Configurar meu servidor agora

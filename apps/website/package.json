@@ -15,13 +15,10 @@
   "dependencies": {
     "@auth/prisma-adapter": "^2.7.4",
     "@discly/db": "*",
-    "@radix-ui/react-accordion": "^1.2.11",
-    "@radix-ui/react-slot": "^1.2.3",
     "@tabler/icons-react": "^3.34.0",
     "@tanstack/react-query": "^5.81.5",
     "axios": "^1.10.0",
     "bcrypt": "^5.1.1",
-    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv-cli": "8.0.0",
     "dotenv-expand": "12.0.1",

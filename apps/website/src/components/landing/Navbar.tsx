@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { IconSparkles } from "@tabler/icons-react";
 import MobileMenuWrapper from "./MobileMenuWrapper";
 import PurchaseButton from "./PurchaseButton";
@@ -64,14 +63,13 @@ export default function Navbar() {
         aria-label="Ações do usuário"
       >
         <Link href="/dashboard">
-          <Button className="rounded-full" variant="outline" size="sm">
+          <button className="btn btn-outline btn-sm rounded-full">
             Entrar
-          </Button>
+          </button>
         </Link>
         <PurchaseButton
           planId="complete"
-          className="rounded-full"
-          size="sm"
+          className="btn btn-primary btn-sm rounded-full"
         >
           <IconSparkles className="w-4 h-4" aria-hidden="true" />
           <span className="hidden lg:inline">
