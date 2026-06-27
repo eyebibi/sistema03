@@ -28,15 +28,15 @@ const faqs = [
   },
   {
     q: "Do I need Discord skills?",
-    a: "No. Discly handles the technical side — permissions, role hierarchy, channel structure. You just describe your community. Discly translates that into correct, safe Discord configurations automatically.",
+      a: "No. Discly handles the technical side. Permissions, role hierarchy, channel structure. You just describe your community. Discly translates that into correct, safe Discord configurations automatically.",
   },
   {
     q: "Does it work on existing servers?",
-    a: "Yes. /edit-server makes targeted changes — add channels, tweak roles, fix permissions. No wipe required.",
+      a: "Yes. /edit-server makes targeted changes: add channels, tweak roles, fix permissions. No wipe required.",
   },
   {
     q: "What's a credit?",
-    a: "Each AI config request costs credits based on actual token usage. BASIC gives you 500 tokens per credit, COMPLETE gives you 2x more (1000 tokens per credit) — so your credits last longer. You can buy more credits in your dashboard starting at ~$2 whenever you need.",
+      a: "Each AI config request costs credits based on actual token usage. BASIC gives you 500 tokens per credit. COMPLETE gives you 2x more (1000 tokens per credit), so your credits last longer. You can buy more credits in your dashboard starting at ~$2 whenever you need.",
   },
   {
     q: "Can I use Discly on multiple servers?",
@@ -113,7 +113,7 @@ function CreditTooltip() {
   return (
     <div
       className="tooltip tooltip-bottom before:max-w-[220px] before:text-xs before:leading-relaxed"
-      data-tip="Each AI request burns credits based on token usage. BASIC: 500 tokens per credit. COMPLETE: 1000 tokens per credit — half the burn rate. Buy more in your dashboard from ~$2."
+      data-tip="BASIC: 500 tokens/credit. COMPLETE: 1000 tokens/credit (half burn rate). Top up from your dashboard from ~$2."
     >
       <IconInfoCircle
         size={14}
@@ -256,7 +256,7 @@ export default function Home() {
               </p>
               <ul className="space-y-1.5 text-sm">
                 {[
-                  "Roles: Admin, Mod, VIP, Member, Guest — with correct permissions",
+                  "Roles: Admin, Mod, VIP, Member, Guest, all with correct permissions",
                   "Categories: General, Trading Hub, Moderation, Admin",
                   "Channels: 12 text + 4 voice channels, properly organized",
                   "Permissions: All channel-level overwrites configured",
@@ -355,7 +355,7 @@ export default function Home() {
               Watch AI build a server from a single sentence
             </h2>
             <p className="text-base text-base-content/60 max-w-[55ch] mx-auto mt-4">
-              Roles, channels, categories, permissions — all configured in
+              Roles, channels, categories, permissions. All configured in
               under 30 seconds. See how easy it really is.
             </p>
             <div className="mt-10 mx-auto max-w-2xl aspect-video rounded-box overflow-hidden border border-base-300/40 bg-base-300">
@@ -457,10 +457,13 @@ export default function Home() {
             <div className="card bg-base-200 border border-base-300/40 mt-6">
               <div className="card-body">
                 <p className="text-base text-base-content/80 leading-relaxed">
-                  &quot;I built 14 Discord servers by hand before I wrote the
-                  first line of Discly&apos;s code. Every time, I repeated the
-                  same work: creating roles, tweaking permissions, organizing
-                  channels. I built Discly so I never have to do it again — and
+                  &quot;Hi, I&apos;m Tim, the creator of Discly.
+                  <br />
+                  <br />
+                  I built 14 Discord servers by hand before I wrote the first
+                  line of Discly&apos;s code. Every time, I repeated the same
+                  work: creating roles, tweaking permissions, organizing
+                  channels. I built Discly so I never have to do it again, and
                   neither do you.&quot;
                 </p>
                 <div className="mt-4 pt-4 border-t border-base-300/30 flex items-center gap-3">
@@ -619,7 +622,7 @@ export default function Home() {
             </div>
           </div>
           <p className="text-xs text-base-content/40 text-center mt-8 max-w-lg mx-auto">
-            Need more credits? You can top up anytime — 100, 200, 500, or 1000
+            Need more credits? You can top up anytime. 100, 200, 500, or 1000
             credits available.
           </p>
         </div>
@@ -635,7 +638,7 @@ export default function Home() {
               {faqs.map((faq) => (
                 <details
                   key={faq.q}
-                  className="collapse collapse-arrow bg-base-100 border border-base-300/30"
+                  className="collapse collapse-arrow bg-base-200 border border-base-300/30"
                 >
                   <summary className="collapse-title font-medium text-sm">
                     {faq.q}

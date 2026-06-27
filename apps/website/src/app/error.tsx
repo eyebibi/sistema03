@@ -18,7 +18,7 @@ export default function Error({
               An error occurred
             </h1>
             <p className="text-gray-300 mb-6">
-              Sorry — something unexpected happened. You can try again
+              Sorry, something unexpected happened. You can try again
               or go back to the home page.
             </p>
 
