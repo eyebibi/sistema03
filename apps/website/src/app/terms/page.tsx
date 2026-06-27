@@ -1,8 +1,9 @@
-import Squares from "@/blocks/backgrounds/Squares/Squares";
-import { IconArrowLeft, IconScale } from "@tabler/icons-react";
+import { IconScale } from "@tabler/icons-react";
 import { Metadata } from "next";
 import Link from "next/link";
 import { env } from "@/lib/public-env";
+import Footer from "@/components/landing/Footer";
+import SiteNavbar from "@/components/SiteNavbar";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -10,7 +11,6 @@ export const metadata: Metadata = {
 };
 
 export default function TermsOfService() {
-  // Replace this with your actual Terms of Service content
   const termsContent = `
 **Effective date: January 30, 2025**
 
@@ -61,80 +61,67 @@ For any questions, please contact us at ${env.NEXT_PUBLIC_EMAIL_FROM}.
 Thank you for using Discly!`;
 
   return (
-    <section className="w-full min-h-screen flex flex-col relative overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 z-0 w-full h-full">
-        <Squares
-          speed={0.05}
-          squareSize={60}
-          direction="diagonal"
-          borderColor="rgba(88, 101, 242, 0.3)"
-          hoverFillColor="rgba(88, 101, 242, 0.1)"
-        />
-      </div>
-
-      {/* Navigation */}
-      <nav className="relative z-10 p-6">
-        <Link href="/" className="btn btn-ghost text-gray-300 hover:text-white">
-          <IconArrowLeft className="w-4 h-4" />
-          Back to home
-        </Link>
-      </nav>
+    <>
+      <SiteNavbar />
 
       {/* Main Content */}
-      <div className="flex-1 relative z-10 px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="max-w-4xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary to-blue-700 shadow-lg shadow-primary/25 mb-6">
-              <IconScale className="w-10 h-10 text-white" />
+      <section className="py-24">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            {/* Header */}
+            <div className="text-center mb-20">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary mb-6">
+                <IconScale className="w-10 h-10 text-primary-content" />
+              </div>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-base-content leading-tight mb-4">
+                Terms of Service
+              </h1>
+              <p className="text-base-content/80 text-lg sm:text-xl max-w-2xl mx-auto">
+                Please read these terms carefully before using the service
+              </p>
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-200 leading-tight mb-4">
-              Terms of Service
-            </h1>
-            <p className="text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto">
-              Please read these terms carefully before using the service
-            </p>
-          </div>
 
-          {/* Content Area */}
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 sm:p-12 border border-white/10">
-            <div className="prose prose-invert prose-lg max-w-none">
-              <div
-                className="text-gray-300 leading-relaxed space-y-6 whitespace-pre-line"
-                dangerouslySetInnerHTML={{
-                  __html: termsContent
-                    .replace(
-                      /\*\*(.*?)\*\*/g,
-                      '<strong class="text-white font-semibold">$1</strong>'
-                    )
-                    .replace(
-                      /## (.*)/g,
-                      '<h2 class="text-2xl font-bold text-white mt-8 mb-4 first:mt-0">$1</h2>'
-                    )
-                    .replace(
-                      /# (.*)/g,
-                      '<h1 class="text-3xl font-bold text-white mt-10 mb-6 first:mt-0">$1</h1>'
-                    ),
-                }}
-              />
+            {/* Content Area */}
+            <div className="card bg-base-200 border border-base-300/40">
+              <div className="card-body p-8 sm:p-12">
+                <div
+                  className="text-base-content/80 leading-relaxed space-y-6 whitespace-pre-line"
+                  dangerouslySetInnerHTML={{
+                    __html: termsContent
+                      .replace(
+                        /\*\*(.*?)\*\*/g,
+                        '<strong class="text-base-content font-semibold">$1</strong>'
+                      )
+                      .replace(
+                        /## (.*)/g,
+                        '<h2 class="text-2xl font-bold text-base-content mt-8 mb-4 first:mt-0">$1</h2>'
+                      )
+                      .replace(
+                        /# (.*)/g,
+                        '<h1 class="text-3xl font-bold text-base-content mt-10 mb-6 first:mt-0">$1</h1>'
+                      ),
+                  }}
+                />
+              </div>
             </div>
-          </div>
 
-          {/* Footer CTA */}
-          <div className="text-center mt-12">
-            <p className="text-gray-400 mb-6">
-              Have questions about these terms?
-            </p>
-            <Link href={"mailto:" + env.NEXT_PUBLIC_EMAIL_FROM} className="btn bg-gradient-to-r! from-primary to-blue-700 hover:brightness-90 active:scale-95 h-12 px-8 text-base font-medium text-white border-0">
-              Contact us
-            </Link>
+            {/* Footer CTA */}
+            <div className="text-center mt-12">
+              <p className="text-base-content/60 mb-6">
+                Have questions about these terms?
+              </p>
+              <Link
+                href={"mailto:" + env.NEXT_PUBLIC_EMAIL_FROM}
+                className="btn btn-primary h-12 px-8 text-base font-medium"
+              >
+                Contact us
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Background Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-base-100/80 pointer-events-none z-5"></div>
-    </section>
+      <Footer />
+    </>
   );
 }

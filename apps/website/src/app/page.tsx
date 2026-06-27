@@ -13,6 +13,9 @@ import {
   IconX,
   IconInfoCircle,
 } from "@tabler/icons-react";
+import Footer from "@/components/landing/Footer";
+import SiteNavbar from "@/components/SiteNavbar";
+import CheckoutButton from "@/components/CheckoutButton";
 
 const faqs = [
   {
@@ -46,14 +49,20 @@ function TestimonialCard({
   name,
   role,
   quote,
+  imgSrc,
+  href,
+  className = "",
 }: {
   initials: string;
   name: string;
   role: string;
   quote: string;
+  imgSrc?: string;
+  href?: string;
+  className?: string;
 }) {
   return (
-    <div className="card bg-base-100 border border-base-300/30">
+    <div className={`card bg-base-100 border border-base-300/30 ${className}`}>
       <div className="card-body">
         <div className="flex gap-0.5 mb-3">
           {[...Array(5)].map((_, si) => (
@@ -68,11 +77,30 @@ function TestimonialCard({
           &ldquo;{quote}&rdquo;
         </p>
         <div className="mt-5 pt-4 border-t border-base-300/30 flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-xs font-bold text-primary">
-            {initials}
-          </div>
+          {imgSrc ? (
+            <img
+              src={imgSrc}
+              alt={name}
+              className="w-9 h-9 rounded-full object-cover"
+            />
+          ) : (
+            <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-xs font-bold text-primary">
+              {initials}
+            </div>
+          )}
           <div>
-            <p className="text-sm font-medium">{name}</p>
+            {href ? (
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium link link-primary"
+              >
+                {name}
+              </a>
+            ) : (
+              <p className="text-sm font-medium">{name}</p>
+            )}
             <p className="text-xs text-base-content/50">{role}</p>
           </div>
         </div>
@@ -98,27 +126,14 @@ function CreditTooltip() {
 export default function Home() {
   return (
     <>
-      <nav className="flex items-center sticky top-0 z-50 bg-base-100/80 backdrop-blur-md border-b border-base-300/50 min-h-16 px-4">
-        <div className="max-w-[1080px] mx-auto w-full flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <img src="/logo.png" alt="Discly" className="h-7 w-7" />
-            <span className="text-xl font-bold tracking-tight">Discly</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <a className="btn btn-ghost btn-sm hidden sm:inline-flex">
-              Sign In
-            </a>
-            <a className="btn btn-primary btn-sm">Build My Server</a>
-          </div>
-        </div>
-      </nav>
+      <SiteNavbar />
 
       <section className="min-h-[80dvh] flex items-center pt-24 pb-16">
         <div className="max-w-6xl mx-auto px-4 w-full">
           <div className="max-w-3xl mx-auto text-center">
             <div className="badge badge-primary badge-outline mb-6">
               <IconBrandDiscord size={14} className="mr-1.5" />
-              Join 1,200+ server owners
+              Join 60+ server owners
             </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl tracking-tighter leading-none font-bold">
               Your Discord server,{" "}
@@ -129,22 +144,22 @@ export default function Home() {
               simple description. No setup. No manual clicking.
             </p>
             <div className="flex flex-wrap justify-center gap-4 mt-8">
-              <a className="btn btn-primary btn-lg gap-2">
-                Build My Server
+              <CheckoutButton planId="complete" className="btn btn-primary">
                 <IconArrowRight size={18} />
-              </a>
+                Build My Server
+              </CheckoutButton>
             </div>
 
             <div className="flex items-center justify-center gap-4 mt-10">
               <div className="flex">
-                {[1, 2, 3, 4, 5].map((i) => (
+                {["/yves.webp", "/miranda.webp", "/christopher.jpg"].map((src, i) => (
                   <div
-                    key={i}
+                    key={src}
                     className="-mr-3 last:mr-0 relative"
-                    style={{ zIndex: 5 - i }}
+                    style={{ zIndex: 3 - i }}
                   >
                     <img
-                      src="https://i.pravatar.cc/40?u=discly"
+                      src={src}
                       alt=""
                       className="w-10 h-10 rounded-full border-2 border-base-100"
                     />
@@ -162,7 +177,7 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-sm">
-                  <span className="font-bold">1,200+</span> servers shipped
+                  <span className="font-bold">60+</span> servers shipped
                 </p>
               </div>
             </div>
@@ -207,10 +222,11 @@ export default function Home() {
 
           <div className="max-w-md mx-auto mt-12">
             <TestimonialCard
-              initials="DK"
-              name="David Kim"
-              role="Community Manager, DevSpace"
+              initials="T"
+              name="Tim"
+              role="Creator of Discly"
               quote="Setting up a Discord server always felt like a part-time job. I would dread onboarding new clients because I knew I'd spend hours on server setup. Discly changed that completely."
+              href="https://x.com/tim_the_dev"
             />
           </div>
 
@@ -261,47 +277,15 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center mt-10">
-            <a className="btn btn-primary btn-lg gap-2">
-              Stop Wasting Hours
-              <IconArrowRight size={18} />
-            </a>
+            <CheckoutButton planId="complete" className="btn btn-primary">
+                <IconArrowRight size={18} />
+                Stop Wasting Hours
+              </CheckoutButton>
           </div>
         </div>
       </section>
 
       <section className="py-24 bg-base-200/50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <span className="text-xs uppercase tracking-[0.18em] text-primary font-semibold">
-              See It in Action
-            </span>
-            <h2 className="text-3xl md:text-4xl tracking-tighter leading-none font-bold mt-3">
-              Watch AI build a server from a single sentence
-            </h2>
-            <p className="text-base text-base-content/60 max-w-[55ch] mx-auto mt-4">
-              Roles, channels, categories, permissions — all configured in
-              under 30 seconds. See how easy it really is.
-            </p>
-            <div className="mt-10 mx-auto max-w-2xl aspect-video rounded-box overflow-hidden border border-base-300/40 bg-base-300">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube-nocookie.com/embed/PLACEHOLDER"
-                title="Discly demo"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-            <div className="flex justify-center mt-10">
-              <a className="btn btn-primary btn-lg gap-2">
-                Configure With AI
-                <IconArrowRight size={18} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
             <span className="text-xs uppercase tracking-[0.18em] text-primary font-semibold">
@@ -350,16 +334,50 @@ export default function Home() {
 
           <div className="max-w-md mx-auto mt-16">
             <TestimonialCard
-              initials="AK"
-              name="Alex Kowalski"
-              role="Twitch Partner"
-              quote="My Discord was a mess before Discly. The AI figured out the exact role structure I needed based on my stream setup. Unbelievably easy."
+              initials="Y"
+              name="Yves"
+              role="CEO @ productlaunch.com.br"
+              quote="I don't know much about Discord. Discly helped me create my community server from scratch. In minutes everything was ready. Thank you Tim, for creating this tool!"
+              imgSrc="/yves.webp"
+              href="https://x.com/oyvesmariano"
             />
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-base-200/50">
+      <section className="py-24">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <span className="text-xs uppercase tracking-[0.18em] text-primary font-semibold">
+              See It in Action
+            </span>
+            <h2 className="text-3xl md:text-4xl tracking-tighter leading-none font-bold mt-3">
+              Watch AI build a server from a single sentence
+            </h2>
+            <p className="text-base text-base-content/60 max-w-[55ch] mx-auto mt-4">
+              Roles, channels, categories, permissions — all configured in
+              under 30 seconds. See how easy it really is.
+            </p>
+            <div className="mt-10 mx-auto max-w-2xl aspect-video rounded-box overflow-hidden border border-base-300/40 bg-base-300">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube-nocookie.com/embed/PLACEHOLDER"
+                title="Discly demo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+            <div className="flex justify-center mt-10">
+              <CheckoutButton planId="complete" className="btn btn-primary">
+                <IconArrowRight size={18} />
+                Configure With AI
+              </CheckoutButton>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="what-you-get" className="py-24 bg-base-200/50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-14">
             <span className="text-xs uppercase tracking-[0.18em] text-primary font-semibold">
@@ -413,18 +431,19 @@ export default function Home() {
 
           <div className="max-w-md mx-auto mt-12">
             <TestimonialCard
-              initials="SP"
-              name="Samira Patel"
-              role="Freelance Server Architect"
-              quote="I manage servers for 12 clients. Discly cut my setup time by 80%. I can onboard a new client during a single call now."
+              initials="M"
+              name="Miranda"
+              role="Happy User"
+              quote="I really liked it. This product of yours has a lot of potential and I haven't seen anything similar on the market."
+              imgSrc="/miranda.webp"
             />
           </div>
 
           <div className="flex justify-center mt-10">
-            <a className="btn btn-outline btn-lg gap-2">
-              Launch My Community
-              <IconArrowRight size={18} />
-            </a>
+            <CheckoutButton planId="complete" className="btn btn-outline">
+                <IconArrowRight size={18} />
+                Launch My Community
+              </CheckoutButton>
           </div>
         </div>
       </section>
@@ -432,10 +451,10 @@ export default function Home() {
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-4">
           <div className="max-w-2xl mx-auto">
-            <span className="text-xs uppercase tracking-[0.18em] text-primary font-semibold">
+            <span className="text-xs uppercase tracking-[0.18em] text-primary font-semibold block text-center">
               Why I built this
             </span>
-            <div className="card bg-base-100 border border-base-300/40 mt-6">
+            <div className="card bg-base-200 border border-base-300/40 mt-6">
               <div className="card-body">
                 <p className="text-base text-base-content/80 leading-relaxed">
                   &quot;I built 14 Discord servers by hand before I wrote the
@@ -449,7 +468,14 @@ export default function Home() {
                     ML
                   </div>
                   <div>
-                    <p className="text-sm font-medium">Marc Lou</p>
+                    <a
+                      href="https://x.com/tim_the_dev"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-medium link link-primary"
+                    >
+                      Tim
+                    </a>
                     <p className="text-xs text-base-content/50">
                       Creator of Discly
                     </p>
@@ -459,51 +485,21 @@ export default function Home() {
             </div>
 
             <div className="max-w-md mx-auto mt-8">
-              <TestimonialCard
-                initials="LO"
-                name="Linda Okafor"
-                role="Twitch Streamer"
-                quote="I thought 'AI server setup' was just a gimmick. Then I tried it. Discly built a role hierarchy I wouldn't have thought of in a hundred manual attempts."
-              />
+            <TestimonialCard
+              initials="C"
+              name="Christopher"
+              role="CTO @ abacatepay.com"
+              quote="Just saw discly on your profile. It's a fantastic tool!"
+              imgSrc="/christopher.jpg"
+              href="https://x.com/ChristoPy_"
+              className="!bg-base-200"
+            />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-base-200/50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-14">
-            <span className="text-xs uppercase tracking-[0.18em] text-primary font-semibold">
-              Testimonials
-            </span>
-            <h2 className="text-3xl md:text-4xl tracking-tighter leading-none font-bold mt-3">
-              Loved by community creators
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <TestimonialCard
-              initials="MC"
-              name="Maya Chen"
-              role="Community Lead, GameVerse"
-              quote="I set up a 20-channel server in under a minute. What used to take me an afternoon now takes a coffee break. Game changer for community managers."
-            />
-            <TestimonialCard
-              initials="RP"
-              name="Raj Patel"
-              role="Course Creator"
-              quote="The best $25 I've spent on my business. I set up a server for my students in 30 seconds and it looked better than anything I could have built in an afternoon."
-            />
-            <TestimonialCard
-              initials="EL"
-              name="Emma Larsson"
-              role="Gaming Community Owner"
-              quote="Freed up hours of my week. I used to spend Sunday afternoons tweaking my server. Now I spend that time actually talking to my community."
-            />
-          </div>
-        </div>
-      </section>
-
-      <section id="pricing" className="py-24">
+      <section id="pricing" className="py-24 bg-base-200/50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-14">
             <span className="text-xs uppercase tracking-[0.18em] text-primary font-semibold">
@@ -568,7 +564,7 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <a className="btn btn-outline btn-block mt-8">Get BASIC</a>
+                <CheckoutButton planId="basic" className="btn btn-outline w-full mt-8">Get BASIC</CheckoutButton>
               </div>
             </div>
 
@@ -618,7 +614,7 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <a className="btn btn-primary btn-block mt-8">Get Complete</a>
+                <CheckoutButton planId="complete" className="btn btn-primary w-full mt-8">Get Complete</CheckoutButton>
               </div>
             </div>
           </div>
@@ -629,7 +625,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-base-200/50">
+      <section className="py-24">
         <div className="max-w-6xl mx-auto px-4">
           <div className="max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-4xl tracking-tighter leading-none font-bold text-center">
@@ -654,10 +650,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-28 relative overflow-hidden">
+      <section className="py-28 bg-base-200/50 relative overflow-hidden">
         <div className="max-w-3xl mx-auto px-4 text-center relative">
           <h2 className="text-3xl md:text-5xl tracking-tighter leading-none font-bold">
-            Join 1,200+ server owners
+            Join 60+ server owners
             <br />
             who build communities fast
           </h2>
@@ -665,56 +661,15 @@ export default function Home() {
             100 credits included with every plan.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mt-8">
-            <a className="btn btn-primary btn-lg gap-2">
-              Ship Your Server
-              <IconArrowRight size={18} />
-            </a>
+            <CheckoutButton planId="complete" className="btn btn-primary">
+                <IconArrowRight size={18} />
+                Ship Your Server
+              </CheckoutButton>
           </div>
         </div>
       </section>
 
-      <footer className="bg-base-200 text-base-content pt-16 pb-8 px-4">
-        <div className="max-w-3xl mx-auto w-full">
-          <div className="flex flex-row flex-wrap justify-center gap-8">
-            <nav className="flex flex-col gap-2">
-              <h6 className="text-sm font-semibold tracking-wider uppercase text-base-content/40">
-                Product
-              </h6>
-              <a className="link link-hover text-sm">Features</a>
-              <a className="link link-hover text-sm">Pricing</a>
-            </nav>
-            <nav className="flex flex-col gap-2">
-              <h6 className="text-sm font-semibold tracking-wider uppercase text-base-content/40">
-                Resources
-              </h6>
-              <a className="link link-hover text-sm">Changelog</a>
-            </nav>
-            <nav className="flex flex-col gap-2">
-              <h6 className="text-sm font-semibold tracking-wider uppercase text-base-content/40">
-                Company
-              </h6>
-              <a className="link link-hover text-sm">About</a>
-              <a className="link link-hover text-sm">Contact</a>
-            </nav>
-            <nav className="flex flex-col gap-2">
-              <h6 className="text-sm font-semibold tracking-wider uppercase text-base-content/40">
-                Legal
-              </h6>
-              <a className="link link-hover text-sm">Privacy</a>
-              <a className="link link-hover text-sm">Terms</a>
-            </nav>
-          </div>
-          <div className="mt-12 pt-8 border-t border-base-300/30 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="Discly" className="h-5 w-5" />
-              <span className="text-sm font-bold tracking-tight">Discly</span>
-            </div>
-            <p className="text-xs text-base-content/40">
-              Built for Discord communities.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

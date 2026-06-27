@@ -34,7 +34,7 @@
   border-color: #E0E3FF !important;
 }
 
-.btn:active:focus {
+.btn:active {
   animation: button-pop 0s ease-out;
   transform: scale(var(--btn-focus-scale, .97));
 }

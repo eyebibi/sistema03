@@ -12,13 +12,13 @@ export default function ReleaseCard({ release }: ReleaseCardProps) {
     <div className="relative md:pl-12">
       <ReleaseCardIcon />
 
-      <article className="bg-white/3 border border-white/6 rounded-2xl p-6 md:p-8 shadow-sm">
+      <article className="bg-base-200 border border-base-300/40 rounded-box p-6 md:p-8">
         <header>
-          <h3 className="text-lg md:text-xl font-semibold text-gray-100">
+          <h3 className="text-lg md:text-xl font-semibold text-base-content">
             {release.version}
           </h3>
           {release.title ? (
-            <p className="text-gray-300 text-sm mt-1">{release.title}</p>
+            <p className="text-base-content/70 text-sm mt-1">{release.title}</p>
           ) : null}
         </header>
 
@@ -30,7 +30,7 @@ export default function ReleaseCard({ release }: ReleaseCardProps) {
               className="flex gap-3"
             >
               <div className="flex-shrink-0 mt-1">
-                <span className="inline-flex items-center justify-center w-7 h-7 rounded-sm bg-white/5">
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-sm bg-base-300/30">
                   <IconForNoteType type={group.type} />
                 </span>
               </div>
@@ -38,11 +38,11 @@ export default function ReleaseCard({ release }: ReleaseCardProps) {
               <div>
                 <h4
                   id={`${release.version}-${group.type}`}
-                  className="text-sm font-medium text-gray-200"
+                  className="text-sm font-medium text-base-content/80"
                 >
                   {capitalize(group.type)}
                 </h4>
-                <ul className="mt-2 list-disc list-inside text-gray-300 text-sm space-y-1">
+                <ul className="mt-2 list-disc list-inside text-base-content/70 text-sm space-y-1">
                   {group.items.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
