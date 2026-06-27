@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     q: "What's a credit?",
-      a: "Each AI config request costs credits based on actual token usage. BASIC gives you 500 tokens per credit. COMPLETE gives you 2x more (1000 tokens per credit), so your credits last longer. You can buy more credits in your dashboard starting at ~$2 whenever you need.",
+      a: "Each AI config request costs credits based on actual token usage. BASIC gives you 500 tokens per credit. COMPLETE gives you 2x more (1000 tokens per credit), so your credits last longer. You get 100 credits with any plan (more than enough to create 10+ servers), and can buy more credits in your dashboard starting at ~$2 whenever you need.",
   },
   {
     q: "Can I use Discly on multiple servers?",
@@ -514,7 +514,7 @@ export default function Home() {
               No monthly fees.
             </h2>
             <p className="text-base text-base-content/60 max-w-[60ch] mx-auto mt-4">
-              100 credits included with every plan.
+              100 credits included with every plan. Enough to create 10+ servers.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
@@ -523,7 +523,7 @@ export default function Home() {
                 <h3 className="card-title text-xl">BASIC</h3>
                 <div className="mt-2">
                   <span className="text-4xl font-bold tracking-tight">
-                    $25
+                    $20
                   </span>
                   <span className="text-base text-base-content/40 line-through ml-2">
                     $30
@@ -579,7 +579,10 @@ export default function Home() {
                 <h3 className="card-title text-xl">COMPLETE</h3>
                 <div className="mt-2">
                   <span className="text-4xl font-bold tracking-tight">
-                    $35
+                    $30
+                  </span>
+                  <span className="text-base text-base-content/40 line-through ml-2">
+                    $40
                   </span>
                 </div>
                 <p className="text-sm text-base-content/60">
@@ -603,6 +606,10 @@ export default function Home() {
                       label: "Edit mode",
                       highlight: false,
                     },
+                    {
+                      label: "Priority support",
+                      highlight: false,
+                    },
                   ].map((item) => (
                     <li
                       key={item.label}
@@ -622,8 +629,7 @@ export default function Home() {
             </div>
           </div>
           <p className="text-xs text-base-content/40 text-center mt-8 max-w-lg mx-auto">
-            Need more credits? You can top up anytime. 100, 200, 500, or 1000
-            credits available.
+            Need more credits? You can top up anytime in the dashboard. But you get more than enough for 10+ servers with any plan.
           </p>
         </div>
       </section>
@@ -661,7 +667,7 @@ export default function Home() {
             who build communities fast
           </h2>
           <p className="text-base text-base-content/70 max-w-[50ch] mx-auto mt-5">
-            100 credits included with every plan.
+            100 credits included with every plan. More than enough to create 10+ servers.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mt-8">
             <CheckoutButton planId="complete" className="btn btn-primary">
