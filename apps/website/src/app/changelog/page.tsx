@@ -8,6 +8,9 @@ import Footer from "@/components/landing/Footer";
 export const metadata: Metadata = {
   title: "Changelog",
   description: "Discly Changelog",
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/changelog`,
+  },
 };
 
 export default function Changelog() {

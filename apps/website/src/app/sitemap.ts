@@ -15,8 +15,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "privacy",
     "terms",
     "changelog",
-    "(auth)/signin",
-    "(auth)/reset-password",
   ];
 
   const staticRoutes = await Promise.all(

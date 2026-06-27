@@ -7,6 +7,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Sign in",
   description: "Sign in to Discly",
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/signin`,
+  },
 };
 
 export default async function SignInPage() {

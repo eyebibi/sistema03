@@ -1,5 +1,4 @@
-"use client";
-
+import Image from "next/image";
 import {
   IconBrandDiscord,
   IconBolt,
@@ -78,10 +77,12 @@ function TestimonialCard({
         </p>
         <div className="mt-5 pt-4 border-t border-base-300/30 flex items-center gap-3">
           {imgSrc ? (
-            <img
+            <Image
               src={imgSrc}
               alt={name}
-              className="w-9 h-9 rounded-full object-cover"
+              width={36}
+              height={36}
+              className="rounded-full object-cover"
             />
           ) : (
             <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-xs font-bold text-primary">
@@ -158,10 +159,12 @@ export default function Home() {
                     className="-mr-3 last:mr-0 relative"
                     style={{ zIndex: 3 - i }}
                   >
-                    <img
+                    <Image
                       src={src}
                       alt=""
-                      className="w-10 h-10 rounded-full border-2 border-base-100"
+                      width={40}
+                      height={40}
+                      className="rounded-full border-2 border-base-100"
                     />
                   </div>
                 ))}

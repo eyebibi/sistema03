@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { env } from "@/lib/public-env";
 
@@ -36,7 +37,7 @@ export default function Footer() {
         </div>
         <div className="mt-12 pt-8 border-t border-base-300/30 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2">
-            <img src="/logo.png" alt="Discly" className="h-5 w-5" />
+            <Image src="/logo.png" alt="Discly" width={20} height={20} className="h-5 w-5" />
             <span className="text-sm font-bold tracking-tight">Discly</span>
           </div>
           <p className="text-xs text-base-content/40">

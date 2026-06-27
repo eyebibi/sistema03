@@ -18,16 +18,19 @@ export const metadata: Metadata = {
   },
   description: config.description,
   keywords: [
-    "Servidor Discord com IA Discly",
-    "Configurar server do Discord com IA Discly",
-    "IA para servidor do Discord",
-    "IA para configurar servidor do Discord",
-    "Criar servidor do Discord com IA Discly",
+    "Discord server AI setup",
+    "AI Discord bot",
+    "automated Discord configuration",
+    "Discord server builder",
+    "AI role and permission setup",
   ],
   metadataBase: new URL(config.baseUrl!),
+  alternates: {
+    canonical: config.baseUrl,
+  },
   openGraph: {
     type: "website",
-    locale: "pt-BR",
+    locale: "en_US",
     url: env.NEXT_PUBLIC_BASE_URL,
     title: config.title,
     description: config.description,
@@ -88,6 +91,7 @@ fbq('track', 'PageView'); `,
             width="1"
             style={{ display: "none" }}
             src="https://www.facebook.com/tr?id=9834555996672298&ev=PageView&noscript=1"
+            alt=""
           />
         </noscript>
       </head>

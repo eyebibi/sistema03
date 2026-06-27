@@ -8,6 +8,9 @@ import SiteNavbar from "@/components/SiteNavbar";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: "Terms of Service for using Discly",
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/terms`,
+  },
 };
 
 export default function TermsOfService() {

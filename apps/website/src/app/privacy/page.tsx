@@ -8,6 +8,9 @@ import SiteNavbar from "@/components/SiteNavbar";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "Privacy Policy for using Discly",
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/privacy`,
+  },
 };
 
 export default function PrivacyPolicy() {

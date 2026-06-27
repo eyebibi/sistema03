@@ -1,8 +1,8 @@
 import { env } from "@/lib/public-env";
 
 export const config = {
-  title: "Discly - A IA para configurar seu servidor do Discord",
+  title: "Discly - AI-powered Discord server setup",
   description:
-    "Discly é um bot do Discord que usa IA para configurar seu servidor do zero ao 100%, em apenas 30 segundos. Ideal para comunidades, streamers e empresas. Economize horas e lance seu servidor ideal sem esforço.",
+    "Discly is an AI Discord bot that sets up your server from scratch in 30 seconds. Perfect for communities, streamers, and businesses. Save hours and launch your ideal server effortlessly.",
   baseUrl: env.NEXT_PUBLIC_BASE_URL,
 };

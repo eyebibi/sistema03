@@ -42,7 +42,7 @@ export default async function DiscordCallbackPage({
         <nav className="navbar">
           <Link className="flex gap-2" href="/dashboard">
             <ArrowLeft />
-            Voltar para o dashboard
+            Back to dashboard
           </Link>
         </nav>
 
