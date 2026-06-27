@@ -46,11 +46,8 @@ export default function PrivacyPolicy() {
 
               <div>
                 <h2 className="text-xl font-bold tracking-tight mb-3">1. Information we collect</h2>
-                <p className="text-base text-base-content/70 leading-relaxed mb-2">
-                  Personal data: we collect your email address.
-                </p>
                 <p className="text-base text-base-content/70 leading-relaxed">
-                  Non-personal data: we do not collect any non-personal data.
+                  Personal data: we collect your email address and Discord user ID. Your Discord user ID is used to connect your account to your Discord server for bot functionality.
                 </p>
               </div>
 
@@ -69,7 +66,7 @@ export default function PrivacyPolicy() {
               <div>
                 <h2 className="text-xl font-bold tracking-tight mb-3">3. Data sharing</h2>
                 <p className="text-base text-base-content/70 leading-relaxed">
-                  We do not share your data with third parties.
+                  We share necessary data with third-party service providers to operate our services. Payment processing is handled by Stripe, which receives billing information. Email communications are sent through a third-party email service provider. Discord server data may be shared with AI service providers to process your configuration requests.
                 </p>
               </div>
 

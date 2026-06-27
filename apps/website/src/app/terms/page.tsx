@@ -22,7 +22,7 @@ Discly ("we", "our", "us") provides an AI-powered Discord bot to help users conf
 
 2. User accounts and data
 
-To use our services, we may collect certain information, including your email. For more details, please review our Privacy Policy at ${env.NEXT_PUBLIC_BASE_URL}/privacy.
+To use our services, we may collect certain information, including your email address and Discord user ID. For more details, please review our Privacy Policy at ${env.NEXT_PUBLIC_BASE_URL}/privacy.
 
 3. Payments and refunds
 
@@ -36,7 +36,7 @@ However, we reserve the right to deny refund requests if we suspect abuse of our
 
 4. User responsibilities
 
-You must comply with all applicable Discord laws.
+You must comply with all applicable laws and Discord's Terms of Service.
 
 You are responsible for the content and actions within your Discord servers.
 
