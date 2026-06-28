@@ -637,7 +637,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="py-24" id="faq">
         <div className="max-w-6xl mx-auto px-4">
           <div className="max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-4xl tracking-tighter leading-none font-bold text-center">
