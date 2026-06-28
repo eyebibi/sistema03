@@ -1,15 +1,9 @@
 # Warning: Bot in development vs deployment environment
 
-- In the `deploy-commands.js` script, you must change line 43 depending where you are planning to use
-  the bot. If you plan to use it in a deployment environment NOW, the line that contains the Rest.put
-  command needs to look like this ():
-  ```js
-      await rest.put(Routes.applicationCommands(clientId), { body: commands });
-  ```
-- Otherwise, it needs to look like this:
-  ```js
-  		const data = await rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands });
-  ```
+- Use `node deploy-commands.js` to register commands to a specific guild (instant updates, for local dev).
+  Requires `GUILD_ID` to be set in `.env`.
+- Use `node deploy-commands.js --global` to register commands globally (takes up to 1 hour to propagate,
+  for production deployment).
 
 # Warning: NodeJS version
 
