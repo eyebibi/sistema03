@@ -1,16 +1,18 @@
 import dotenv from "dotenv";
+import path from "node:path";
 
-dotenv.config();
+dotenv.config({ path: path.resolve(import.meta.dirname, "../.env") });
 
 import { REST, Routes } from "discord.js";
 
 import fs from "node:fs";
-import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const isSource = __filename.endsWith(".ts");
+
+const isGlobal = process.argv.includes("--global");
 
 const commands: unknown[] = [];
 const foldersPath = path.join(__dirname, "commands");
@@ -44,10 +46,11 @@ const rest = new REST().setToken(process.env.BOT_TOKEN!);
       `Started refreshing ${commands.length} application (/) commands.`
     );
 
-    const data = await rest.put(
-      Routes.applicationGuildCommands(process.env.BOT_CLIENT_ID!, "1410015178439000147"),
-      { body: commands }
-    );
+    const route = isGlobal
+      ? Routes.applicationCommands(process.env.BOT_CLIENT_ID!)
+      : Routes.applicationGuildCommands(process.env.BOT_CLIENT_ID!, process.env.GUILD_ID!);
+
+    const data = await rest.put(route, { body: commands });
 
     console.log(
       `Successfully reloaded ${(data as unknown[]).length} application (/) commands.`

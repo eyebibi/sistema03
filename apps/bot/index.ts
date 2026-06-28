@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
+import path from "node:path";
 
-dotenv.config();
+dotenv.config({ path: path.resolve(import.meta.dirname, "../.env") });
 
 import {
   Client,
@@ -14,7 +15,6 @@ import type {
   CommandInteraction,
 } from "discord.js";
 import fs from "node:fs";
-import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 interface CommandModule {
