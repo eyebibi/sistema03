@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, type ReactNode } from "react";
+import { useCallback, useState, type ReactNode } from "react";
+import { IconLoader2 } from "@tabler/icons-react";
 
 interface CheckoutButtonProps {
   planId: "basic" | "complete";
@@ -13,7 +14,10 @@ export default function CheckoutButton({
   className,
   children,
 }: CheckoutButtonProps) {
+  const [loading, setLoading] = useState(false);
+
   const handleClick = useCallback(async () => {
+    setLoading(true);
     try {
       const res = await fetch("/api/create-checkout", {
         method: "POST",
@@ -28,11 +32,19 @@ export default function CheckoutButton({
       window.location.href = data.checkoutUrl;
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   }, [planId]);
 
   return (
-    <button type="button" className={className} onClick={handleClick}>
+    <button
+      type="button"
+      className={className}
+      onClick={handleClick}
+      disabled={loading}
+    >
+      {loading && <IconLoader2 size={18} className="animate-spin" />}
       {children}
     </button>
   );
