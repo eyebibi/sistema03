@@ -18,6 +18,10 @@ import CheckoutButton from "@/components/CheckoutButton";
 
 const faqs = [
   {
+    q: "Can I get a refund?",
+    a: "Yes, within 7 days of purchase. No questions asked.",
+  },
+  {
     q: "What if I don't like the result?",
     a: "Use /edit-server to make targeted changes, or just run /configure-server again with a better description. No limits.",
   },
@@ -150,6 +154,7 @@ export default function Home() {
                 Build My Server
               </CheckoutButton>
             </div>
+            <p className="text-xs text-base-content/40 mt-4">7-day money-back guarantee</p>
 
             <div className="flex items-center justify-center gap-4 mt-10">
               <div className="flex">
