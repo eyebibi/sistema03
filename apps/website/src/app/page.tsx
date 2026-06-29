@@ -45,6 +45,10 @@ const faqs = [
     q: "Can I use Discly on multiple servers?",
     a: "Yes. Use Discly on as many servers as you want. There's no server limit at all.",
   },
+  {
+    q: "How do I get support?",
+    a: "You can send me a message from your dashboard and I'll reply as soon as possible, usually within 24 hours.",
+  },
 ];
 
 function TestimonialCard({
@@ -158,7 +162,7 @@ export default function Home() {
 
             <div className="flex items-center justify-center gap-4 mt-10">
               <div className="flex">
-                {["/yves.webp", "/miranda.webp", "/christopher.jpg"].map((src, i) => (
+                {["/yves.webp", "/miranda.webp", "/tim.jpg"].map((src, i) => (
                   <div
                     key={src}
                     className="-mr-3 last:mr-0 relative"
@@ -234,6 +238,7 @@ export default function Home() {
               name="Tim"
               role="Creator of Discly"
               quote="Setting up a Discord server always felt like a part-time job. I would dread onboarding new clients because I knew I'd spend hours on server setup. Discly changed that completely."
+              imgSrc="/tim.jpg"
               href="https://x.com/tim_the_dev"
             />
           </div>
@@ -475,9 +480,13 @@ export default function Home() {
                   neither do you.&quot;
                 </p>
                 <div className="mt-4 pt-4 border-t border-base-300/30 flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-xs font-bold text-primary">
-                    ML
-                  </div>
+                  <Image
+                    src="/tim.jpg"
+                    alt="Tim"
+                    width={36}
+                    height={36}
+                    className="rounded-full object-cover"
+                  />
                   <div>
                     <a
                       href="https://x.com/tim_the_dev"
@@ -495,17 +504,6 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="max-w-md mx-auto mt-8">
-            <TestimonialCard
-              initials="C"
-              name="Christopher"
-              role="CTO @ abacatepay.com"
-              quote="Just saw discly on your profile. It's a fantastic tool!"
-              imgSrc="/christopher.jpg"
-              href="https://x.com/ChristoPy_"
-              className="!bg-base-200"
-            />
-            </div>
           </div>
         </div>
       </section>
